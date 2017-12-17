@@ -4,7 +4,7 @@ define('WECHAT_APPSECRET','345c0eb54f0034d0e1eb87ad61a4d5e4');
 define('WECHAT_URL','http://www.myinterestis.xyz');
  include 'LaneWeChat/lanewechat.php';
  include 'LaneWeChat/wechat.php';
-exit('111');
+//exit('111');
 use LaneWeChat\Core\WeChatOAuth;
 
 use LaneWeChat\Core\UserManage;
@@ -22,6 +22,9 @@ $code = $_GET['code'];
 //第二步，获取access_token网页版
 
 $openId = WeChatOAuth::getAccessTokenAndOpenId($code);
+
+echo '<pre>';
+print_r($openId);exit;
 
 //第三步，获取用户信息
 
