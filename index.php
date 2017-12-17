@@ -4,7 +4,7 @@ define('WECHAT_APPSECRET','345c0eb54f0034d0e1eb87ad61a4d5e4');
 define('WECHAT_URL','http://47.93.235.238/');
  include 'LaneWeChat/lanewechat.php';
  include 'LaneWeChat/wechat.php';
-
+exit('111');
 use LaneWeChat\Core\WeChatOAuth;
 
 use LaneWeChat\Core\UserManage;

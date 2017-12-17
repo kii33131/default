@@ -122,7 +122,14 @@ class WechatRequest{
                 return ResponsePassive::text($request['fromusername'], $request['tousername'], '收到未知的消息，我不知道怎么处理');
                 break;
         }
-        return $data;
+        if($data){
+
+            return $data;
+        }else{
+
+
+        }
+
     }
 
 
