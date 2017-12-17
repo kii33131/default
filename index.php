@@ -11,7 +11,7 @@ use LaneWeChat\Core\UserManage;
 
 
 
-//第一步，获取CODE
+//第一步，获取CODE1
 
 WeChatOAuth::getCode('http://47.93.235.238/index.php', 1, 'snsapi_base');
 
