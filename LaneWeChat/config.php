@@ -16,7 +16,7 @@ define('LANEWECHAT_VERSION_DATE', '2014-11-05');
 /*
  * 服务器配置，详情请参考@link http://mp.weixin.qq.com/wiki/index.php?title=接入指南
  */
-define("WECHAT_URL", 'http://www.myinterestis.xyz');
+define("WECHAT_URL", 'http://www.myinterestis.com');
 define('WECHAT_TOKEN', 'jiangxi123');
 define('ENCODING_AES_KEY', "lYbMrLQX7sXnJvKXP0bZ7WvJNgMBPDhmSMeVrA20pVC");
 

@@ -16,9 +16,9 @@ class WeChatOAuth{
      * 将会跳转到redirect_uri/?code=CODE&state=STATE 通过GET方式获取code和state
      */
     public static function getCode($redirect_uri, $state=1, $scope='snsapi_base'){
-        if($redirect_uri[0] == '/'){
-            $redirect_uri = substr($redirect_uri, 1);
-        }
+       // if($redirect_uri[0] == '/'){
+        //    $redirect_uri = substr($redirect_uri, 1);
+        //}
         //公众号的唯一标识
         $appid = WECHAT_APPID;
         //授权后重定向的回调链接地址，请使用urlencode对链接进行处理
