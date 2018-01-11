@@ -1,6 +1,6 @@
 <?php
-define('WECHAT_APPID','wx95bb93185be8dd85');
-define('WECHAT_APPSECRET','345c0eb54f0034d0e1eb87ad61a4d5e4');
+define('WECHAT_APPID','wx82c4da90c289fea0');
+define('WECHAT_APPSECRET','b0158b70a0ec317db8a77e2ddb458f21');
 define('WECHAT_URL','http://www.myinterestis.com');
  include 'LaneWeChat/lanewechat.php';
  include 'LaneWeChat/wechat.php';

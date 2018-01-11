@@ -139,7 +139,7 @@ class WechatRequest{
      * @return array
      */
     public static function text(&$request){
-        $content = '收到文本消息';
+        $content = '收到文本消息1';
         return ResponsePassive::text($request['fromusername'], $request['tousername'], $content);
     }
 
