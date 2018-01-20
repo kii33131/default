@@ -41,18 +41,18 @@ class Index extends  Controller
 
     public function index()
     {
+
         if($_SESSION['user_info']){
 
             $data = array(
-                'open_id'=>$_SESSION['user_info']['open_id'],
-                'img_url'=>$_SESSION['user_info']['img_url'],
+                'open_id'=>$_SESSION['user_info']['openid'],
+                'img_url'=>$_SESSION['user_info']['headimgurl'],
                 'subscribe'=>$_SESSION['user_info']['subscribe'],
                 'nickname'=>$_SESSION['user_info']['nickname']
             );
 
-            $userinfo = new userinfo();
             $re=userinfo::get(array('open_id'=>$data['open_id']));
-            $id = 0;
+            //$id = 0;
             if($re){
               $re->open_id = $data['open_id'];
               $re->img_url = $data['img_url'];
@@ -61,7 +61,12 @@ class Index extends  Controller
               $id =$re->save();
 
             }else{
-                $id=$userinfo->creat($data);
+                $userinfo = new userinfo;
+                $userinfo->open_id = $data['open_id'];
+                $userinfo->img_url = $data['img_url'];
+                $userinfo->subscribe = $data['subscribe'];
+                $userinfo->nickname = $data['nickname'];
+                $userinfo->save();
             }
 
             echo $id;
