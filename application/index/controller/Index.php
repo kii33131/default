@@ -51,7 +51,7 @@ class Index extends  Controller
                 'nickname'=>$_SESSION['user_info']['nickname']
             );
 
-            $re=userinfo::get(array('open_id'=>$data['open_id']));
+            $re=Userinfo::get(array('open_id'=>$data['open_id']));
             //$id = 0;
             if($re){
               $re->open_id = $data['open_id'];
@@ -61,7 +61,7 @@ class Index extends  Controller
               $id =$re->save();
 
             }else{
-                $userinfo = new userinfo;
+                $userinfo = new Userinfo;
                 $userinfo->open_id = $data['open_id'];
                 $userinfo->img_url = $data['img_url'];
                 $userinfo->subscribe = $data['subscribe'];
