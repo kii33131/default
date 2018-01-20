@@ -11,15 +11,17 @@ class Index extends  Controller
     public function __construct(Request $request = null)
     {
         parent::__construct($request);
+        //$_SESSION['user_info'] =0;
+        //$_GET['code']='';
 
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($user_agent, 'MicroMessenger') === false) {
 
             $_SESSION['user_info'] =0;
         }else{
-            if(!$_SESSION['user_info'] ){
+            if(!isset($_SESSION['user_info'])){
 
-                if($_GET['code']){
+                if(isset($_GET['code'])){
                     $code = $_GET['code'];
 
                     //第二步，获取access_token网页版
@@ -42,7 +44,8 @@ class Index extends  Controller
     public function index()
     {
 
-        if($_SESSION['user_info']){
+        //var_dump($_FET)
+        if(isset($_SESSION['user_info'])&& $_SESSION['user_info']!=0){
 
             $data = array(
                 'open_id'=>$_SESSION['user_info']['openid'],
