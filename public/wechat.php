@@ -1,3 +1,3 @@
 <?php
 
-include 'LaneWeChat/wechat.php';
+include '../LaneWeChat/wechat.php';
