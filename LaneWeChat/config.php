@@ -18,14 +18,14 @@ define('LANEWECHAT_VERSION_DATE', '2014-11-05');
  */
 define("WECHAT_URL", 'http://www.myinterestis.com');
 define('WECHAT_TOKEN', 'jiangxi123');
-define('ENCODING_AES_KEY', "qisUhjZTLaVv4DkSLQMlxRygEWCpGnDfjaVDE3s6pBz");
+define('ENCODING_AES_KEY', "7KFXQx3QgNuplojH5gwPCRw7za18W04FWvZGOIO05lI");
 
 /*
  * 开发者配置
  */
 
 define('WECHAT_APPID','wx82c4da90c289fea0');
-define('WECHAT_APPSECRET','b0158b70a0ec317db8a77e2ddb458f21');
+define('WECHAT_APPSECRET','6883f141a52032cfee6baf941b27114e');
 
 
 /*

@@ -21,7 +21,9 @@ class AccessToken{
         //检测本地是否已经拥有access_token，并且检测access_token是否过期
         $accessToken = self::_checkAccessToken();
         if($accessToken === false){
+
             $accessToken = self::_getAccessToken();
+
         }
         return $accessToken['access_token'];
     }
@@ -44,7 +46,7 @@ class AccessToken{
          *
          * 请将变量$accessTokenJson给存起来，这个变量是一个字符串
          */
-        $f = fopen('access_token', 'w+');
+        $f = fopen(__DIR__.'/'.'access_token', 'w+');
         fwrite($f, $accessTokenJson);
         fclose($f);
         return $accessToken;
@@ -58,7 +60,7 @@ class AccessToken{
     private static function _checkAccessToken(){
         //获取access_token。是上面的获取方法获取到后存起来的。
         //$accessToken = YourDatabase::get('access_token');
-        $data = file_get_contents('access_token');
+        $data = file_get_contents(__DIR__.'/'.'access_token');
         $accessToken['value'] = $data;
         if(!empty($accessToken['value'])){
             $accessToken = json_decode($accessToken['value'], true);
