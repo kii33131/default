@@ -30,7 +30,7 @@ class Index extends  Controller
                     //echo '<pre>';
                     //print_r($userInfo);exit;
                 }else{
-                    WeChatOAuth::getCode('/index.php', 1, 'snsapi_base');
+                    WeChatOAuth::getCode('/index.php', 1, 'snsapi_userinfo');
                 }
 
             }
@@ -52,7 +52,7 @@ class Index extends  Controller
             );
 
             $re=Userinfo::get(array('open_id'=>$data['open_id']));
-            //$id = 0;
+            $id = 0;
             if($re){
               $re->open_id = $data['open_id'];
               $re->img_url = $data['img_url'];
@@ -69,10 +69,15 @@ class Index extends  Controller
                 $userinfo->save();
             }
 
-            echo $id;
+
+
         }
-
-
+        $re=Userinfo::get(array('open_id'=>'oIrm01SqsfdWZggbkd_zGMvEYCwo'));
+       // echo '<pre>';
+       // print_r($re->open_id);exit;
+        $this->assign('name',$re->nickname);
+        $this->assign('img_url',$re->img_url);
+        return $this->fetch('index');
 
     }
 
