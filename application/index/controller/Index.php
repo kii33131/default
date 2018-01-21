@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 use app\index\model\userinfo;
+use LaneWeChat\Core\AccessToken;
 use think\Controller;
 use think\Request;
 use LaneWeChat\Core\WeChatOAuth;
@@ -17,27 +18,28 @@ class Index extends  Controller
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($user_agent, 'MicroMessenger') === false) {
 
-            $_SESSION['user_info'] =0;
+
         }else{
+
             if(!isset($_SESSION['user_info'])){
+
 
                 if(isset($_GET['code'])){
                     $code = $_GET['code'];
-
+                    //echo '<pre>';
+                   // print_r($_GET);exit;
                     //第二步，获取access_token网页版
                     $openId = WeChatOAuth::getAccessTokenAndOpenId($code);
-                    $userInfo = UserManage::getUserInfo($openId['openid']);
-
+                    $userInfo = WeChatOAuth::getUserInfo($openId['access_token'],$openId['openid']);
                     $_SESSION['user_info'] = $userInfo;
-                    //echo '<pre>';
-                    //print_r($userInfo);exit;
+
                 }else{
                     WeChatOAuth::getCode('/index.php', 1, 'snsapi_userinfo');
                 }
 
             }
 
-        }
+        }//i
 
     }
 
@@ -45,12 +47,12 @@ class Index extends  Controller
     {
 
         //var_dump($_FET)
-        if(isset($_SESSION['user_info'])&& $_SESSION['user_info']!=0){
+        if(isset($_SESSION['user_info'])){
 
             $data = array(
                 'open_id'=>$_SESSION['user_info']['openid'],
                 'img_url'=>$_SESSION['user_info']['headimgurl'],
-                'subscribe'=>$_SESSION['user_info']['subscribe'],
+                '//subscribe'=>$_SESSION['user_info']['subscribe'],
                 'nickname'=>$_SESSION['user_info']['nickname']
             );
 
@@ -67,20 +69,21 @@ class Index extends  Controller
                 $userinfo = new Userinfo;
                 $userinfo->open_id = $data['open_id'];
                 $userinfo->img_url = $data['img_url'];
-                $userinfo->subscribe = $data['subscribe'];
+                //$userinfo->subscribe = $data['subscribe'];
                 $userinfo->nickname = $data['nickname'];
                 $userinfo->save();
             }
 
 
-
+            $re=Userinfo::get(array('open_id'=>$_SESSION['user_info']['subscribe']));
+            // echo '<pre>';
+            // print_r($re->open_id);exit;
+            $this->assign('name',$re->nickname);
+            $this->assign('img_url',$re->img_url);
+            return $this->fetch('index');
         }
-        $re=Userinfo::get(array('open_id'=>'oIrm01SqsfdWZggbkd_zGMvEYCwo'));
-       // echo '<pre>';
-       // print_r($re->open_id);exit;
-        $this->assign('name',$re->nickname);
-        $this->assign('img_url',$re->img_url);
-        return $this->fetch('index');
+
+
 
     }
 
