@@ -1,4 +1,4 @@
-ThinkPHP 5.0
+ThinkPHP 5.0+lanwechat 运用实例
 ===============
 
 [![Total Downloads](https://poser.pugx.org/topthink/think/downloads)](https://packagist.org/packages/topthink/think)
