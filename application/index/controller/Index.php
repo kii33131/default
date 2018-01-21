@@ -52,7 +52,7 @@ class Index extends  Controller
             $data = array(
                 'open_id'=>$_SESSION['user_info']['openid'],
                 'img_url'=>$_SESSION['user_info']['headimgurl'],
-                '//subscribe'=>$_SESSION['user_info']['subscribe'],
+                //'subscribe'=>$_SESSION['user_info']['subscribe'],
                 'nickname'=>$_SESSION['user_info']['nickname']
             );
 
