@@ -12,7 +12,7 @@ class Base extends Controller
    public function __construct(Request $request = null)
    {
        parent::__construct($request);
-
+       $wxconfig=Config::get('wx');
        $user_agent = $_SERVER['HTTP_USER_AGENT'];
        if (strpos($user_agent, 'MicroMessenger') === false) {
 
@@ -35,7 +35,12 @@ class Base extends Controller
            }
 
            $this->assign('isweixin','1');
-
+            //获取微信分享配置
+           $jssdk  = new Jssdk($wxconfig['WECHAT_APPID'],$wxconfig['WECHAT_APPSECRET']);
+           $signPackage = $jssdk->getSignPackage();
+           $this->assign('nonceStr',$signPackage['nonceStr']);
+           $this->assign('timestamp',$signPackage['timestamp']);
+           $this->assign('signature',$signPackage['signature']);
        }
 
        if(isset( $_SESSION['user_info'])){
@@ -64,14 +69,9 @@ class Base extends Controller
        }
 
 
-       $wxconfig=Config::get('wx');
-       $this->assign('WECHAT_APPID',$wxconfig['WECHAT_APPID']);
-       if(isset($_GET["signature"])){
-           $this->assign('signature ',$_GET["signature"]);
-           $this->assign('timestamp ',$_GET["timestamp"]);
-           $this->assign('nonceStr ',$_GET["nonce"]);
 
-       }
+       $this->assign('WECHAT_APPID',$wxconfig['WECHAT_APPID']);
+
 
    }
 
