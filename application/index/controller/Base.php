@@ -49,7 +49,7 @@ class Base extends Controller
            if($re){
                $re->open_id = $data['open_id'];
                $re->img_url = $data['img_url'];
-               $re->subscribe = $data['subscribe'];
+              // $re->subscribe = $data['subscribe'];
                $re->nickname = $data['nickname'];
                $re->save();
 
