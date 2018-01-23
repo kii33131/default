@@ -27,7 +27,6 @@ class Redis extends Controller
         $this->_redis = $this->connect();
     }
 
-
     /**
      * 获取锁
      * @param  String  $key    锁标识
@@ -68,7 +67,7 @@ class Redis extends Controller
      */
     private function connect(){
         try{
-            $redis = new Redis();
+            $redis = new \Redis();
             $redis->connect($this->_config['host'],$this->_config['port'],$this->_config['timeout'],$this->_config['reserved'],$this->_config['retry_interval']);
             if(empty($this->_config['auth'])){
                 $redis->auth($this->_config['auth']);

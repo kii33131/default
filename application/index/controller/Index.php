@@ -18,8 +18,11 @@ class Index extends  Base
             $re=Userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
             $this->assign('name',$re->nickname);
             $this->assign('img_url',$re->img_url);
+            return $this->fetch('index');
+        }else{
+            return $this->fetch('index');
         }
-        return $this->fetch('index');
+
     }
 
     

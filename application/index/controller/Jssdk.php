@@ -52,7 +52,7 @@ class Jssdk extends Controller
     private function getJsApiTicket() {
         $data = $this->redis->get("wx_jsapi_ticket");
         if ($data) {
-            $ticket = $data->jsapi_ticket;
+            $ticket =$data;
         } else {
             $accessToken = AccessToken::getAccessToken();
             $url = "https://api.weixin.qq.com/cgi-bin/ticket/getticket?type=jsapi&access_token=$accessToken";

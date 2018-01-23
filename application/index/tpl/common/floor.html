@@ -10,15 +10,9 @@
     wx.config({
         debug:  false,  //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题1
         appId: '{$WECHAT_APPID}',
-        {if  $timestamp|default:FALSE }
         timestamp: '{$timestamp}',
-        {/if}
-        {if  $nonceStr|default:FALSE }
-        nonceStr: '{ $nonceStr}',
-        {/if}
-        {if  $signature|default:FALSE }
+        nonceStr: '{$nonceStr}',
         signature: '{$signature}',
-        {/if}
         jsApiList: [  //需要使用的网页服务接口
         'checkJsApi',  //判断当前客户端版本是否支持指定JS接口
         'onMenuShareTimeline', //分享给好友
