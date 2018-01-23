@@ -15,7 +15,7 @@ class Index extends  Base
     {
         if(isset($_SESSION['user_info'])){
 
-            $re=Userinfo::get(array('open_id'=>$_SESSION['user_info']['subscribe']));
+            $re=Userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
             $this->assign('name',$re->nickname);
             $this->assign('img_url',$re->img_url);
         }
