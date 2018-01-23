@@ -5,7 +5,7 @@
 
 
 
-{if  $isweixin|default:FALSE }
+{if isset($isweixin) }
     <script>
     wx.config({
         debug:  false,  //调式模式，设置为ture后会直接在网页上弹出调试信息，用于排查问题1

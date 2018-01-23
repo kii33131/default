@@ -1,9 +1,9 @@
 {include file="common/header" /}
 <div class="ss1">
-    {if  $name|default:FALSE }
+    {if isset($name)}
     <p> {$name} </p>
     {/if}
-    {if $img_url|default:FALSE }
+    {if isset($img_url)}
     <img src="{$img_url}">
     {/if}
     111
