@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<div>
-    <p>{$name}</p>
+{include file="common/header" /}
+<div class="ss">
+    {if  $name|default:FALSE }
+    <p> {$name} </p>
+    {/if}
+    {if $img_url|default:FALSE }
     <img src="{$img_url}">
+    {/if}
+    111
 </div>
-
-</body>
-</html>
+{include file="common/floor" /}

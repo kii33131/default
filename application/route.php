@@ -24,14 +24,24 @@ use think\Route;
 //Route::get('read/:id/:name','index/Index/read');
 
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
-    Route::get('read/:id/:name','index/Index/read');
+    Route::get('home/:id/:name','index/Index/home');
 
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
+    Route::get('common/header','index/common/header');
+    Route::get('common/floor','index/common/floor');
 });
 
+/*
+Route::get('public/:name/:s',function($name,$s){
+
+    //return __DIR__;
+    //return 'Hello';
+    return file_get_contents(str_replace('/application','',__DIR__.'/public/'.$name.'/'.$s))  ;
+    return __DIR__.'/public/'.$name.'/'.$s;
 
 
+});*/
 /*
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::rule('read/:id', 'index/Index/read');
