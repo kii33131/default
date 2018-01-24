@@ -15,16 +15,23 @@ include '../LaneWeChat/lanewechat.php';
  * 自定义菜单
  */
 //设置菜单
-$menuList = array(
-    array('id'=>'1', 'pid'=>'',  'name'=>'常规', 'type'=>'', 'code'=>'key_1'),
-    array('id'=>'2', 'pid'=>'1',  'name'=>'点击', 'type'=>'click', 'code'=>'key_2'),
-    array('id'=>'3', 'pid'=>'1',  'name'=>'浏览', 'type'=>'view', 'code'=>'http://www.myinterestis.com/'),
 
-);
+if (strpos($user_agent, 'MicroMessenger') === false) {
 
-\LaneWeChat\Core\Menu::setMenu($menuList);
+}else{
+    $menuList = array(
+        array('id'=>'1', 'pid'=>'',  'name'=>'常规', 'type'=>'', 'code'=>'key_1'),
+        array('id'=>'2', 'pid'=>'1',  'name'=>'点击', 'type'=>'click', 'code'=>'key_2'),
+        array('id'=>'3', 'pid'=>'1',  'name'=>'浏览', 'type'=>'view', 'code'=>'http://www.myinterestis.com/'),
+
+    );
+
+    \LaneWeChat\Core\Menu::setMenu($menuList);
 //获取菜单
-\LaneWeChat\Core\Menu::getMenu();
+    \LaneWeChat\Core\Menu::getMenu();
+
+
+}
 
 // 定义应用目录
 define('APP_PATH', __DIR__ . '/../application/');

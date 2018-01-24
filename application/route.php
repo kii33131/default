@@ -25,12 +25,13 @@ use think\Route;
 
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('home/:id/:name','index/Index/home');
-
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
     Route::get('common/header','index/common/header');
     Route::get('common/floor','index/common/floor');
+    Route::get('login','index/login/index');
 });
+
 
 /*
 Route::get('public/:name/:s',function($name,$s){
