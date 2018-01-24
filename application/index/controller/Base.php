@@ -13,6 +13,9 @@ class Base extends Controller
    {
        parent::__construct($request);
        $wxconfig=Config::get('wx');
+
+       echo '<pre>';
+       print_r($_SERVER);exit;
        $user_agent = $_SERVER['HTTP_USER_AGENT'];
        if (strpos($user_agent, 'MicroMessenger') === false) {
 
@@ -29,7 +32,8 @@ class Base extends Controller
                    $_SESSION['user_info'] = $userInfo;
 
                }else{
-                   WeChatOAuth::getCode('/index.php', 1, 'snsapi_userinfo');
+
+                   WeChatOAuth::getCode( $_SERVER['HTTP_USER_AGENT']['REQUEST_URI'], 1, 'snsapi_userinfo');
                }
 
            }
