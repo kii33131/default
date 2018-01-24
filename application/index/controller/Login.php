@@ -105,7 +105,7 @@ class Login extends Base
     public function login($data,$password){
 
         $cc['phone'] = $data['phone'];
-        $cc['password'] = $data['password'];
+        $cc['password'] = md5($data['password']);
         if($password!=md5($data['password'])){
             echo  json_encode(array('code'=>400,'msg'=>'密码输入有误'));exit;
         }
