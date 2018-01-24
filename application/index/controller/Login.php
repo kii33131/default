@@ -41,7 +41,25 @@ class Login extends Base
         $info=userinfo::get(array('phone'=>$_POST['phone']));
 
         if(!isset($info) || empty($info)){
-            $this->regitser($_POST);
+            // 没有注册并且登录
+            $userid=$this->regitser($_POST);
+            $info=userinfo::get($userid);
+            $_SESSION['user'] = $info;
+            echo  json_encode(array('code'=>200,'msg'=>'success','data'=>'登录成功'));exit;
+
+        }else{
+            //有的话比对密码登录
+           $bool=$this->login($_POST,$info->password);
+
+           if($bool){
+
+               $_SESSION['user'] = $info;
+
+               echo  json_encode(array('code'=>200,'msg'=>'success','data'=>'登录成功'));exit;
+           }else{
+               echo  json_encode(array('code'=>400,'msg'=>'登录失败','data'=>'登录成功'));exit;
+           }
+
         }
 
         //$_POST['phone']
@@ -59,13 +77,26 @@ class Login extends Base
         if (strpos($user_agent, 'MicroMessenger') === false) {
             //微信外面注册
             $userinfo->creat($cc);
-            echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$userinfo->id));exit;
+           // echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$userinfo->id));exit;
+            return $userinfo->id;
+
         }else{
+            //微信注册
            if(isset($_SESSION['user_info']['openid']) && !empty($_SESSION['user_info']['openid'])){
               $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
               if($user){
+
+                  // 执行微信登录操作
                   $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
-                  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
+                  // 同步处理网页注测用户信息
+                  // 删除网页上注册的信息
+                  userinfo::where(array('phone'=>$data['phone'],'open_id'=>''))->delete();
+
+                  // 删除
+                  //if($user->id)
+
+                  return $user->id;
+                //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
               }
 
            }
@@ -74,16 +105,16 @@ class Login extends Base
         }
 
 
-
-
-
-
     }
 
 
-    public function login(){
+    public function login($data,$password){
 
-
+        $cc['phone'] = $data['phone'];
+        if($password!=md5($data['password'])){
+            echo  json_encode(array('code'=>400,'msg'=>'密码输入有误'));exit;
+        }
+        return true;
     }
 
 }
