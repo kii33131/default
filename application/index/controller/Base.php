@@ -14,8 +14,8 @@ class Base extends Controller
        parent::__construct($request);
        $wxconfig=Config::get('wx');
 
-       echo '<pre>';
-       print_r($_SERVER);exit;
+       //echo '<pre>';
+       //print_r($_SERVER);exit;
        $user_agent = $_SERVER['HTTP_USER_AGENT'];
        if (strpos($user_agent, 'MicroMessenger') === false) {
 
