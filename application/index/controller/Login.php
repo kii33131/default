@@ -62,7 +62,7 @@ class Login extends Base
             echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$userinfo->id));exit;
         }else{
            if(isset($_SESSION['user_info']['openid']) && !empty($_SESSION['user_info']['openid'])){
-              $user=userinfo::get(array('openid'=>$_SESSION['user_info']['openid']));
+              $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
               if($user){
                   $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
                   echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
