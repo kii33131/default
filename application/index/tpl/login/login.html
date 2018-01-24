@@ -1,1 +1,87 @@
-ddd
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+
+    {css href="_CSS1_/reset.css" /}
+    {css href="_CSS1_/login.css" /}
+    {css href="_CSS1_/iconfont/iconfont.css" /}
+    {js href="_JS_/jquery-3.1.1.min.js" /}
+    <script>
+        var deviceWidth = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = deviceWidth /6.4 + 'px';
+    </script>
+    <title>用户登录</title>
+</head>
+<body>
+<div class="rhz_login_main"><img src="_IMG_/login_top.png" alt=""></div>
+<div class="rhz_login_table">
+    <div class="rhz_login_left"><a href="javascript:;" class="rhz_login_sp">快速登录</a></div>
+</div>
+<div class="rhz_main_login">
+    <div class="rhz_main-error" style="display: none"></div>
+    <div class="rhz_login_phone">
+        <div class="rhz_input_phone"><div class="rhz_phone_text"><input type="number" class="rhz_user_phone" maxlength="11" placeholder="手机号"></div></div>
+
+        <div class="rhz_input_phone"><div class="rhz_phone_textyzm"><input type="txt" class="rhz_phone_textyzms"  placeholder="验证码"></div></div>
+        <iframe  frameborder='no' border='0' scrolling="no" src="yzm.html" style="width: 5rem;height:1.5rem"></iframe>
+
+        <div class="rhz_input_password_s"><input type="password" class="rhz_user_pass" placeholder="请输入密码"></div>
+        <div class="rhz_login_username"></div>
+        <div class="rhz_send_login"><a href="javascript:;">登录</a></div>
+    </div>
+    <!--登录成功后显示-->
+
+
+
+</div>
+
+<script>
+    $('.rhz_send_login').click(function () {
+        var phone = $('.rhz_user_phone').val();
+        var yzm = $('.rhz_phone_textyzms').val();
+        var password = $('.rhz_user_pass').val();
+        $.ajax({
+            url:'/dologin',//提交访问的URL
+            type: 'POST',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{phone:phone,yzm:yzm,password:password},
+            timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.code==400){
+
+                    alert(data.msg)
+                }else{
+
+                    alert(data.data)
+                }
+
+
+                //alert(data.pidlist);
+
+
+
+
+            }
+        });
+
+
+
+
+
+    })
+
+</script>
+
+
+</body>
+</html>

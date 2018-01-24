@@ -30,9 +30,11 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('common/header','index/common/header');
     Route::get('common/floor','index/common/floor');
     Route::get('login','index/login/index');
+    Route::get('yzm','index/login/yzm');
+
 });
 
-
+Route::any('dologin','index/login/dologin');
 /*
 Route::get('public/:name/:s',function($name,$s){
 

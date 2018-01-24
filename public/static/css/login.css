@@ -1,0 +1,91 @@
+.rhz_login_main{ width: 100%; height: .98rem;}
+.rhz_login_main img{ width: 100%;}
+.rhz_login_table{ width: 100%; height: .8rem;display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;  margin-top: .3rem;}
+.rhz_login_left,.rhz_login_right{ height: .8rem; -webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1; -ms-flex: 1; flex: 1; text-align: center;line-height: .8rem;}
+.rhz_login_left a,.rhz_login_right a{ font-size: .3rem;  color: #666; display: inline-block; }
+.rhz_login_sp{  color: #000000 !important; border-bottom: 2px solid #0a4fb9;}
+.rhz_phone_text input{ border: none; float: left; line-height: .5rem;margin-top: .1rem; padding-left: .05rem; font-size: .3rem;}
+
+.rhz_main_login{ width: 5.3rem;  margin: .8em auto 0 auto; position: relative;}
+.rhz_main-error { position: absolute; font-size: 0.20rem; height: 0.3rem; color: #DC4033; white-space: nowrap; top: -0.4rem; left: 0; background: url("../img/error.png") no-repeat left center; background-size: 0.26rem 0.26rem;  padding-left: 0.32rem; }
+.rhz_input_phone{ overflow: hidden;}
+.rhz_phone_text{ width:4.4rem; float: left; height: .7rem; border: 1px solid #EAEAEA; height: .7rem;  background: url("../img/user_phone.png") no-repeat 0rem 0rem;background-size: auto .72rem; padding-left: .8rem; }
+
+.rhz_phone_textyzm{ width:3.4rem; float: left; height: .7rem; border: 1px solid #EAEAEA; height: .7rem;  background: url("../img/user_phone.png") no-repeat 0rem 0rem;background-size: auto .72rem; padding-left: .8rem; margin-top: 20px; }
+.rhz_phone_textyzm input{ border: none; float: left; line-height: .5rem;margin-top: .1rem; padding-left: .05rem; font-size: .3rem;}
+.rhz_send{ width: 1.5rem; height: .7rem;font-size: .24rem; float: right; line-height: .7rem; text-align: center; border:1px solid #EAEAEA; color: #0a4fb9;}
+.rhz_input_password_s{background: url("../img/user_pass.png") no-repeat 0rem 0rem; background-size: auto .72rem; height: .7rem; padding-left: .8rem;  margin-top: .3rem; border:1px solid #EAEAEA;}
+.rhz_user_pass{ border: none; line-height: .5rem; float: left; width: 4.2rem; font-size: .3rem; margin-top: .1rem;}
+.rhz_send_login{ width: 5.3rem; height: .7rem; margin: .3rem auto 0 auto; background-color:#fede4e; text-align: center; line-height: .7rem; }
+.rhz_send_login a{ color: #fff; display: inline-block; width: 100%; line-height: .7rem; font-size: .3rem; float: left;}
+.rhz_user_name_s,.rhz_user_pass_s{ font-size: .3rem; border: none; float: left; line-height: .5rem; margin-top: .1rem;}
+.rhz_username_input_name{background: url("../img/user_phone.png") no-repeat 0rem 0rem; background-size: auto .72rem; height: .7rem; padding-left: .8rem;  margin-top: .3rem; border:1px solid #EAEAEA;}
+.rhz_username_input_password{background: url("../img/user_pass.png") no-repeat 0rem 0rem; background-size: auto .72rem; height: .7rem; padding-left: .8rem;  margin-top: .3rem; border:1px solid #EAEAEA; position: relative;}
+.rhz_find_pass{ position: absolute; display: inline-block; right: .2rem; top: 0; line-height: .7rem; font-size: .26rem; color: #0f4ab9;}
+.rhz_user_send_login{ width: 5.3rem; height: .7rem; margin: .3rem auto 0 auto; background-color:#fede4e; text-align: center; line-height: .7rem; }
+.rhz_user_send_login a{ color: #fff; display: inline-block; width: 100%; line-height: .7rem; font-size: .3rem; float: left;}
+.rhz_go_register{ width: 5.3rem; margin: .4rem auto 0 auto; line-height: .7rem; text-align: center; font-size: .28rem; color: #666; font-size: .26rem;}
+.rhz_go_register a{ color:#0a4fb9;  font-size: .26rem;}
+.rhz_login_sucess{ position: fixed; width: 100%; height: 100%; top: 0; right: 0; z-index: 55;}
+.rhz_login_sucess_s{ position: relative;  width: 100%; height: 100%;}
+.rhz_login_sucess_bg{ position: fixed; top: 0; background-color: #000000; opacity: 0.7; width: 100%; height: 100%;}
+.rhz_login_content{ width: 6rem; height: 4.6rem; position: fixed; top: 50%; left: 50%; margin-top: -2.3rem; margin-left: -3rem; background-color: #fff;}
+.rhz_login_content_s{ width: 100%; padding-top: 1rem; position: relative;}
+.rhz_login_off{ position: absolute; right: .2rem;top:.2rem; width: .5rem; height: .5rem;}
+.rhz_login_off img{ width: .4rem;}
+.rhz_login_part1{ text-align: center; line-height:.9rem; font-size: .35rem; width: 5.5rem; font-weight: bold;}
+.rhz_login_part1 img{ width: .6rem; margin-top: .2rem; margin-right: .1rem;}
+.rhz_login_contentsss{ text-align: center; font-size: .26rem; color: #666;}
+.rhz_order_designer{ width: 2.2rem; height: .6rem; color: #FFFFFF; font-size: .3rem; background-color: #38fb46; display: inline-block; line-height: .6rem; text-align: center; margin-left: .6rem; margin-top: 1rem;}
+.rhz_index{ width: 2.2rem; height: .6rem; font-size: .3rem; color: #38fb46; display: inline-block; text-align: center; line-height: .6rem; border: 1px solid #38fb46;}
+
+
+.rhz_main_register{ text-align: center; line-height: 1.5rem; font-size: .5rem;line-height: 1.5rem;}
+.rhz_register_main{ width: 100%; text-align: center; }
+.rhz_r_userphone,.rhz_r_userpass,.rhz_r_userrepass{ width:5rem; height: .5rem; line-height: .5rem;padding-top: .1rem; padding-bottom: .1rem; border: 1px solid #EAEAEA; padding-left: .3rem; font-size: .3rem;}
+.rhz_res_phone{ overflow: hidden; width: 5.3rem; overflow: hidden; margin: .4rem auto 0 auto;}
+.rhz_res_phone_text{ width: 3.6rem; height: .7rem; float: left;}
+.rhz_res_phone_text input{ border: 1px solid #EAEAEA; float: left; line-height: .7rem; padding-left: .3rem; font-size: .3rem; float: left; width: 3.3rem;}
+.rhz_res_send{ width: 1.5rem; height: .7rem;font-size: .24rem; float: left; line-height: .7rem; text-align: center; border:1px solid #EAEAEA; float: right; color: #0a4fb9;}
+.rhz_res_user_send_login{ width: 5.3rem; height: .7rem; margin: .3rem auto 0 auto; background-color:#fede4e; text-align: center; line-height: .7rem; }
+.rhz_res_user_send_login a{ color: #fff; display: inline-block; width: 100%; line-height: .7rem; font-size: .3rem; float: left;}
+.rhz_go_login{ width: 5.3rem; margin: .4rem auto 0 auto; line-height: .7rem; text-align: center; font-size: .28rem;}
+
+.rhz_main_findpass{ width: 5.3rem;  margin: .3rem auto 0 auto;}
+.rhz_input_phone_find{ overflow: hidden;}
+.rhz_phone_text_find input{ border: none; float: left; line-height: .5rem; margin-top: .1rem; padding-left: .05rem; font-size: .3rem;}
+.rhz_send_find{ width: 1.5rem; height: .7rem;font-size: .24rem; float: right; line-height: .7rem; text-align: center; border:1px solid #EAEAEA; color: #0a4fb9;}
+.rhz_phone_text_find{ width:2.85rem; float: left; height: .7rem; border: 1px solid #EAEAEA; height: .7rem;  background: url("../img/user_phone.png") no-repeat 0rem 0rem; background-size: auto .72rem; padding-left: .8rem; }
+.rhz_input_findpassword_s{background: url("../img/user_pass.png") no-repeat 0rem 0rem; background-size: auto .72rem; height: .7rem; padding-left: .8rem;  margin-top: .3rem; border:1px solid #EAEAEA;}
+.rhz_user_findpass{ border: none; line-height: .5rem; margin-top: .1rem; float: left; width: 4.2rem; font-size: .3rem;}
+.rhz_send_findpass{ width: 5.3rem; height: .7rem; margin: .3rem auto 0 auto; background-color:#fede4e; text-align: center; line-height: .7rem; }
+.rhz_send_findpass a{ color: #fff; display: inline-block; width: 100%; line-height: .7rem; font-size: .3rem; float: left;}
+.rhz_repass_main{ width: 100%; text-align: center; }
+.rhz_re_userpass,.rhz_re_userrepass{ width:5rem; height: .7rem; border: 1px solid #EAEAEA; padding-left: .3rem; font-size: .3rem;}
+.rhz_res_user_send_repass{ width: 5.3rem; height: .7rem; margin: .3rem auto 0 auto; background-color:#fede4e; text-align: center; line-height: .7rem; }
+.rhz_res_user_send_repass a{ color: #fff; display: inline-block; width: 100%; line-height: .7rem; font-size: .3rem; float: left;}
+
+
+.rhz_repass_sucess_s{ position: relative;  width: 100%; height: 100%;}
+.rhz_repass_content{ width: 6rem; height: 4.6rem; position: fixed; top: 30%; left: 50%; margin-top: -2.3rem; margin-left: -3rem; background-color: #fff;}
+.rhz_repass_content_s{ width: 100%; padding-top: 1rem; position: relative;}
+.rhz_repass_part1{ text-align: center; line-height:.7rem; font-size: .26rem; padding: 0 .55rem;}
+.rhz_repass_part2{ text-align: center; line-height:.7rem; font-size: .3rem; padding: 0 .55rem;}
+.rhz_repass_contentsss{ text-align: left; padding:0 .55rem;font-size: .24rem; color: #666;}
+.rhz_repassimg{ text-align: center}
+.rhz_repassimg img{ width: 1.6rem;}
+
+/*其他登录方式start*/
+.other-login{margin-top: 100px;display: none;}
+.other-login .title{text-align: center;}
+.other-login .title span{display: block;font-size: 16px;color: #999;position: relative;}
+.other-login .title span:before, .other-login .title span:after{content: '';position: absolute;top: 52%;background: #DDD;width:18%;height:1px;}
+.other-login .title span:before{left:10%;}
+.other-login .title span:after{right:10%;}
+.other-login .list{display: flex;justify-content: space-around;margin-top: 20px;}
+.other-login .list li{float: left; text-align: center; display: flex; flex-direction: column;}
+.other-login .list li .icon{ display: block; font-size: 30px;}
+.other-login .list li a{color: white;width: 50px;height: 50px;border-radius: 50%;text-align: center;line-height: 50px;margin-bottom: 5px;}
+.other-login .list li .weixin{background-color: #44b549;}
+.other-login .list li span{font-size: 12px; display: block;}
+/*其他登录方式end*/
