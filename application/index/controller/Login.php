@@ -88,12 +88,15 @@ class Login extends Base
 
                   // 执行微信登录操作
                   $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
-                  // 同步处理网页注测用户信息
-                  // 删除网页上注册的信息
-                  userinfo::where(array('phone'=>$data['phone'],'open_id'=>''))->delete();
 
-                  // 删除
-                  //if($user->id)
+                  $old=userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
+                  if($old){
+                    // 先同步订单 购物车 等信息到新用户上面
+
+                    //最后删除吊老用户
+                      userinfo::destroy($old->id);
+
+                  }
 
                   return $user->id;
                 //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
