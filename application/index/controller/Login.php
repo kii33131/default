@@ -49,8 +49,8 @@ class Login extends Base
 
         }else{
             //有的话比对密码登录
-           $bool=$this->login($_POST,$info->password);
 
+           $bool=$this->login($_POST,$info->password);
            if($bool){
 
                $_SESSION['user'] = $info;
@@ -59,6 +59,9 @@ class Login extends Base
            }else{
                echo  json_encode(array('code'=>400,'msg'=>'登录失败','data'=>'登录成功'));exit;
            }
+
+
+
 
         }
 
@@ -86,18 +89,6 @@ class Login extends Base
               $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
               if($user){
 
-                  // 执行微信登录操作
-                  $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
-
-                  $old=userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
-                  if($old){
-                    // 先同步订单 购物车 等信息到新用户上面
-
-                    //最后删除吊老用户
-                      userinfo::destroy($old->id);
-
-                  }
-
                   return $user->id;
                 //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
               }
@@ -114,9 +105,39 @@ class Login extends Base
     public function login($data,$password){
 
         $cc['phone'] = $data['phone'];
+        $cc['password'] = $data['password'];
         if($password!=md5($data['password'])){
             echo  json_encode(array('code'=>400,'msg'=>'密码输入有误'));exit;
         }
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        if (strpos($user_agent, 'MicroMessenger') === false) {}else{
+
+            //在微信里面
+            if(isset($_SESSION['user_info']['openid']) && !empty($_SESSION['user_info']['openid'])){
+                $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
+                if($user){
+
+                    // 执行微信登录操作
+                    $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
+
+                    $old=userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
+                    if($old){
+                        // 先同步订单 购物车 等信息到新用户上面
+
+                        //最后删除吊老用户
+                        userinfo::destroy($old->id);
+
+                    }
+
+                    return $user->id;
+                    //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
+                }
+
+            }
+
+
+        }
+
         return true;
     }
 
