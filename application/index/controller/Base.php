@@ -33,7 +33,7 @@ class Base extends Controller
 
                }else{
 
-                   WeChatOAuth::getCode( $_SERVER['HTTP_USER_AGENT']['REQUEST_URI'], 1, 'snsapi_userinfo');
+                   WeChatOAuth::getCode( $_SERVER['REQUEST_URI'], 1, 'snsapi_userinfo');
                }
 
            }
