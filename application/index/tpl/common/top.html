@@ -1,0 +1,125 @@
+
+<style>
+    .yx-m-header .chrenslist-s{ transform: translateX(0%); -webkit-transform: translateX(0%);  left: 0.25rem;}
+</style>
+<div class="yx-m-header" style="height: 1.8rem;">
+    <div class="yx-m-hchoices">月星</div>
+    <div class="yx-m-hlogos"><img src="_IMG_/m-logo.png" alt=""></div>
+    <div class="yx-m-im-s">
+        <div class="yx-m-im">
+            <a href="javascript:;"><i class="icon iconfont icon-chakangengduo"></i></a>
+        </div>
+
+    </div>
+
+    <!--搜素框-->
+    <div class="yx-seachbar ">
+        <i class="icon iconfont icon-sousuo"></i>搜索商品
+    </div>
+
+</div>
+<!--浏览器里分享-->
+
+<!--遮罩层-->
+
+<div class="yx-change-masks hide"></div>
+
+
+<!--搜索弹层-->
+
+
+<script language ="javascript">
+
+    document.onkeyup = function (e) {
+        //按键信息对象以函数参数的形式传递进来了，就是那个e
+        var code = e.charCode || e.keyCode;  //取出按键信息中的按键代码(大部分浏览器通过keyCode属性获取按键代码，但少部分浏览器使用的却是charCode)
+        if (code == 13) {
+            if($('.kewordsc').val()){
+                window.location.href='/search-'+$('.kewordsc').val()+'.html'
+            }
+        }
+    }
+</script>
+
+<script>
+    $(function () {
+        wx.ready(function(){
+            $('#videos').get(0).play();
+            $('#videos').get(0).pause();
+            $('.gl-img .video').each(function () {
+                $(this).get(0).play();
+                $(this).get(0).pause();
+            });
+        });
+        setTimeout(changetop,500);
+        $(window).scroll(function () {
+            var scrollTop=$(this).scrollTop();
+            if(scrollTop>150){
+                if (!$('.yx-seachbar').hasClass('scrollbar')){
+                    $('.yx-seachbar').addClass('scrollbar');
+                    $('.yx-m-header').addClass('yx-header-topc');
+                }
+            }else{
+                if ($('.yx-seachbar').hasClass('scrollbar')){
+                    $('.yx-seachbar').removeClass('scrollbar');
+                    $('.yx-m-header').removeClass('yx-header-topc');
+                }
+            }
+            var lecturescroll=$('.yx-n-Lecture').offset().top-500;
+            if($('.yx-guess-like').offset().top){
+                var yxguesslike=$('.yx-guess-like').offset().top-500;
+            }else {
+                var yxguesslike=0;
+            }
+
+            if (scrollTop>=lecturescroll&&scrollTop<=lecturescroll+500){
+
+                $('#videos').trigger("play");
+                if($('#videos').hasClass('yx-l-video')){
+                    $('#videos').trigger("pause");
+                    $('.videolecture').fadeIn();
+                    $('.yx-nl-video .yx-nlv-paly').fadeIn();
+                }else {
+                    $('.videolecture').fadeOut();
+                    $('.yx-nl-video .yx-nlv-paly').fadeOut();
+                }
+            }else {
+                $('#videos').trigger("pause");
+                $('.videolecture').fadeIn();
+                $('.yx-nl-video .yx-nlv-paly').fadeIn();
+            }
+            if (scrollTop>=yxguesslike&&scrollTop<=yxguesslike+500){
+                if($('.guessl-list li').find('video')){
+                    $('.guessl-list li').find('video').trigger("play");
+                }
+
+                $('.guessl-list li').find('.yx-nlv-paly').fadeOut();
+                $('.guessl-list li').find('.gusimglike').fadeOut();
+
+            }else {
+                if($('.guessl-list li').find('video')){
+                    $('.guessl-list li').find('video').trigger("pause");
+                }
+
+                $('.guessl-list li').find('.yx-nlv-paly').fadeOut();
+                $('.guessl-list li').find('.gusimglike').fadeOut();
+
+            }
+        });
+        function changetop(){
+            var scrollTop=$(document).scrollTop();
+            if(scrollTop>150){
+                if (!$('.yx-seachbar').hasClass('scrollbar')){
+                    $('.yx-seachbar').addClass('scrollbar');
+                    $('.yx-m-header').addClass('yx-header-topc');
+                }
+            }else{
+                if ($('.yx-seachbar').hasClass('scrollbar')){
+                    $('.yx-seachbar').removeClass('scrollbar');
+                    $('.yx-m-header').removeClass('yx-header-topc');
+                }
+            }
+        }
+    });
+</script>
+
