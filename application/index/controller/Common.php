@@ -36,6 +36,11 @@ class common extends Controller
     }
 
 
+    public function search_front(){
+
+        return $this->fetch('search_front');
+    }
+
     /**
      * 保存新建的资源
      *

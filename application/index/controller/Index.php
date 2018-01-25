@@ -26,7 +26,20 @@ class Index extends  Base
 
     }
 
-    
+
+    public function category(){
+        $this->assign('SITE_LOCATION','category_index');
+
+        return $this->fetch('category');
+    }
+
+
+    public function introduce(){
+
+        $this->assign('SITE_LOCATION','introduce');
+        return $this->fetch('introduce');
+    }
+
     public function home($id,$name){
 
         echo $id;

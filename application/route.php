@@ -25,11 +25,16 @@ use think\Route;
 
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('home/:id/:name','index/Index/home');
+    Route::get('category','index/Index/category');
+    Route::get('introduce','index/Index/introduce');
+    Route::get('cart','index/Cart/index');
+    //
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
     Route::get('common/header','index/common/header');
     Route::get('common/floor','index/common/floor');
     Route::get('common/top','index/common/top');
+    Route::get('common/search_front','index/common/search_front');
     Route::get('login','index/login/index');
     Route::get('yzm','index/login/yzm');
 

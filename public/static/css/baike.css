@@ -1,0 +1,16 @@
+html{font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu;}
+.rhz-tops{ width: 100%; height:1rem; position: fixed; top:0; z-index: 1; background-color: #fff;}
+.rhz-top{ width: 100%; height: 1rem; border-bottom: 1px solid #dddddd; position: relative;}
+.rhz-top h1{ text-align: center;font-size: .35rem; line-height: 1rem;}
+.rhz-back{ position: absolute; top: 0.3rem; left: 0.4rem;}
+.rhz-back img{  height: .4rem}
+.rhz-bklist{ width: 100%;margin-top: 0.9rem;margin-bottom: 1rem;}
+.rhz-bklist ul li{ position: relative;width: 100%; height: 3.5rem; margin-bottom: .03rem;}
+.rhz-bk_bg{ width: 100%; height:3.5rem;}
+.rhz-bk_bg img{ width: 100%; height:100%;}
+.rhz-bk_cont{ width: 100%; height:3.5rem; position: absolute;top: 0; }
+.rhz-title{ color: #fff; font-size:.4rem; text-align: center; margin-top: 1.2rem;font-weight: bold;}
+.rhz-pro_cont{ font-size: .30rem; text-align: center; color: #fff; margin-top: .2rem;}
+.rhz-pro_cont a{ color: #fff; }
+.rhz-loading{ text-align: center; font-size: .3rem; line-height: .8rem; color: #333;}
+.rhz-loading i{ font-size: .5rem;}

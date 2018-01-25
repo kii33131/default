@@ -1,0 +1,199 @@
+{include file="common/header" /}
+<body class="seachclass">
+
+<div class="yx-classification-seach">
+    <div class="ycit-leftback"><a href="javascript:history.go(-1);"><i class="icon iconfont icon-xiangzuojiantou"></i></a></div>
+    <!--  <a href="/index.php?mod=search&act=front" class="ycit-middlea">请输入商品关键字</a>
+      <a href="/index.php?mod=search&act=front" class="ycit-rightseach">搜索</a>-->
+    <a href="javascript:;" class="ycit-middlea">请输入商品关键字</a>
+    <a href="javascript:;" class="ycit-rightseach">搜索</a>
+</div>
+
+
+<div class="yx-classification-choice">
+    <div class="yx-classification-choice-s">
+        <div class="yx-c-cleft">
+
+
+
+        <div  class="classchioce" >刀具</div>
+            <div>刀具</div>
+            <div>刀具</div>
+    </div>
+
+</div>
+</div>
+
+
+<div class="yx-c-cright">
+
+
+    <div class="yx-c-child1">
+        <div class="yxccr-part1">
+
+            <div class="yxccr-p-title" cate_id=""><p></p>刀具 <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+
+            <div class="yxccr-p-main">
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>fsssss</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>1</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>3</p>
+                    </a>
+                </div>
+
+            </div>
+
+
+            <div class="yxccr-p-title" cate_id=""><p></p>刀具2 <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+
+            <div class="yxccr-p-main">
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>fsssss</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>1</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>3</p>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="yxccr-p-title" cate_id=""><p></p>刀具3<div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+
+            <div class="yxccr-p-main">
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>fsssss</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>1</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>3</p>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="yxccr-p-title" cate_id=""><p></p>刀具3<div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+
+            <div class="yxccr-p-main">
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>fsssss</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>1</p>
+                    </a>
+                </div>
+
+                <div class="ypm-item">
+                    <a href="">
+                        <div class="ypm-itemimg"><img src="" alt=""></div>
+                        <p>3</p>
+                    </a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+<script>
+    $(function(){
+//点击出现弹层
+        $('.ycit-middlea').click(function () {
+            $('.yx-classification-seachs').removeClass('hide');
+            $("#yx-seach").val('');
+            $("#yx-seach").trigger("click").focus();
+            //异步加载数据
+            ajax_init();
+        });
+        $('.ycit-rightseach').click(function () {
+            $('.yx-classification-seachs').removeClass('hide');
+            $("#yx-seach").trigger("click").focus();
+            //异步加载数据
+            ajax_init();
+        });
+        //获取body的高度赋值给右边的高度
+        var cleheight=document.body.clientHeight-124;
+        $('.yx-classification-choice .yx-c-cleft').css({'max-height':cleheight});
+        //点击左边右边切换
+        $(document).on('click','.yx-c-cleft div',function(){
+            if ($(this).hasClass('classchioce')){
+
+            }else {
+                $(this).addClass('classchioce').siblings().removeClass('classchioce');
+            }
+        });
+        var leftseachArr=$('.yx-c-cleft').children();
+        var rightseachArr=$('.yx-c-cright').children();
+        var topheight=$('.yx-classification-seach').height();
+        for (var i=0; i<leftseachArr.length; i++){
+            $(leftseachArr[i]).click(function () {
+                var indextop=$(this).index();
+                $('body').animate({
+                    scrollTop: $(rightseachArr[indextop]).offset().top-topheight
+                }, 400)
+            });
+        }
+
+    });
+</script>
+
+
+{include file="common/floor" /}
