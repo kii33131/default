@@ -1,0 +1,67 @@
+.yx-lecturelist{ margin-top: 0.9rem; background-color: #FFFFFF;}
+.yx-lecturelist .yx-lectureitem{ border-top: 1px solid #dddddd;  padding: 0 0.25rem; margin-bottom: 0.45rem;}
+.yx-lectureitem .yx-li-title{ height: 1.2rem; line-height: 1.2rem;}
+.yx-li-title .yx-li-userimg{ margin-top: 0.3rem; width: 0.65rem; height: 0.65rem; float: left;}
+.yx-li-title .yx-li-userimg img{ width: 100%; border-radius: 50%;}
+.yx-li-title .yx-li-userid{ color: #666666; text-decoration: underline; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.24rem; margin-left: 0.15rem; width: 4.2rem; float: left;}
+.yx-li-title .yx-li-userdata{ color: #cccccc; float: right; font-size: 0.2rem;}
+.yx-lectureitem .yx-lecturemain{ position: relative;}
+.yx-lectureitem img{ width: 100%;}
+.yx-lecturemain .yx-lecmbottom{ width: 100%; position: absolute;bottom: 0; height: 2.01rem; background: url("../img/lecturebg.png") no-repeat center; background-size: 100%; }
+.yx-lecmbottom .yx-lecmtitle{ color: #FFFFFF;  width: 6.5rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 0.32rem; font-size: 0.32rem; padding-left: 0.28rem; margin-top: 0.75rem;}
+.yx-lecmbottom-s{ margin-top: 0.22rem; margin-left: 0.31rem;}
+.yx-lecmbottom-s p{ line-height: 0.38rem; height: 0.38rem; text-align: center; padding: 0 0.1rem; float: left; border: 1px solid #cccccc; color: #dddddd;}
+.yx-lecmbottom-s p i{ color: #f7d231; margin-right: 0.1rem; vertical-align: middle;}
+.yx-lecmbottom-s p:nth-child(2){ margin-left: 0.15rem;}
+.Lecturedecbenner{ width: 100%; margin-top: 0.9rem; }
+.lectured-video { width: 7rem; margin: 0 auto; padding-top: 0.25rem; }
+.lectured-video video{ width: 100%;}
+.lectured-videoname{ line-height: 1.1rem; height: 1.1rem; padding: 0 0.25rem;}
+.lectured-videoname p{ width: 5.45rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: left; font-size: 0.33rem; color: #000000;}
+.lectured-videoname span{ float: right; font-size: 0.24rem; color: #999999;}
+.lectured-shop{ background-color: #f5f5f5; padding: 0.2rem 0;}
+.lectured-shop-main{ background-color: #FFFFFF; padding: 0.45rem 0.25rem;}
+.lectured-shop-main .lsm-title{ height: 0.65rem;}
+.lsm-title .lsm-t-img{ width: 0.65rem;height: 0.65rem; float: left;}
+.lsm-title .lsm-t-img img{ border-radius: 50%;}
+.lsm-title .lsm-t-id{ color: #333333; font-size: 0.26rem; width: 2.7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: left; line-height: 0.65rem;   margin-left: 0.2rem;}
+.lsm-title .lsm-t-message{ width:1.46rem; height: 0.53rem; float: right;  text-align: center; margin-top: 0.05rem; line-height: 0.53rem; border: 1px solid #b68916; border-radius: 4px;}
+.lsm-title .lsm-t-message a{ display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 0.54rem; color: #b68916; font-size: 0.26rem;}
+.lsm-title .lsm-t-appointment{ width:1.46rem; height: 0.55rem; margin-left: 0.2rem; float: right; margin-top: 0.05rem;  text-align: center; line-height: 0.55rem; color: #FFFFFF; background-color: #b68916; border-radius: 4px;}
+.lectured-shop-main .lsm-product{  margin-top: 0.2rem; line-height: 0.4rem; font-size: 0.25rem; color: #666666;}
+.lectured-shop-message{ background-color: #FFFFFF; padding: 0.48rem 0.25rem;  overflow: hidden;}
+.lectured-shop-message .lsm-shopimg{width: 1.58rem; height: 1.58rem; float: left; border: 1px solid #cfcfcf;}
+.lectured-shop-message .lsm-shopimg img{ width: 100%; height: 100%;  object-fit: contain;}
+.lectured-shop-message .lsm-shopmes{ width: 5rem; float: right;}
+.lsm-shopmes .lsm-s-title{ width: 100%;overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lsm-shopmes .lsm-s-title a{ font-size: 0.27rem; color:#303030; line-height: 0.3rem; }
+.lsm-shopmes .lsm-s-address{  color: #666666; font-size: 0.24rem; line-height: 0.24rem; width: 100%; text-overflow:ellipsis; white-space: nowrap ;overflow: hidden; margin-top: 0.14rem; margin-bottom: 0.35rem;}
+.lsm-shopmes .goshopaddres{ display: inline-block; width: 2.07rem; border-radius: 4px; height: .53rem; line-height: 0.53rem; text-align: center; border: 1px solid #707070; color: #707070;font-size: 0.26rem;}
+.lectured-shop-textimg{ background-color: #f5f5f5; padding: 0.2rem 0;}
+.lectured-shop-textimg .ls-ti-text{ background-color: #FFFFFF; padding:0.05rem 0.25rem}
+.lectured-shop-textimg .ls-ti-text img{ margin-bottom: 0.2rem; margin-top: .2rem;}
+.lectured-shop-textimg .ls-ti-text p{ line-height: 0.4rem; color: #666666; font-size: 0.26rem; margin-bottom: 0.22rem;}
+.lectureguess .ym-c-title{ height: 1.08rem; padding-left: 0.25rem; border-bottom: 1px solid #dbdbdb; line-height: 1.11rem; font-size: 0.32rem; color: #333333; }
+.lectureguess .ym-c-title span{font-size: 0.26rem; color: rgb(153,153,153);  margin-left: 0.38rem;}
+.lectureguess .ym-c-title span:before{  content: '';  display: inline-block; width: 0; height: 0.21rem; border-right: 1px solid #7d7d7d; position: relative; left: -0.17rem;}
+.lectureguess .ym-c-title p{ display: inline-block; width: 0.15rem; height: 0.15rem; border: 0.03rem solid #b68916; margin-right: 0.12rem; border-radius: 50px; float: left; margin-top: 0.46rem;}
+.lectureguess .checkmore{ width: 0.55rem; text-align: center; height: 0.55rem; float: right; margin-right: 0.2rem;}
+.lectureguess .checkmore img{ width: 0.5rem;height: 0.12rem; vertical-align: middle;}
+.lectureguess .lectured-g-list{ padding-left: 0.25rem;}
+.lectured-g-list .lectured-g-item{ border-bottom: 1px solid #e2e2e2; padding: 0.33rem 0 0.3rem 0.25rem; overflow: hidden;}
+.lectured-g-list .lectured-g-item:nth-last-child(1){ border-bottom: none;}
+.lectured-g-item .lectured-g-img{ float: left; width: 2.3rem;height: 1.95rem;}
+.lectured-g-item .lectured-g-img img{ width: 100%; height: 100%; object-fit: contain;}
+.lectured-g-item .lecture-g-mes{ width: 4.48rem; float: right;}
+.lecture-g-mes .lsm-t-img{ width: 0.65rem;height: 0.65rem; float: left; margin-top: 0.15rem;}
+.lecture-g-mes .lsm-t-img img{ border-radius: 50%;}
+.lecture-g-mes .lsm-t-id{ color: #333333; font-size: 0.24rem; width: 2rem;  margin-top: 0.15rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: left; line-height: 0.65rem;   margin-left: 0.2rem;}
+.lecture-g-mes span{ float: right; font-size: 0.2rem;color: #cccccc; line-height: 0.65rem;  margin-top: 0.15rem; margin-right: 0.25rem;}
+.lecture-g-mes .lectured-g-name{ color: #000000; font-size: 0.26rem; float: left; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; height: 0.28rem; line-height: 0.28rem; margin-top: 0.33rem;}
+.lecture-g-mes .lectured-g-num{font-size: 0.22rem; color: #999999;  float: left; margin-top: 0.15rem;}
+
+
+
+
+
+

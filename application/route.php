@@ -29,6 +29,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('editl/:id','index/Index/editl');
     Route::get('common/header','index/common/header');
     Route::get('common/floor','index/common/floor');
+    Route::get('common/top','index/common/top');
     Route::get('login','index/login/index');
     Route::get('yzm','index/login/yzm');
 

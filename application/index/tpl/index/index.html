@@ -1,11 +1,90 @@
 {include file="common/header" /}
-<div class="ss1">
-    {if isset($name)}
-    <p> {$name} </p>
-    {/if}
-    {if isset($img_url)}
-    <img src="{$img_url}">
-    {/if}
-    111
+{include file="common/top" /}
+<div id="yxpschange" style="display: none;" ></div>
+
+<div class="yx-hm-banner">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+                <a href=""><img src="_IMG_/2914.jpg" alt=""/></a>
+
+            </div>
+            <div class="swiper-slide">
+                <a href=""><img src="_IMG_/2914.jpg" alt=""/></a>
+
+            </div>
+
+            <div class="swiper-slide">
+                <a href=""><img src="_IMG_/2914.jpg" alt=""/></a>
+
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
 </div>
+
+
+<div class="yx-goodschoice">
+    <div class="ym-c-title">
+        <p></p>新品<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
+    </div>
+    <div class="yg-c-list">
+        <ul>
+
+            <li>
+                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
+                <p><a href="">dsdss}</a></p>
+                <span>￥100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="yx-goodschoice">
+    <div class="ym-c-title">
+        <p></p>热卖<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
+    </div>
+    <div class="yg-c-list">
+        <ul>
+
+            <li>
+                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
+                <p><a href="">dsdss}</a></p>
+                <span>￥100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="yx-goodschoice">
+    <div class="ym-c-title">
+        <p></p>折扣<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
+    </div>
+    <div class="yg-c-list">
+        <ul>
+
+            <li>
+                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
+                <p><a href="">dsdss}</a></p>
+                <span>￥100</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        var swiperBanner = new Swiper('.yx-hm-banner .swiper-container', {
+            pagination: '.yx-hm-banner .swiper-pagination',
+            paginationClickable: true,
+            spaceBetween: 10,
+            centeredSlides: true,
+            autoplay: 3000,
+            autoplayDisableOnInteraction: false
+        });
+    })
+
+</script>
+
 {include file="common/floor" /}

@@ -1,6 +1,36 @@
 
 
-</body>
+
+<div class="yx-bottom-bar yxui-flex">
+
+    {if $SITE_LOCATION eq 'default_index'}
+    <div class="cell"><a href="/"><p class="change"><i class="icon iconfont icon-shouye_dianji yx-choice"></i></p><span class="yx-choice">首页</span></a></div>
+    {else}
+    <div class="cell"><a href="/"><p><i class="icon iconfont icon-shouye "></i></p><span class="">首页</span></a></div>
+
+    {/if}
+
+
+    {if $SITE_LOCATION eq 'category_index'}
+
+    <div class="cell"><a href="/?mod=category"><p class="change"><i class="icon iconfont icon-shangpinfenlei_dianji yx-choice"></i></p><span  class="yx-choice">商品分类</span></a></div>
+    {else}
+    <div class="cell"><a href="/?mod=category"><p ><i class="icon iconfont icon-shangpinfenlei"></i></p><span>商品分类</span></a></div>
+
+    {/if}
+
+
+    {if $SITE_LOCATION eq 'moderoom_getlist'}
+    <div class="cell"><a href="/moderoom.html"><p class="change"><i class="icon iconfont icon-yangbanjian_dianji yx-choice"></i></p><span class="yx-choice">样板间</span></a></div>
+    {else}
+    <div class="cell"><a href="/moderoom.html"><p ><i class="icon iconfont icon-yangbanjian"></i></p><span>样板间</span></a></div>
+    {/if}
+
+
+    <div class="cell"><a href="/my/index.php?mod=cart"><p ><i class="icon iconfont icon-gouwuche"></i></p><span>购物车</span></a></div>
+
+    <div class="cell"><a href="/my/index.php?mod=default&act=presonal"><p ><i class="icon iconfont icon-wode"></i></p><span>我的</span></a></div>
+</div>
 
 
 
@@ -54,4 +84,5 @@
     </script>
 
 {/if}
+</body>
 </html>

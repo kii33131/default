@@ -1,0 +1,340 @@
+@charset "UTF-8";
+html { -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-touch-callout: none; font-family: Helvetica; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+body { background-color: #f2f2f2; }
+
+body, h1, h2, h3, h4, h5, h6, p, dl, dd, ul, ol, pre, form, input, textarea, th, td, select { margin: 0; padding: 0; font-weight: normal; text-indent: 0; }
+
+a, button, input, textarea, select { background: none; -webkit-tap-highlight-color: rgba(255, 0, 0, 0); outline: none; -webkit-appearance: none; }
+
+em { font-style: normal; }
+
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+img { border: none; vertical-align: top; width: 100%; }
+
+table { border-collapse: collapse; }
+
+textarea { resize: none; overflow: auto; }
+
+/* 清除浮动 */
+.clear { zoom: 1; }
+
+.clear:after { content: ''; display: block; clear: both; }
+
+.yxui-flex { display: -webkit-box !important; display: -ms-flexbox !important; display: flex !important; -ms-flex-wrap: wrap; flex-wrap: wrap; }
+
+.yxui-flex > .cell { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; width: 0; -ms-flex-preferred-size: 0; flex-basis: 0; max-width: 100%; display: block; padding: 0 !important; position: relative; }
+
+.yxui-flex-center { display: -webkit-box; display: -webkit-flex; -webkit-box-pack: center; -webkit-justify-content: center; -webkit-box-align: center; -webkit-align-items: center; }
+
+* { padding: 0; margin: 0; }
+
+/* 优惠券落地页*/
+.buyCouponbanner { position: relative; height: 3.5rem; margin-top: 0.92rem; }
+
+.buyCouponbanner img { width: 100%; }
+
+.buyCouponbanner .bc-text { position: absolute;  top: 1.1rem; left: 0.25rem; }
+
+.buyCouponbanner .bc-text p { font-size: 0.45rem; font-weight: bold; color: #FFFFFF; margin-bottom: 0.24rem; }
+
+.buyCouponbanner .bc-text span { font-size: 0.28rem; color: #FFFFFF;  }
+
+.mid-couponindexs { background-color: #FFFFFF; padding-top: 0.25rem;  border-bottom: 1px solid #eeeeee; }
+
+.mid-couponindex { width: 7.14rem; height: 2.58rem; margin: 0 auto; background: url("../img/quanbg.png") no-repeat center; background-size: 100% 100%; }
+
+.checkmycoupon{ border-top: 1px solid #bebebe; margin-top: 0.25rem; border-bottom: 1px solid #bebebe; height: 0.9rem; line-height: 0.9rem; text-align: center; }
+
+.checkmycoupon a{ color: #666; font-size: 0.28rem; display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 0.9rem;}
+
+.mid-couponindex .mc-leftmes { width: 4.75rem; float: left; overflow: hidden; margin-top: 0.5rem; }
+
+.mid-couponindex .mc-leftmes .mclm-img { float: left; width: 1.5rem; height: 1.5rem; background-color: #e6e6e6; margin-left: 0.35rem; }
+
+.mid-couponindex .mc-leftmes .mclm-mes { float: left; margin-left: 0.2rem; width: 2.45rem; }
+
+.mid-couponindex .mc-rightbtn { float: right; width: 2.05rem; margin-top: 0.5rem; overflow: hidden; text-align: center; padding-top: 0.15rem; }
+
+.mid-couponindex .mc-rightbtn p { font-size: 0.24rem; color: #333333; text-align: center; }
+
+.mid-couponindex .mc-rightbtn p span { color: #b6892c; }
+
+.mid-couponindex .mc-rightbtn a { display: inline-block; background-color: #b78a17; color: #FFFFFF; font-size: 0.25rem; margin-top: 0.2rem; text-align: center; width: 1.58rem; height: 0.67rem; line-height: 0.67rem; border-radius: 50px; }
+
+.mclm-mes h1 { font-size: 0.3rem; color: #333333; line-height: 0.45rem; height: 0.45rem; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: bold; }
+
+.mclm-mes p { font-size: 0.55rem; color: #b6892c; }
+
+.mclm-mes p b { font-size: 0.4rem; font-weight: normal; }
+
+.mclm-mes span { color: #666666; font-size: 0.2rem; margin-top: 0.1rem; display: inline-block; }
+
+.use-couponshop { margin-top: 0.2rem; border-top: 1px solid #eeeeee; background-color: #FFFFFF; padding-bottom: 0.5rem; }
+
+.use-couponshop .uc-title { line-height: 0.9rem; font-size: 0.26rem; color: #333333; border-bottom: 1px solid #eeeeee; margin-bottom: 0.1rem; }
+
+.use-couponshop .uc-title:before { display: inline-block; content: ''; width: 0.15rem; height: 0.15rem; border-radius: 50%; border: 0.03rem solid #b68916; margin-left: 0.25rem; margin-right: 0.1rem; }
+
+.use-couponshop .uc-mainlist .uml-item { background-color: #FFFFFF; padding: 0.25rem 0.25rem 0.25rem 0rem; overflow: hidden; margin-left: 0.25rem; border-bottom: 1px solid #f2f2f2; }
+
+.use-couponshop .uc-mainlist .uml-item:nth-last-child(1) { border-bottom: none; }
+
+.use-couponshop .uc-checkmore { height: 0.15rem; border-bottom: 1px solid #EEEEEE; text-align: center; }
+
+.use-couponshop .uc-checkmore span { padding: 0 0.2rem; background-color: #FFFFFF; font-size: 0.22rem; color: #666; position: relative; }
+
+.use-couponshop .uc-checkmore span i { font-size: 0.16rem; position: absolute; top: 0.35rem; left: 50%; margin-left: -0.2rem; }
+
+.use-couponshop .uc-ruleknow { padding-top: 0.2rem; margin-bottom: 1rem; }
+
+.use-couponshop .uc-ruleknow p { line-height: 0.5rem; color: #9a9a9a; font-size: 0.24rem; margin-left: 0.25rem; position: relative; padding-left: 0.2rem; }
+
+.use-couponshop .uc-ruleknow p:before { content: ''; width: 0.04rem; height: 0.04rem; background-color: #000000; display: inline-block; top: 0.2rem; left: 0rem; position: absolute; color: #000000; border-radius: 50%; vertical-align: middle; }
+
+.use-couponshop .uc-ruleknow p span { color: #333333; }
+
+.uc-ruleknow p em { display: inline-block; width: 6.8rem; padding-right: 0.25rem; }
+
+.uml-item .umli-img { width: 1.58rem; height: 1.58rem; float: left; border: 1px solid #cfcfcf; }
+
+.uml-item .umli-img img { width: 100%; height: 100%; -o-object-fit: contain; object-fit: contain; }
+
+.uml-item .umli-mes { width: 5rem; float: right; }
+
+.uml-item .umli-mes .umli-mtitle { width: 100%; }
+
+.uml-item .umli-mes .umli-mtitle p { overflow: hidden; font-size: 0.27rem; color: #333333; text-overflow: ellipsis; line-height: 0.4rem; height: 0.4rem; white-space: nowrap; max-width: 100%; float: left; }
+
+.uml-item .umli-mes .umli-mtitle i { font-size: 0.58rem; color: #b68916; position: relative; top: -0.1rem; }
+
+.uml-item .umli-mes .umli-maddress { color: #666666; font-size: 0.24rem; line-height: 0.24rem; margin-bottom: 0.2rem; margin-top: -0.05rem; }
+
+.uml-item .umli-mes .goshopaddres { display: inline-block; width: 2.07rem; color: #b68916; border-radius: 4px; height: .53rem; line-height: 0.53rem; text-align: center; border: 1px solid #b68916; font-size: 0.26rem; }
+
+/* 优惠券购买页*/
+.indexBuyCoupon-banner { margin-top: 0.92rem; background-color: #FFFFFF; }
+
+.indexBuyCoupon-banner .swiper-pagination-bullet-active { background-color: #FFFFFF; }
+
+.indexBuyCoupon-banner .swiper-pagination-bullet { background-color: #FFFFFF; }
+
+.indexBuyCoupon-banner .ibc-mes { padding: 0.2rem 0.25rem; }
+
+.indexBuyCoupon-banner .ibc-mes .ibcm-title { font-size: 0.32rem; color: #303030; }
+
+.indexBuyCoupon-banner .ibc-mes .ibcm-price { color: #be8700; font-size: 0.32rem; margin-top: 0.3rem; }
+
+.indexBuyCoupon-banner .ibc-mes .ibcm-price span { font-size: 0.46rem; }
+
+.indexBuyCoupon-banner .ibc-bottm { border-top: 1px solid #EEEEEE; line-height: 0.77rem; height: 0.77rem; }
+
+.ibc-bottm .ibcb-par1 { float: left; color: #be8700; margin-left: 0.25rem; }
+
+.ibc-bottm .ibcb-par1 i { font-size: 0.26rem; margin-right: 0.08rem; vertical-align: middle; }
+
+.ibc-bottm .ibcb-part2 { float: right; padding-right: 0.25rem; font-size: 0.22rem; color: #999; }
+
+.ibc-bottm .ibcb-part2 span { margin-left: 0.13rem; }
+
+.ibc-bottm .ibcb-part2 span:nth-child(1) { border-right: 1px solid #EEEEEE; padding-right: 0.13rem; }
+
+.uml-item .umli-mes1 { width: 4rem; float: left; margin-left: 0.25rem; }
+
+.uml-item .umli-mes1 .umli-mtitle { width: 100%; }
+
+.uml-item .umli-mes1 .umli-mtitle p { overflow: hidden; font-size: 0.3rem; color: #333333; margin-top: 0.25rem; text-overflow: ellipsis; line-height: 0.4rem; height: 0.4rem; white-space: nowrap; width: 100%; }
+
+.uml-item .umli-mes1 .umli-maddress { color: #666666; font-size: 0.24rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0.2rem 0; width: 4.15rem; display: inline-block; line-height: 0.24rem; margin-bottom: 0.2rem; margin-top: 0.2rem; }
+
+.uml-item .umli-mes1 .umli-maddress i { color: #be8700; margin-right: 0.05rem; }
+
+.uml-item .umli-call { line-height: 0.8rem; float: left; text-align: right; width: 0.8rem; margin-top: 0.4rem; margin-left: 0.3rem; }
+
+.uml-item .umli-call:before { content: ''; display: inline-block; height: 0.8rem; border-right: 1px solid #EEEEEE; position: relative; left: -0.25rem; vertical-align: middle; }
+
+.uml-item .umli-call a i { font-size: 0.42rem; color: #be8700; }
+
+.indexBuyCoupon-btn { width: 100%; position: fixed; bottom: 0; }
+
+.indexBuyCoupon-btn a { display: inline-block; width: 100%; height: 1rem; line-height: 1rem; color: #FFFFFF; background-color: #be8700; text-align: center; font-size: 0.32rem; }
+
+.buycouponsend { margin-top: 1.1rem; border-top: 1px solid #EEEEEE; }
+
+.buycouponsend .bcs-part1 { background-color: #FFFFFF; border-bottom: 1px solid #f2f2f2; }
+
+.buycouponsend .bcs-part2 { margin-top: 0.2rem; background-color: #FFFFFF; }
+
+.bcs-part1 .bcs-pitem1 { height: 1rem; line-height: 1rem; font-size: 0.28rem; color: #333333; border-bottom: 1px solid #EEEEEE; margin-left: 0.25rem; }
+
+.bcs-part1 .bcs-pitem2 { height: 1rem; line-height: 1rem; font-size: 0.28rem; color: #333333; border-bottom: 1px solid #EEEEEE; margin-left: 0.25rem; }
+
+.bcs-part1 .bcs-pitem2 p { float: right; width: 2.64rem; height: 0.65rem; border: 1px solid #EEEEEE; border-radius: 2px; margin-top: 0.16rem; margin-right: 0.25rem; }
+
+.bcs-part1 .bcs-pitem4 { height: 1rem; line-height: 1rem; font-size: 0.28rem; color: #333333; border-bottom: 1px solid #EEEEEE; margin-left: 0.25rem; }
+
+.bcs-part1 .bcs-pitem4 span { float: right; margin-right: 0.25rem; font-size: 0.28rem; color: #333333; }
+
+.bcs-part1 .bcs-pitem3 { height: 1rem; line-height: 1rem; font-size: 0.28rem; color: #333333; margin-left: 0.25rem; }
+
+.bcs-part1 .bcs-pitem3 span { float: right; margin-right: 0.25rem; color: #b78a17; }
+
+.bcs-part1 .bcs-pitem3 span em { font-size: 0.15rem; }
+
+.bcs-part2 { text-align: center; }
+
+.bcs-part2 .bcs-p-username { margin-left: 0.25rem; border-bottom: 1px solid #f2f2f2; height: 1rem; line-height: 1rem; }
+
+.bcs-part2 .bcs-p-username input { width: 4.8rem; height: 0.55rem; line-height: 0.55rem; outline: none; margin-top: 0.225rem; background-color: #FFFFFF; border: none; font-size: 0.28rem; float: left; }
+
+.bcs-part2 .bcs-p-username input::-webkit-input-placeholder { color: #cccccc; font-size: 0.28rem; line-height: 0.55rem; }
+
+.bcs-part2 .bcs-p-username span { width: 1.82rem; height: 0.6rem; text-align: center; line-height: 0.6rem; margin-right: 0.25rem; margin-top: 0.18rem; border: 1px solid #be8700; border-radius: 3px; color: #b78a17; font-size: 0.28rem; cursor: pointer; float: right; display: inline-block; }
+
+.bcs-part2 .bcs-p-usernum { margin-left: 0.25rem; height: 1rem; line-height: 1rem; border-bottom: 1px solid #EEEEEE; }
+
+.bcs-part2 .bcs-p-usernum input { width: 4.8rem; height: 0.55rem; line-height: 0.55rem; outline: none; margin-top: 0.225rem; background-color: #FFFFFF; border: none; font-size: 0.28rem; float: left; }
+
+.bcs-part2 .bcs-p-usernum input::-webkit-input-placeholder { color: #cccccc; font-size: 0.28rem; line-height: 0.55rem; }
+
+.bcs-part2 p { font-size: 0.22rem; color: #b78a17; line-height: 0.8rem; padding-left: 0.25rem; text-align: left; }
+
+.bcs-part2 p i { margin-right: 0.1rem; font-size: 0.2rem; }
+
+.bcs-part2 a { width: 5.63rem; height: 0.9rem; background-color: #be8700; line-height: 0.9rem; border-radius: 5px; font-size: 0.28rem; color: #FFFFFF; display: inline-block; text-align: center; margin-top: 1.1rem; }
+
+.bcs-pitem2 p span { display: inline-block; width: 28%; float: left; height: 100%; text-align: center; cursor: pointer; }
+
+.bcs-pitem2 p span:nth-child(3) { float: right; }
+
+.bcs-pitem2 p span i { font-size: 0.24rem; margin-top: -0.1rem; display: inline-block; position: relative; top: -0.14rem; color: #666666; }
+
+.bcs-pitem2 p em { float: left; display: inline-block; width: 40%; height: 100%; border-left: 1px solid #EEEEEE; border-right: 1px solid #EEEEEE; line-height: 0.7rem; text-align: center; }
+
+.buycouponsend .bcs-part3 { background-color: #FFFFFF; padding-bottom: 6rem; text-align: center; }
+
+.buycouponsend .bcs-part3 p { font-size: 0.22rem; color: #b78a17; line-height: 0.8rem; padding-left: 0.25rem; text-align: left; }
+
+.buycouponsend .bcs-part3 p i { margin-right: 0.1rem; font-size: 0.2rem; }
+
+.buycouponsend .bcs-part3 a { width: 5.63rem; height: 0.9rem; background-color: #be8700; line-height: 0.9rem; border-radius: 5px; font-size: 0.28rem; color: #FFFFFF; display: inline-block; text-align: center; margin-top: 1.1rem; }
+
+.buyc-time { text-align: center; margin-top: 0.9rem; padding-top: 3.5rem; color: #cccccc; }
+
+.buyc-time i { font-size: 1rem; }
+
+.buyc-time p { font-size: 0.28rem; margin-top: 0.4rem; }
+
+.mybuycoupon { margin-top: 0.9rem; }
+
+.mybuycoupon .topchoice { height: 0.9rem; border-bottom: 1px solid #DDDDDD; }
+
+.mybuycoupon .topchoice a { display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 0.9rem; color: #808080; position: relative; font-size: 0.3rem; }
+
+.mybuycoupon .topchoice .choice-s { color: #c88400; }
+
+.mybuycoupon .topchoice .choice-s:after { content: ''; display: inline-block; width: 0.94rem; height: 0.04rem; background-color: #c88400; position: absolute; left: 50%; margin-left: -0.47rem; bottom: -0.02rem; }
+
+.mybuycoupon .mbc-itemlist1 { padding-top: 0.3rem; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item { width: 7.12rem; height: 2.5rem; overflow: hidden; margin: 0 auto 0.3rem auto; background: url("../img/myconponbg.png") no-repeat top; background-size: 100%; position: relative; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbc-i-bot { width: 7rem; height: 0.08rem; border-radius: 0 0 5px 5px; position: absolute; -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); left: 50%; bottom: 0; background-color: #be8700; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbci-part1 { width: 100%; height: 2.5rem; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbci-rule { padding-top: 0.1rem; padding-bottom: 0.2rem; text-align: center; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbci-rule p { line-height: 0.4rem; font-size: 0.24rem; color: #999999; padding-left: 0.25rem; text-align: left; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbci-rule a { color: #be8700; font-size: 0.22rem; padding: 0.15rem; }
+
+.mybuycoupon .mbc-itemlist1 .mbc-item .mbci-rule a i { vertical-align: middle; }
+
+.mbci-part1 .mbci-left { width: 2.1rem; padding-top: 0.65rem; margin-left: 0.1rem; float: left; }
+
+.mbci-part1 .mbci-left div { font-size: 0.32rem; color: #be8700; text-align: center; }
+
+.mbci-part1 .mbci-left div span { font-size: 0.52rem; font-weight: bold; }
+
+.mbci-part1 .mbci-left p { font-size: 0.24rem; color: #333333; text-align: center; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; margin-top: 0.1rem; }
+
+.mbci-part1 .mbci-mid { width: 2.5rem; margin-top: 0.44rem; float: left; margin-left: 0.28rem; }
+
+.mbci-part1 .mbci-right { width: 2rem; margin-right: 0.1rem; float: right; }
+
+.mbci-part1 .mbci-right a { display: inline-block; width: 1.76rem; height: 0.67rem; cursor: pointer; margin-top: 1rem; background-color: #be8700; line-height: 0.67rem; text-align: center; color: #FFFFFF; font-size: 0.24rem; border-radius: 50px; }
+
+.mbci-mid .mbcim-title { font-size: 0.34rem; color: #333333; font-weight: bold; margin-bottom: 0.15rem; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.mbci-mid p { font-size: 0.22rem; color: #666666; width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+.mbci-mid a { font-size: 0.22rem; color: #be8700; margin-top: 0.15rem; display: inline-block; }
+
+.mbci-mid a i { vertical-align: middle; font-size: 0.22rem; }
+
+#mbc-itemlist1 .mbc-item .mbc-i-bot { background-color: #999999; }
+
+#mbc-itemlist1 .mbci-right a { background-color: #999999; }
+
+#mbc-itemlist1 .mbci-left div { color: #999; }
+
+#mbc-itemlist1 .mbci-left p { color: #999; }
+
+#mbc-itemlist1 .mbcim-title { color: #999999; }
+
+#mbc-itemlist1 .mbci-mid p { color: #999; }
+
+#mbc-itemlist1 .mbci-mid a { color: #999; }
+
+#mbc-itemlist1 .mbci-rule a { color: #999999; }
+
+.yxtransformtime{ margin-top: 0.9rem; padding-top: 0.3rem; padding-bottom: 0.35rem; border-bottom: 1px solid  #EEEEEE;}
+.yxtransformtime p{ text-align: center; font-size: 0.27rem; color: #666666;}
+.yxtransformtime .yt-time{ text-align: center; margin-top: 0.15rem;}
+.yxtransformtime .yt-time strong{ display: inline-block; width: 0.3rem; height: 0.3rem; text-align: center; line-height: 0.3rem; color: #FFFFFF; background-color: #b78a17; font-size: 0.2rem;}
+.yxtransformdec-top{ padding: 0.23rem 0.25rem; overflow: hidden; }
+.yxtransformdec-top .yxt-timg{ width: 1.1rem; height: 1.1rem; float: left;}
+.yxt-timg img{ width: 100%; height: 100%;}
+.yxtransformdec-top .yxt-text{ float: left; margin-left: 0.3rem;}
+.yxtransformdec-top .yxt-text p{ font-size: 0.24rem; color: #333; }
+.yxtransformdec-top .yxt-text p span{ color: #b68916;}
+
+.yxtransformlistmains{ background-color: #f2f2f2; padding-top: 0.2rem;}
+.yxtransformlistmain{  background-color: #FFFFFF; overflow: hidden; position: relative; padding-top: 0.4rem; padding-left: 0.95rem;}
+.yxtransformlistmain .ytlm-item{ border-bottom: 1px solid #e3e5e9; margin-top: 0.2rem;}
+.yxtransformlistmain .ytlm-item:nth-last-child(1){border-bottom: none;}
+.ytlm-item p{ font-size: 0.27rem; color: #999999; line-height: 0.5rem;}
+.ytlm-item span{ display: inline-block; color: #999999;font-size: 0.28rem; line-height: 0.5rem;}
+.ytlm-active p{ color: #333333;}
+.yxtransformlistmain .ytlmmid{ position: absolute; width: 0.45rem;  z-index: 10; height: 100%; left: 0; border-right: 1px solid #e3e5e9;}
+.yxtransformlistmain .ytlmtop1{ width: 0.4rem; position: absolute; z-index: 11; height: 1.1rem; top: 0; left: 0.25rem; background-color: #FFFFFF;}
+.yxtransformlistmain .ytlmtop1 p{ width: 0.4rem;height: 0.4rem; line-height: 0.4rem; text-align: center; border-radius: 50%; background-color: #e7d8b3; margin-top: 0.7rem;}
+.yxtransformlistmain .ytlmtop1 span{ display: inline-block; width: 0.2rem; height: 0.2rem; background-color: #b68917; border-radius: 50%; margin-top: 0.1rem;}
+.yxtransformlistmain .ytlmbot2{  width: 0.4rem; position: absolute; z-index: 11; height: 0.8rem; bottom: 0; left: 0.25rem; background-color: #FFFFFF;}
+.yxtransformlistmain .ytlmbot2 p{ width: 0.4rem;height: 0.4rem; line-height: 0.4rem; text-align: center; border-radius: 50%; background-color: #d9d9d9;}
+.yxtransformlistmain .ytlmbot2 p i{ color: #FFFFFF; font-size: 0.32rem; margin-top: 0.02rem; display: inline-block;}
+
+.yxt-text .yxtprice{ font-size: 0.24rem; color: #b68916; font-weight: bold; margin-top: 0.15rem;}
+.yxt-text .yxtprice span{ font-size: 0.18rem;}
+.yxt-text .yxtordernum{ color: #999; font-size: 0.26rem;}
+.yxtordernum span{ color: #333333; margin-top: 0.15rem; display: inline-block;}
+.overrulesss{ transform: scale(0.7,0.7); -webkit-transform: scale(0.7,0.7); width: 145% !important; margin-left: -20%;}
+
+.yxpayorder-mains{ background-color: #f2f2f2; padding-top: 0.2rem;}
+.yxpayorder-main{  background-color: #FFFFFF;  position: relative;}
+.yxpayorder-main .ypoitem1{ padding-left: 0.25rem; color: #333333; font-size: 0.3rem; height: 1.06rem; line-height: 1.06rem; border-bottom: 1px solid #EEEEEE;}
+.ypoitem2 p{ line-height: 1.13rem;position: relative; height: 1.13rem; font-size: 0.3rem; border-bottom: 1px solid #EEEEEE; width: 7.25rem; padding-left: 0.25rem; }
+.ypoitem2 p i{  font-size: 0.62rem; margin-right: 0.3rem; color: #e47c30; vertical-align: middle;}
+.ypoitem2 p:nth-child(1) i{ margin-top: -0.18rem; display: inline-block;}
+.ypoitem2 .zhifubao i{ font-size: 0.68rem; color: #1eaaee; margin-right: 0.28rem; margin-left: -0.05rem;}
+.ypoitem2 p span{  width: 0.3rem;  height: 0.3rem;  border: 1px solid #cecece;  border-radius: 50%}
+.ypoitem2 p span:before{    -webkit-transform: scale(0.85,0.85);  transform: scale(0.85,0.85);  display: inline-block;  color: #FFFFFF; }
+.ypoitem2 p em{float: right; margin-right: 0.25rem; position: absolute; right: 0;}
+.yxpayorder-main .ypoitembtn{ text-align: center; margin-top: 0.65rem;}
+.ypoitembtn a{ display: inline-block; width: 6.15rem;font-size: 0.34rem; height: 0.9rem; line-height: 0.9rem; text-align: center; color: #FFFFFF; border-radius: 5px; background-color: #b68916;}
+.ypoitembtn a span{ font-size: 0.34rem;}
+.product-select-red{ background-color: #b68916; border: 1px solid #b68916 !important;}

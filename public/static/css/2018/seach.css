@@ -1,0 +1,76 @@
+*{font-family: Arial;}
+.yx-seach-top{ position: fixed; top: 0; background-color: #FFFFFF;  overflow: hidden; width: 100%; height: 1.34rem; padding: 0rem 0.25rem; z-index: 50;}
+.yx-seach-top .backover{  float: left; width: 0.6rem; line-height: 0.7rem; margin-top: 0.32rem;}
+.yx-seach-top .backover i{font-size: 0.35rem; color: #9a9a9a;}
+.yx-seach-top .yx-seach-mainbody{ float: left; width: 6.43rem; margin-top: 0.32rem;  height: 0.7rem; line-height: 0.7rem; background-color: #f2f3f4; border-radius: 5px;}
+.yx-seach-mainbody input{ width: 5.05rem; font-size: 0.26rem; border: none; outline: none;padding-left: 0.2rem; margin-top: 0.1rem; line-height: 0.5rem; height: 0.5rem;  float: left;}
+.yx-seach-mainbody .yx-s-right{ float: right; width: 0.93rem; height: 0.6rem; text-align: center;   position: relative;}
+.yx-seach-mainbody .yx-s-right i{  font-size: 0.35rem; color:#989696; }
+.yx-seach-mainbody .yx-s-right:before{ content: ''; height: 0.55rem; width: 0; border-right: 1px solid #d3d3d3; position: absolute; left: 0;top: 0.09rem;}
+.yx-seach-choice{ height: 0.58rem;  width: 100%; background-color: #FFFFFF; padding-top: 0.2rem; padding-bottom: 0.2rem;  white-space: nowrap;  width: 100%;  overflow: scroll;  overflow-y: hidden;  -webkit-overflow-scrolling: touch;  font-size: 0px;}
+.yx-seach-choice::-webkit-scrollbar{ display: none;}
+.yx-seach-choice div{ display: inline-block;  margin-left: 0.25rem; height: 0.58rem; text-align: center; line-height: 0.58rem; padding: 0 0.26rem;  font-size: 0.27rem; color: #b78a17; border: 1px solid #b78a17; border-radius: 50px;}
+.yx-seach-choice .ysc-select{ background-color: #b78a17; color: #FFFFFF;}
+.yx-seach-party2{ position: fixed; width: 100%; top: 0.9rem;z-index: 39;}
+.yx-goodslist-choice{ height: 0.9rem; line-height: 0.9rem; width: 100%; background-color: #FFFFFF; border-top: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0;}
+.yx-goodslist-choice div{ text-align: center; line-height: 0.9rem; position: relative;}
+.yx-goodslist-choice div a{ display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 0.9rem; color: #b3b3b3; font-size: 0.29rem; }
+.yx-goodslist-choice div:after{ content: ''; width: 0; height: 0.28rem; border-right: 1px solid #e7e7e7; position: absolute; right: 0; top: 0.3rem;}
+.yx-goodslist-choice div:nth-last-child(1):after{ border-right: none;}
+.yx-goodslist-choice div:nth-child(1),.yx-goodslist-choice div:nth-child(4){ flex: 3; -webkit-flex: 3;}
+.yx-goodslist-choice div:nth-child(2),.yx-goodslist-choice div:nth-child(3){ flex: 2; -webkit-flex: 2;}
+.yx-goodslist-choice .yx-sc-list{ font-weight: bold; }
+.yx-goodslist-choice .yx-sc-list a{color: #b78a17; }
+.yx-goodslist-choice div i{ position: absolute; right: 0.15rem;  font-size: 0.28rem; font-weight: normal; color: #b3b3b3;}
+.yx-goodslist-choice div i:nth-child(1){ top: -0.06rem; }
+.yx-goodslist-choice div i:nth-child(2){top: 0.06rem;}
+.yx-goodslist-choice div .yx-cprice{ color: #b78a17;}
+
+
+.yx-scroll-gu-list{ overflow: hidden; padding: 0.25rem 0.2rem; margin-top: 2.28rem;}
+.yx-scroll-gu-list .yx-scrollgl-item{ width: 3.43rem; float: left; position: relative; overflow: hidden; border:1px solid #cccccc; margin-bottom: 0.2rem; }
+.yx-scrollgl-item .proudct-cart{ position: absolute; bottom: 0.18rem; right: 0.2rem;}
+.yx-scrollgl-item .proudct-cart  i{ color: #b68916; font-size: 0.4rem;}
+.yx-scroll-gu-list .yx-scrollgl-item:nth-child(2n-1){margin-right: 0.12rem; }
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iimg{ width: 3.45rem; height: 3.45rem;}
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iimg img{ width: 100%; height: 100%; object-fit: contain;}
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iname{ color: #333333; font-size: 0.26rem; text-align: center; width: 100%;  margin-top: .2rem;}
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iprice{  margin-top: 0.15rem; color: #cd2b2b; font-size:0.26rem; margin-bottom: 0.23rem; padding-left: 0.3rem;}
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iprice em{ font-size: 0.22rem;}
+.yx-scroll-gu-list .yx-scrollgl-item .yxscroll-iprice del{ font-size: 0.22rem; color: #999; margin-left: 0.15rem;}
+.seachnogoods{ text-align: center;margin-top: 5.3rem; color: #d9d9d9;}
+.seachnogoods i{ font-size: 1rem;}
+.seachnogoods p{ text-align: center; font-size: 0.35rem;  margin-top: 0.28rem;}
+
+
+.yx-bottomcheckmore{ text-align: center; font-size: 0.26rem; color: #666666;  line-height: 0.62rem; margin-bottom: 0.2rem;}
+.yx-bottomcheckmore img{ width: 0.34rem; height: 0.34rem; margin-right: 0.1rem; }
+.lodingimg{ width: .5rem; height: .5rem; vertical-align: middle; margin-right: .2rem;  -webkit-transform:translate3d(0,0,0);  -moz-transform:translate3d(0,0,0);  transform:translate3d(0,0,0);  -webkit-animation:play 1s linear infinite;  -moz-animation:play 1s linear infinite;  animation:play 1s linear infinite;}
+@-webkit-keyframes play{
+    0%  {
+        -webkit-transform:rotate(0deg);
+    }
+    100% {
+        -webkit-transform:rotate(360deg);
+    }
+}
+@-moz-keyframes play{
+    0%  {
+        -moz-transform:rotate(0deg);
+    }
+    100% {
+        -moz-transform:rotate(360deg);
+    }
+}
+@keyframes play{
+    0%  {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+
+
+
+

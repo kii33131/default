@@ -20,6 +20,8 @@ class Index extends  Base
             $this->assign('img_url',$re->img_url);
 
         }
+
+        $this->assign('SITE_LOCATION','default_index');
         return $this->fetch('index');
 
     }

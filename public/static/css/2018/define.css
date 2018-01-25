@@ -1,0 +1,25 @@
+.define-topchoice{ height: 0.9rem; position: fixed; top: 0.9rem; width: 100%;background-color: #FFFFFF; border-bottom: 1px solid #dddddd; }
+.define-topchoice div{ line-height: 0.9rem; text-align: center;  }
+.define-topchoice div:nth-child(1):after{content: ''; display: inline-block;width: 0; height:  0.45rem; border-right: 1px solid #dddddd; position: relative; left: 0.05rem; top: 0.15rem;}
+.define-topchoice div:nth-child(1) a{ margin-left: 0.22rem;}
+.define-topchoice div:nth-child(2) a{ margin-left: 0.12rem;}
+.define-topchoice .yx-d-t-choice a{border-bottom: 0.05rem solid #b68916; color: #b68916; }
+.define-topchoice div a{ line-height: 0.86rem; font-size: 0.3rem; float: left; display: inline-block; color: #666666; width: 3.4rem; }
+.define-goodslist{ padding: 0.21rem; overflow: hidden; margin-top: 1.8rem;}
+.define-goodslist .define-g-item{ width: 3.4rem; float: left; margin-bottom: 0.3rem; margin-left: 0.23rem;}
+.define-goodslist .define-g-item:nth-child(2n-1){ margin-left: 0;}
+.define-g-item .define-g-iimg{ border:1px solid #cdcdcd; width: 3.38rem; height: 3.38rem;}
+.define-g-item .define-g-iimg img{ width: 100%; height: 100%;object-fit: contain;}
+.define-g-item .define-g-iname{ line-height: 0.75rem; font-size: 0.23rem; color: #666666; margin: 0 auto; text-align: center; width: 95%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.define-g-item .define-g-iname a{font-size: 0.23rem; color: #666666; }
+.define-g-item .define-g-iprice{ text-align: center; font-size: 0.23rem; color: #b68916;}
+.define-g-item .define-g-iprice small,.define-g-item .define-g-iprice del{ font-size: 0.21rem;}
+.define-g-item .define-g-iprice del{ color: #999999; margin-left: 0.15rem;}
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+html,body{ height: 100%;}
+.yx-simple-choice{ position: fixed; top: 0.9rem; width: 100%; background-color: rgb(245,245,245); z-index: 50; height: 0.76rem; line-height: 0.76rem; border-bottom: 0.01rem solid #fefefe;}
+.yx-simple-choice div{ text-align: center; color: #303030; position: relative;}
+.yx-simple-choice div a{color: #303030; font-size: 0.26rem; font-weight: bold; display: inline-block; width: 100%; height: 100%; }
+.yx-simple-choice div .yx-choice-a-active{ color: #b78a17;}
+.yx-simple-choice div .yx-choice-a-active i{transform:rotate(90deg); -webkit-transform:rotate(90deg); display: inline-block; margin-top: -0.08rem;}
+.yx-simple-choice div a i{ font-size: 0.26rem; vertical-align: middle; margin-left: 0.05rem; font-weight: normal;}
+.yx-simple-choice div .yx-s-c-child{ width: 1.9rem; position: absolute; top: 0.77rem; background-color: rgba(255,255,255,0.9) !important; padding: 0.15rem 0.3rem 0 0.3rem;}
+.yx-simple-choice div .yx-s-c-child p{ border: 0.01rem solid #bebfbf; line-height: 0.51rem; text-align: center; font-size: 0.28rem; margin-bottom: 0.25rem;}
+.yx-simple-choice div .yx-s-c-child p a{ font-weight: normal;}
+.yx-simple-choice div .yx-s-c-child .yxscc-choice{ background-color: #b78a17; color: #FFFFFF; border: 0.01rem solid #b78a17;}
+.yx-simple-choice div .yx-s-c-child .yxscc-choice a{ color: #FFFFFF; }
+.yx-main-simple-list{ margin-top: 1.68rem; padding-bottom: 0.55rem;}
+.yx-main-simple-list .yx-msl-item{ margin-bottom: 0.5rem;}
+.yx-msl-item .yx-mianthird{ height: 1.53rem; }
+.yx-msl-item .yx-mianthird div{ text-align: center; line-height: 0.28rem; font-size: 0.28rem; color: rgb(51,51,51); padding-top: 0.35rem;}
+.yx-msl-item .yx-mianthird p{ text-align: center; color: rgb(204,204,204); font-size: 0.28rem; line-height: 0.28rem; margin-top: 0.19rem; position: relative; padding-bottom: 0.18rem;}
+.yx-msl-item .yx-mianthird p:after{ content: ''; display: inline-block; width: 0.76rem; height: 0;  border-bottom: 0.03rem solid #dac48a; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); -webkit-transform: translateX(-50%); }
+.yx-bottomcheckmore{ margin-bottom: 1.2rem;}
+.yx-simpledec-bottom{ position: fixed; z-index: 50; width: 100%; height: 1rem; line-height: 1rem; background-color: #FFFFFF; bottom: 0;}
+.yx-simpledec-bottom div{ text-align: center; }
+.yx-simpledec-bottom div a{ display: inline-block; width: 100%; height: 100%; text-align: center; line-height: 1rem; font-size: 0.34rem; font-weight: bold;}
+.yx-simpledec-bottom div:nth-child(1) a{ color: #FFFFFF; background-color: #b78a17;}
+.yx-simpledec-bottom div:nth-child(2) a{ color: #b78a17; border: 0.01rem solid #b78a17;}
+.yx-simpledecmain{   width: 100%; position: fixed; background-color: #000000;}
+.yx-simpledecmain-s{ width: 100%; height: 100%; position: relative;}
+.yx-simpledecmain-s .swiper-slide,.yx-simpledecmain-s .swiper-container{ width: 100%; height: 100%; z-index: 60;}
+.swiper-wrapper{ width: 100%; height: 100%;}
+.yx-simpledecmain-s .swiper-slide .swiperimg{ position: absolute; top: 50%; left: 50%;transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
+.yx-simpledecmain-s .swiper-pagination{ color: #FFFFFF; width: 0.85rem; height: 0.5rem; line-height: 0.5rem; font-size: 0.26rem;  position: absolute; left: 6.5rem !important; bottom: 0.3rem;}
+.yx-simpledecmain-s .topback{ width: 0.68rem; line-height: 0.7rem; text-align: center; height: 0.68rem; border: 0.02rem solid #FFFFFF; border-radius: 50%; background-color: rgba(0,0,0,0.6); position: absolute; top: 0.4rem; left: 0.4rem;z-index: 56; }
+.yx-simpledecmain-s .topback i{ color: #FFFFFF;  font-size: 0.4rem;}
+.yx-simpledecmain-s .bottomtext{ background: url("../img/lecturebg.png") no-repeat bottom; z-index: 50; background-size: 100%; height: 2rem; position: absolute;  bottom:0; width: 100%;}
+.yx-simpledecmain-s .bottomtext p{ line-height: 1rem; padding-left: 0.3rem; color: #FFFFFF; font-size: 0.3rem; font-weight: bold; width: 6.2rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-top: 1rem;}
+.yx-simpledecmain-s .swiper-slide .goods-mes-s{  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%); }
+.yx-simpledecmain-s .swiper-slide .goodsmes{  position: absolute;  z-index: 32;}
+
+.goodsmes .goods-mess{ width: 3.2rem; float: right; height: 100%; }
+.goodsmes .goods-mess a{ overflow: hidden; display: inline-block;}
+.goodsmes .goods-mess .yuantip{ display: inline-block; animation: myfirst 3s 1s infinite; -webkit-animation: myfirst  3s 1s infinite; text-align: center; margin-top: 0.115rem; height: 0.33rem; line-height: 0.33rem; width: 0.33rem;border-radius: 50%; background-color: rgba(0,0,0,0.5); float: left; vertical-align: middle; }
+.goods-mess .yuantip:after{ content: ''; display: inline-block; width: 0.15rem; height: 0.15rem; background: #FFFFFF; border-radius: 50%;}
+.goodsmes .goods-mess .simgoodimg{ float: left; height: 0.94rem; width: 0.94rem;}
+.goodsmes .goods-mess .simgoodimg img{ width: 100%; height: 100%; object-fit: contain; float: left; border: 0.03rem solid #FFFFFF; margin-top: 0.2rem; }
+.goodsmes .goods-mess .simgoodname{ width: 2.5rem; border-radius: 3px; background-color: rgba(0,0,0,0.5); padding-left: 0.2rem;  margin-left: 0.13rem;  float: left; color: #FFFFFF;  line-height: 0.55rem;  font-weight: bold;  font-size: 0.27rem;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.goodsmes .goods-mess .simgoodprice{ width: 1.9rem; font-size: 0.2rem; color: #FFFFFF; float: left; margin-left: 0.25rem; margin-top: 0.08rem;}
+.goodsmes .goods-mess .simgoodprice span{ font-size: 0.25rem;}
+.simple-mask{ width: 100%; height: 100%; position: fixed; top: 0; z-index: 68; background-color: rgba(0,0,0,0.7); display: none;}
+.simple-freedesign{ position: fixed; width: 7.05rem; z-index: 70; display: none; background-color: #FFFFFF; border-radius: 5px; top: 40%; left: 50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
+.simple-freedesign-s h1{ text-align: center; font-size: 0.38rem; color: #1a1a1a; line-height: 0.38rem; padding-top: 0.6rem; font-weight: bold;}
+.simple-freedesign-s p{ text-align: center; font-size: 0.28rem; color: #666666; line-height: 0.28rem; margin-top: 0.2rem;}
+.simple-freedesign-s p span{ color: #b78a17; font-size: 0.28rem; }
+.simple-freedesign-s .simexidmess{ width: 6.3rem; margin: 0.5rem auto;}
+.simexidmess .sim-user-name,.simexidmess .sim-user-phone{ border: 0.01rem solid #cccccc; border-radius: 5px; height: 0.88rem;}
+.simexidmess .sim-user-name{ margin-bottom: 0.25rem;}
+.simple-freedesign-s .simexidmess .sn-icon{ width: 0.85rem; line-height: 0.53rem; float: left; height: 0.53rem; text-align: center; border-right: 0.01rem solid #CCCCCC; margin-top: 0.175rem;}
+.simple-freedesign-s .simexidmess .sn-icon i{ font-size: 0.42rem; color: #cccccc;}
+.simexidmess .sim-user-name input,.simexidmess .sim-user-phone input{ width: 5.05rem; height: 0.53rem; margin-top: 0.175rem; font-size: 0.33rem; outline: none; border: none; line-height: 0.53rem; margin-left: 0.22rem;  }
+.simple-freedesign-s .sim-up{ width: 6.25rem; cursor: pointer; margin: 0 auto 0.72rem auto; height: 0.9rem;line-height: 0.9rem; text-align: center; color: #FFFFFF; font-size: 0.3rem; background-color: #b78a17; border-radius: 3px;}
+.simple-freedesign-s .sim-close{ width: 0.8rem; height: 0.8rem; position: absolute; bottom: -2rem; left: 50%; margin-left: -0.4rem;}
+.simple-freedesign-s .sim-close i{ color: #FFFFFF;font-size: 0.7rem;}
+
+
+@-webkit-keyframes myfirst
+{
+    0%{ opacity: 1;}
+    20%{opacity: 0.5}
+    40%{ opacity: 1}
+    60%{ opacity: 0.5}
+    80%{ opacity: 1}
+    100%{ opacity: 0.5;}
+}
+@keyframes myfirst
+{
+    0%{ opacity: 1;}
+    20%{opacity: 0.5}
+    40%{ opacity: 1}
+    60%{ opacity: 0.5}
+    80%{ opacity: 1}
+    100%{ opacity: 0.5;}
+}
+
+
+
+
+

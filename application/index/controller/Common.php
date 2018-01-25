@@ -29,6 +29,13 @@ class common extends Controller
         return $this->fetch('floor');
     }
 
+    public function top()
+    {
+        //
+        return $this->fetch('top');
+    }
+
+
     /**
      * 保存新建的资源
      *
