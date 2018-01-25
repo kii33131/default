@@ -15,7 +15,7 @@ class Cart extends Base
     public function index()
     {
         //
-
+        $this->assign('SITE_LOCATION','cart');
         return $this->fetch('index');
 
     }

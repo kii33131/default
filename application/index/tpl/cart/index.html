@@ -1,10 +1,242 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>cart</title>
-</head>
-<body>
+{include file="common/header" /}
+{include file="common/othertop" /}
+{css href="_CSS1_/2018/mystyle.css" /}
+<div class="yx-productcartmain">
+
+    <div class="shopcartitme shop_store_1" >
+
+
+
+
+        <div class="productcartitem productcartitem1 "  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
+            <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp1" rec_id=""></span></div>
+            <div class="pci-right">
+                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
+                <div class="pcir-itemmes-s yx-changetype">
+                    <div class="pcir-itemmes">
+
+
+                        <div class="pcir-message">
+                            <a >
+                                <div class="pcirm-name" >商品名称</div>
+
+                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice1" goodsnum="2">500</span></div>
+                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum1" >2</span></div>
+                            </a>
+                        </div>
+
+
+                        <div class="pcir-exidmes">
+                            <a >
+                                <div class="pcire-num">
+                                    <span class="jiannums" goodsid="1"><i class="icon iconfont icon-jianhao"></i></span>
+                                    <p class="nums">2</p>
+                                    <span class="jianum" goodsid="1"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
+                                </div>
+
+
+                                <div class="pcire-num">
+                                    ￥ <span class="">500</span>
+                                </div>
+                            </a>
+                            <div class="pcire-del" onclick="delspec('1')">删除</div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="productcartitem  productcartitem2"  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
+            <div class="pci-choice"> <span class="icon iconfont icon-xuanzhong yxradio sp sp2" good_id=""></span></div>
+            <div class="pci-right">
+                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
+                <div class="pcir-itemmes-s yx-changetype">
+                    <div class="pcir-itemmes">
+
+
+                        <div class="pcir-message">
+                            <a >
+                                <div class="pcirm-name" >商品名称1</div>
+
+                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice2" goodsnum="1">500</span></div>
+                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum2" >1</span></div>
+                            </a>
+                        </div>
+
+
+                        <div class="pcir-exidmes">
+                            <a >
+                                <div class="pcire-num">
+                                    <span class="jiannums" goodsid="2"><i class="icon iconfont icon-jianhao"></i></span>
+                                    <p class="nums">1</p>
+                                    <span class="jianum" goodsid="2"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
+                                </div>
+                                <div class="pcire-num">
+                                    ￥ <span class="">500</span>
+                                </div>
+                            </a>
+                            <div class="pcire-del" onclick="delspec('2')">删除</div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <div class="productcartbottom">
+        <div class="sellectallgoods"><span class="icon iconfont icon-xuanzhong yxradio quanxuan"></span>全选</div>
+        <div class="sellallgo money-e shopping_cart_bottom_pay_rec_id" ><a href="javascript:;">结算</a></div>
+        <div class="sellallgo delete-e" style="display: none"><a href="javascript:delspecs();">删除</a></div>
+        <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">0</em></span></div>
+    </div>
+
+
+</div>
+<script>
+    $('.yx-productcartmain .pcir-message').on('click', function () {
+        if ($(this).hasClass('yx-changetype')){
+
+            $(this).removeClass('yx-changetype');
+            $(this).parent().parent().parent().find('.pcir-itemmes').stop().animate({'margin-left':'0rem'},150);
+
+        }else {
+
+            $(this).addClass('yx-changetype');
+            $(this).parent().parent().parent().find('.pcir-itemmes').stop().animate({'margin-left':'-4.7rem'},150);
+
+        }
+    });
+
+
+    $('.quanxuan').on('click', function () {
+        var money = 0;
+        if($(this).hasClass('product-select-red')){
+            // 取消全选
+            $('.sp').removeClass('product-select-red');
+            $(this).removeClass('product-select-red')
+
+
+        }else{
+            //全选
+            $('.shop_store_1  ')
+
+            $('.shop_store_1 .yx-goodsprice').each(function () {
+
+                money += $(this).html()* $(this).attr('goodsnum');
+
+            })
+            $('.sp').addClass('product-select-red');
+            $(this).addClass('product-select-red')
+
+        }
+
+
+        $('.zongfu').html(money)
+
+    })
+
+
+    // 选择某款商品
+    $('.shop_store_1 .sp').on('click', function () {
+
+        var money=   $(this).parents().next().find( 'span[class^="yx-goodsprice"]').html();
+
+
+        var mum=   $(this).parents().next().find( 'span[class^="yx-goodsprice"]').attr('goodsnum');
+        var zongmoney = money*mum;
+
+       // alert(zongmoney)
+        if($(this).hasClass('product-select-red')){
+            //取消选择
+            $(this).removeClass('product-select-red')
+
+            $('.zongfu').html(parseInt($('.zongfu').html())-parseInt(zongmoney))
+
+        }else{
+            // 选中
+            $(this).addClass('product-select-red')
+
+            $('.zongfu').html(parseInt($('.zongfu').html())+parseInt(zongmoney))
+        }
+
+    })
+
+
+    // 添加商品数量
+    $('.shop_store_1 .jianum').on('click', function () {
+        // 先判断有没有库存
+        var goodsid = $(this).attr('goodsid')
+
+        var num = parseInt( $(this).prev().html())
+        $(this).prev().html(num+1)
+
+        var money = parseInt($(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').html())
+        $('.outprinum'+goodsid).html(num+1)
+        $('.yx-goodsprice'+goodsid).attr('goodsnum',num+1)
+
+        if($('.sp'+goodsid).hasClass('product-select-red')){
+
+            $('.zongfu').html(parseInt($('.zongfu').html())+money)
+        }
+        //$(this).parents().parents().parents().prev().find( 'span[class^="outprinum"]').html(num+1)
+        //$(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').attr('goodsnum',num+1)
+
+    })
+
+    //jiannum
+    $('.shop_store_1 .jiannums').on('click', function () {
+
+        var goodsid = $(this).attr('goodsid')
+        var num = parseInt( $(this).next().html())
+        if(num==1){
+            return false;
+        }
+        $(this).next().html(num-1)
+        var money = parseInt($(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').html())
+        $('.outprinum'+goodsid).html(num-1)
+        $('.yx-goodsprice'+goodsid).attr('goodsnum',num-1)
+
+        if($('.sp'+goodsid).hasClass('product-select-red')){
+            $('.zongfu').html(parseInt($('.zongfu').html())-money)
+
+        }
+
+
+    })
+    
+    function delspec(goodsid) {
+
+        //alert(goodsid);
+        var num =  $('.yx-goodsprice'+goodsid).attr('goodsnum')
+        var money = $('.yx-goodsprice'+goodsid).html()
+        var tour = money*num;
+
+        if($('.sp'+goodsid).hasClass('product-select-red')){
+
+            $('.zongfu').html(parseInt($('.zongfu').html())-tour)
+
+        }
+        $('.productcartitem'+goodsid).remove();
+
+    }
+    //sp
+
+    //product-select-red
+
+
+</script>
+
 
 </body>
 </html>

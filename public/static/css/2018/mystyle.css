@@ -1,5 +1,5 @@
 .yx-productcartmain{ background-color: #f2f2f2; margin-top: 0.9rem;}
-.shopcartitme .shopct-title{ height: 0.67rem; cursor: pointer; background-color: #FFFFFF; line-height: 0.67rem; padding-left: 0.25rem; border-bottom: 1px solid #e6e6e6;border-top: 1px solid #e6e6e6}
+.shopcartitme .shopct-title{ height: 1rem; cursor: pointer; background-color: #FFFFFF; line-height: 0.67rem; padding-left: 0.25rem; border-bottom: 1px solid #e6e6e6;border-top: 1px solid #e6e6e6}
 .shopct-title .sct-shopname{ float: left;}
 .shopct-title .sct-shopname p{float: left; }
 .shopct-title .sct-shopname i{ float: left; font-size: 0.27rem;}

@@ -34,6 +34,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('common/header','index/common/header');
     Route::get('common/floor','index/common/floor');
     Route::get('common/top','index/common/top');
+    Route::get('common/othertop','index/common/othertop');
     Route::get('common/search_front','index/common/search_front');
     Route::get('login','index/login/index');
     Route::get('yzm','index/login/yzm');
