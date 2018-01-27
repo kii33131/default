@@ -5,9 +5,6 @@
 
     <div class="shopcartitme shop_store_1" >
 
-
-
-
         <div class="productcartitem productcartitem1 "  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
             <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp1" rec_id=""></span></div>
             <div class="pci-right">
@@ -20,8 +17,8 @@
                             <a >
                                 <div class="pcirm-name" >商品名称</div>
 
-                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice1" goodsnum="2">500</span></div>
-                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum1" >2</span></div>
+                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice1" goodsnum="1">500</span></div>
+                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum1" >1</span></div>
                             </a>
                         </div>
 
@@ -30,13 +27,13 @@
                             <a >
                                 <div class="pcire-num">
                                     <span class="jiannums" goodsid="1"><i class="icon iconfont icon-jianhao"></i></span>
-                                    <p class="nums">2</p>
+                                    <p class="nums">1</p>
                                     <span class="jianum" goodsid="1"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
                                 </div>
 
 
                                 <div class="pcire-num">
-                                    ￥ <span class="">500</span>
+                                    ￥ <span class="dan1">500</span>
                                 </div>
                             </a>
                             <div class="pcire-del" onclick="delspec('1')">删除</div>
@@ -78,7 +75,7 @@
                                     <span class="jianum" goodsid="2"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
                                 </div>
                                 <div class="pcire-num">
-                                    ￥ <span class="">500</span>
+                                    ￥ <span class="dan2">500</span>
                                 </div>
                             </a>
                             <div class="pcire-del" onclick="delspec('2')">删除</div>
@@ -96,7 +93,7 @@
 
     <div class="productcartbottom">
         <div class="sellectallgoods"><span class="icon iconfont icon-xuanzhong yxradio quanxuan"></span>全选</div>
-        <div class="sellallgo money-e shopping_cart_bottom_pay_rec_id" ><a href="javascript:;">结算</a></div>
+        <div class="sellallgo money-e shopping_cart_bottom_pay_rec_id" ><a href="/order.html">结算</a></div>
         <div class="sellallgo delete-e" style="display: none"><a href="javascript:delspecs();">删除</a></div>
         <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">0</em></span></div>
     </div>
@@ -185,6 +182,8 @@
         $('.outprinum'+goodsid).html(num+1)
         $('.yx-goodsprice'+goodsid).attr('goodsnum',num+1)
 
+        $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())+money)
+
         if($('.sp'+goodsid).hasClass('product-select-red')){
 
             $('.zongfu').html(parseInt($('.zongfu').html())+money)
@@ -206,7 +205,7 @@
         var money = parseInt($(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').html())
         $('.outprinum'+goodsid).html(num-1)
         $('.yx-goodsprice'+goodsid).attr('goodsnum',num-1)
-
+        $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())-money)
         if($('.sp'+goodsid).hasClass('product-select-red')){
             $('.zongfu').html(parseInt($('.zongfu').html())-money)
 
@@ -217,22 +216,24 @@
     
     function delspec(goodsid) {
 
-        //alert(goodsid);
-        var num =  $('.yx-goodsprice'+goodsid).attr('goodsnum')
-        var money = $('.yx-goodsprice'+goodsid).html()
-        var tour = money*num;
+        var msg = "您真的确定要删除吗？\n\n请确认！";
+        if (confirm(msg)==true){
+            var num =  $('.yx-goodsprice'+goodsid).attr('goodsnum')
+            var money = $('.yx-goodsprice'+goodsid).html()
+            var tour = money*num;
 
-        if($('.sp'+goodsid).hasClass('product-select-red')){
+            if($('.sp'+goodsid).hasClass('product-select-red')){
 
-            $('.zongfu').html(parseInt($('.zongfu').html())-tour)
+                $('.zongfu').html(parseInt($('.zongfu').html())-tour)
+
+            }
+            $('.productcartitem'+goodsid).remove();
+        }else{
+
 
         }
-        $('.productcartitem'+goodsid).remove();
 
     }
-    //sp
-
-    //product-select-red
 
 
 </script>

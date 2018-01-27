@@ -1,0 +1,54 @@
+{include file="common/header" /}
+{include file="common/othertop" /}
+
+{css href="_CSS1_/2018/mystyle.css" /}
+{css href="_CSS1_/personal.css" /}
+<body style="background-color: #fff">
+
+<form action="" style="margin-top: .8rem">
+    <!--不为空的时候显示-->
+    {if $list }
+    <div class="rhz-address_mes" style="display: block;">
+        <ul class="rhz-address_lists">
+
+
+                {foreach $list as $key => $item}
+                    <li >
+                        <span>
+                            <div class="rhz-address_name">{$item.name}</div>
+                            <div class="rhz-address_phone">{$item.phone}</div>
+                        </span>
+
+                        <div class="rhz-address_change">
+                            <a href="/address.html?from=addresslist&id={$item.id}">编辑</a>
+                        </div>
+
+                        <span>
+                            <p>{$item.address}</p>
+                        </span>
+                    </li>
+                {/foreach}
+
+
+
+
+
+
+        </ul>
+    </div>
+    <!--当为空的时候显示-->
+    {else}
+
+    <div class="rhz-addresskong" style="display: block"><img src="_IMG_/kong.png" alt=""></div>
+    {/if}
+
+
+    <a href="address.html?from=addresslist">
+        <div class="rhz_add_address_btn"><input type="button"  value="新建地址"></div>
+    </a>
+
+
+</form>
+<input type="hidden" name="rec_id" id="rec_id" value="" />
+</body>
+</html>

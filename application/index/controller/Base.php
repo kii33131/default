@@ -5,7 +5,7 @@ namespace app\index\controller;
 use think\Config;
 use think\Controller;
 use think\Request;
-use app\index\model\userinfo;
+use app\index\model\Userinfo;
 use LaneWeChat\Core\WeChatOAuth;
 class Base extends Controller
 {

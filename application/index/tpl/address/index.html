@@ -1,0 +1,157 @@
+{include file="common/header" /}
+{include file="common/othertop" /}
+{css href="_CSS1_/2018/mystyle.css" /}
+<div class="yx-productcartmain" style="background: #ffffff">
+
+    <div style="width: 100%;height:1rem; background: #ffffff">
+        <span style="font-size: 16px; margin-left: 0.2rem;line-height: 59px;">收货人名:</span> <input  class="name"  style="width: 4rem;height: 0.4rem;border: 1px solid #999" type="text" {if isset($addressinfo.name)} value="{$addressinfo.name}" {/if} >
+    </div>
+
+    <div style="width: 100%;height:1rem; background: #ffffff">
+        <span style="font-size: 16px; margin-left: 0.2rem;line-height: 59px;">联系电话:</span> <input  class="phone" style="width: 4rem;height: 0.4rem;border: 1px solid #999" type="number"  maxlength="11" {if isset($addressinfo.phone)} value="{$addressinfo.phone}" {/if}>
+    </div>
+
+    <div style="width: 100%;height:1rem; background: #ffffff">
+
+        <span style="font-size: 16px; margin-left: 0.2rem;line-height: 59px;">选择省份:</span>
+        <select class="region" name="region" style="width: 2rem;height: 0.4rem;">
+            <option value="0"> 请选择</option>
+            {if $address}
+            {foreach $address as $key => $item}
+            <option value="{$item.region_id}"  {if isset($addressinfo.province_id)}  {if $item.region_id eq  $addressinfo.province_id}  selected {/if} {/if} > {$item.region_name}</option>
+            {/foreach}
+            {/if}
+        </select>
+
+        <select class="region2" name="region2" {if isset($sonlist)} style="width: 2rem;height: 0.4rem; " {else} style="width: 2rem;height: 0.4rem; display: none" {/if}>
+            {if isset($sonlist)}
+            {foreach $sonlist as $key => $item}
+            <option value="{$item.region_id}"  {if isset($addressinfo.province_id)}  {if $item.region_id eq  $addressinfo.city_id}  selected {/if} {/if} > {$item.region_name}</option>
+            {/foreach}
+            {/if}
+
+        </select>
+
+    </div>
+
+    <input type="hidden" value="{if isset($addressinfo.id)}{$addressinfo.id}{/if}" class="id">
+    <div style="width: 100%;height:1rem; background: #ffffff">
+        <span style="font-size: 16px; margin-left: 0.2rem;line-height: 59px;">详细地址:</span> <input class="address" style="width: 4rem;height: 0.4rem;border: 1px solid #999" type="text" {if isset($addressinfo.address)} value="{$addressinfo.address}" {/if}>
+    </div>
+
+    <div style="width: 100%;height:1rem; background: #ffffff">
+        <span style="font-size: 16px; margin-left: 0.2rem;line-height: 59px;">选择使用:</span>
+        {if isset($addressinfo.is_check)}
+        <input type="checkbox" class="is_check" {if isset($addressinfo.is_check) && $addressinfo.is_check eq 1 } checked  {/if}  >
+        {else}
+        <input type="checkbox" class="is_check"  checked    >
+        {/if}
+
+    </div>
+    <div class="rhz_save_btn ki" style="width: 95%;height: 0.5rem;text-align: center;border: 1px solid  salmon;margin-left: 0.2rem;margin-top: 1rem;font-size: 16px;">保存</div>
+
+</div>
+
+<script>
+    $(function () {
+        $('.region').change(function () {
+            var parent_id  = $(this).val();
+            $.ajax({
+                url:'/getcity',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{parent_id:parent_id},
+               // timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.code==200){
+                        if(data.html){
+
+                            $('.region2').show()
+                            $('.region2').html(data.html)
+                        }
+
+                    }
+                }
+            });
+        })
+
+        $('.rhz_save_btn').on('click',function () {
+
+
+            if($('.rhz_save_btn').hasClass('ki')){
+
+                var name = $('.name').val();
+                if(!name){
+                    alert('收货不能为空'); return false
+                }
+                var phone = $('.phone').val();
+                var rhz_numphone=/^[1][35847][0-9]{9}$/;
+                if (rhz_numphone.test(phone)!=true){
+
+                    alert('请输入正确的手机号'); return false
+                }
+
+                var province_id = $('.region').val();
+                if(!province_id){
+                    alert('请选择省份'); return false
+                }
+                var city_id = $('.region2').val();
+                if(!city_id){
+                    alert('请选择城市'); return false
+                }
+                var address = $('.address').val();
+                if(!address){
+                    alert('收货地址不能为空'); return false
+                }
+
+                var id = $('.id').val()
+                if($('.is_check').is(':checked')){
+
+                    var is_check =1
+                }else{
+                    var is_check =0
+                }
+
+                //ki
+                $('.rhz_save_btn').removeClass('ki');
+                $.ajax({
+                    url:'/addaddress',//提交访问的URL
+                    type: 'POST',//提交的方法
+                    dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                    data:{name:name,phone:phone,address:address,province_id:province_id,city_id:city_id,id:id,is_check:is_check},
+                    //timeout: 2000,//超时时间
+                    error: function(){ //如果出错，执行函数
+                        alert('Error');
+                    },
+                    success: function(data){
+                        //console.log(data.msg)
+                        if(data.code==200){
+
+                            '{if isset($back)}'
+                            window.location.href = '/{$back}.html';
+                            '{else}'
+                            window.location.href = '/address.html';
+                            '{/if}'
+                            $('.rhz_save_btn').addClass('ki');
+                        }
+                        if(data.code==404){
+                            window.location.href = data.url;
+                        }
+                        if(data.code==400){
+
+                            alert('添加失败');
+                        }
+                    }
+                });
+            }
+
+        })
+
+    })
+</script>
+</body>
+</html>

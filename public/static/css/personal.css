@@ -1,0 +1,47 @@
+html{font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu;}
+.rhz-personal_header{ width: 100%; height: 2.59rem; background:url("../img/personal_bg.png") no-repeat center; padding-top: .6rem; background-size: 100% 100%;}
+.rhz-personal_img{ width: .9rem; height: .9rem; margin: 0rem auto .4rem auto; }
+.rhz-personal_img  img{ width: 100%; height: 100%;}
+.rhz-personal_name{ height: .6rem; text-align: center; font-size: .28rem; color: #fff;}.rhz-personal_name a{ height: 100%;}
+.rhz-personal_name a img{ height: 90%;}
+.rhz-personal_list{ width: 100%; margin-bottom: 1rem;}
+.rhz-minmessage{ padding: 0 .2rem; height:.9rem; background-color: #fff; line-height: .9rem;}
+.rhz-minmessage a{ color: #000;}
+.rhz-minmessage a p{ color: #333; font-size: .3rem; }
+.rhz-minmessage a p i{ float: right;}
+.rhz-min_list{ margin: .2rem 0;}
+.rhz-l-r-p{ width: 2rem; height: .5rem; margin: 0 auto; line-height: .5rem; border: 1px  solid #fff; border-radius: 3px; }
+.rhz-l-r-p a{ color: #fff; font-size: .24rem;}
+.rhz-p-login{ padding-right: .1rem;}
+.rhz-min_list ul a li{ background-color: #fff; color: #333; border-bottom: 1px solid #eee; font-size: .3rem; height: .9rem; padding: 0 .2rem; line-height: .9rem; font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu;}
+.rhz-min_list ul a li i{ float: right;}
+.rhz_float_l{ float: left!important; font-size: .4rem; margin-right: .2rem; color: #9b9b9b;}
+.rhz_float_s{ float: left!important; font-size: .35rem; margin-right: .2rem; color: #666;}
+.rhz-change_mes{ width: 100%;}
+.rhz-change_mes ul li{  border-bottom: 1px solid #eee; line-height: .9rem; background-color: #fff; font-size: .3rem; padding: 0 .2rem; font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu;}
+.rhz_change_img{ float: right;}
+.rhz_change_img img{ height: 1.15rem; float: right; margin-top: 0.15rem;}
+.rhz-change_mes ul>li:nth-child(1){ line-height: 1.5rem;}
+.rhz-change_mes ul li div{ float: right;}
+.rhz_change_dectaddress input{ width: 5rem; }
+.rhz_true_address{ padding-left: .2rem!important;}
+.rhz-change_mes ul li i{ color: #da6f6f; font-size: .4rem; margin-right: .2rem; float: left;}
+.rhz_delect_address{ background-color: #eee !important; border-bottom: 1px solid #ddd !important;color: #da6f6f !important;}
+.rhz-change_mes ul li div input{ border: none; text-align: right;width: 5.5rem; line-height: .5rem; font-size: .3rem; font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu;}
+.rhz_save_btn{ position: fixed; bottom: 0; padding: 0 .2rem;}
+.rhz_save_btn input{ background-color: #dc4033; width: 7.1rem; border: none; height: .9rem; border-radius: 5px; color: #fff;font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu; font-size: .3rem;}
+.rhz_change_sex select{ border: none; font-family: "Microsoft YaHei"; font-size: .3rem;  text-align: right; direction: rtl; width: 2rem; height: .9rem;}
+.rhz_change_sex select option{ text-align: center; height: .6rem; font-size: .3rem;}
+#rhz-selProvince,#rhz-selCity { border: none; font-family: "Microsoft YaHei"; font-size: .3rem;  text-align: right; direction: rtl; width: 3rem; height: .9rem;}
+#rhz-selCity option,#rhz-selCity option{ text-align: center; height: .6rem; font-size: .3rem;}
+
+.rhz-address_mes ul li{ font-size: .3rem; height: 1.55rem; padding-left: .75rem; padding-top: .15rem; border-bottom: 1px solid #eaeaea; }
+.rhz-address_name{ width: 2.5rem; float: left; line-height: .8rem; font-size: .32rem;font-family: "Microsoft YaHei";}
+.rhz-address_phone{ width: 2.5rem; float: left; line-height: .8rem; font-size: .32rem;font-family: "Microsoft YaHei";}
+.rhz-address_change a{ margin-right: .2rem; width: 1rem;float: right; line-height: .8rem; font-size: .32rem;font-family: "Microsoft YaHei"; color: #666;}
+.rhz-address_mes ul li p{ clear: both; line-height: .6rem; font-family: "Microsoft YaHei"; font-size: .3rem; color: #666;}
+.rhz_add_address_btn{ position: fixed; bottom: 0;padding: 0 .2rem; }
+.rhz_add_address_btn input{background-color: #cd2b2b; width: 7.1rem; border: none; height: .9rem; border-radius: 5px; color: #fff;font-family: "Microsoft YaHei", '微软雅黑', "Microsoft JhengHei", '华文细黑', STHeiti, MingLiu; font-size: .3rem;}
+.rhz-moren{ background: #eaeaea url("../img/morenaddress.png") no-repeat .15rem .35rem; background-size: .5rem;}
+.rhz-addresskong{ width: 7.1rem;  margin:4rem 0 0 .2rem;  }
+.rhz-addresskong img{ width: 100%;}

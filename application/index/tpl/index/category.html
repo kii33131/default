@@ -13,141 +13,46 @@
 <div class="yx-classification-choice">
     <div class="yx-classification-choice-s">
         <div class="yx-c-cleft">
+            {if !empty($cate)}
+            {foreach $cate as $key => $item}
+             <div  cateid="{$item.cate_id}" {if $key eq 0} class="classchioce" {/if}>{$item.cate_name}</div>
+            {/foreach}
+            {/if}
 
+         </div>
 
-
-        <div  class="classchioce" >刀具</div>
-            <div>刀具</div>
-            <div>刀具</div>
     </div>
-
-</div>
 </div>
 
 
 <div class="yx-c-cright">
 
-
     <div class="yx-c-child1">
         <div class="yxccr-part1">
+            {if !empty($cate)}
+            {foreach $cate as $key => $item}
+                <div class="jj{$item.cate_id}" {if $key eq 0} style="display: block" {else} style="display: none" {/if} >
+                    <div class="yxccr-p-title" cate_id=""><p></p>{$item.cate_name} <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
 
-            <div class="yxccr-p-title" cate_id=""><p></p>刀具 <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+                   {if isset($item.children)}
 
-            <div class="yxccr-p-main">
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>fsssss</p>
-                    </a>
+                    <div class="yxccr-p-main">
+                        {foreach $item.children as $keyi => $itemi}
+                        <div class="ypm-item">
+                            <a href="">
+                                <div class="ypm-itemimg"><img src="" alt=""></div>
+                                <p>{$itemi.cate_name}</p>
+                            </a>
+                        </div>
+                        {/foreach}
+                    </div>
+                    {/if}
                 </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>1</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>3</p>
-                    </a>
-                </div>
-
-            </div>
-
-
-            <div class="yxccr-p-title" cate_id=""><p></p>刀具2 <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
-
-            <div class="yxccr-p-main">
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>fsssss</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>1</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>3</p>
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="yxccr-p-title" cate_id=""><p></p>刀具3<div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
-
-            <div class="yxccr-p-main">
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>fsssss</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>1</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>3</p>
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="yxccr-p-title" cate_id=""><p></p>刀具3<div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
-
-            <div class="yxccr-p-main">
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>fsssss</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>1</p>
-                    </a>
-                </div>
-
-                <div class="ypm-item">
-                    <a href="">
-                        <div class="ypm-itemimg"><img src="" alt=""></div>
-                        <p>3</p>
-                    </a>
-                </div>
-
-            </div>
-
+            {/foreach}
+            {/if}
 
         </div>
     </div>
-
-
-
-
-
 
 
 </div>
@@ -179,6 +84,11 @@
             }else {
                 $(this).addClass('classchioce').siblings().removeClass('classchioce');
             }
+
+            var cateid = $(this).attr('cateid')
+
+            $('.jj'+cateid).show();
+            $('.jj'+cateid).siblings().hide()
         });
         var leftseachArr=$('.yx-c-cleft').children();
         var rightseachArr=$('.yx-c-cright').children();

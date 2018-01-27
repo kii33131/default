@@ -2,7 +2,7 @@
 
 namespace app\index\controller;
 
-use app\index\model\userinfo;
+use app\index\model\Userinfo;
 use think\Controller;
 use think\Request;
 
@@ -16,7 +16,10 @@ class Login extends Base
     public function index()
     {
         //
-
+        if(isset($_GET['backurl'])){
+            $_GET['backurl'] = urldecode($_GET['backurl']);
+            $this->assign('backurl',$_GET['backurl']);
+        }
         return $this->fetch('login');
     }
 
@@ -44,16 +47,16 @@ class Login extends Base
             // 没有注册并且登录
             $userid=$this->regitser($_POST);
             $info=userinfo::get($userid);
-            $_SESSION['user'] = $info;
+            $_SESSION['user']['id'] = $info->id;
+            $_SESSION['user']['open_id'] = $info->open_id;
+            $_SESSION['user']['nickname'] = $info->nickname;
+            $_SESSION['user']['phone'] = $info->phone;
             echo  json_encode(array('code'=>200,'msg'=>'success','data'=>'登录成功'));exit;
 
         }else{
             //有的话比对密码登录
-
-           $bool=$this->login($_POST,$info->password);
+           $bool=$this->login($_POST,$info);
            if($bool){
-
-               $_SESSION['user'] = $info;
 
                echo  json_encode(array('code'=>200,'msg'=>'success','data'=>'登录成功'));exit;
            }else{
@@ -73,24 +76,22 @@ class Login extends Base
 
 
     public function regitser($data){
-        $userinfo  =  new userinfo();
+        $userinfo  =  new Userinfo();
         $cc['phone'] = $data['phone'];
         $cc['password'] = md5($data['password']);
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         if (strpos($user_agent, 'MicroMessenger') === false) {
             //微信外面注册
             $userinfo->creat($cc);
-           // echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$userinfo->id));exit;
             return $userinfo->id;
 
         }else{
             //微信注册
            if(isset($_SESSION['user_info']['openid']) && !empty($_SESSION['user_info']['openid'])){
-              $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
+              $user=Userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
               if($user){
                   $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
                   return $user->id;
-                //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
               }
 
            }
@@ -102,34 +103,45 @@ class Login extends Base
     }
 
 
-    public function login($data,$password){
+    public function login($data,$info){
 
         $cc['phone'] = $data['phone'];
         $cc['password'] = md5($data['password']);
-        if($password!=md5($data['password'])){
+        if($info->password!=md5($data['password'])){
             echo  json_encode(array('code'=>400,'msg'=>'密码输入有误'));exit;
         }
+
+
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        if (strpos($user_agent, 'MicroMessenger') === false) {}else{
+        if (strpos($user_agent, 'MicroMessenger') === false) {
+
+            $_SESSION['user']['id'] = $info->id;
+            $_SESSION['user']['open_id'] = $info->open_id;
+            $_SESSION['user']['nickname'] = $info->nickname;
+            $_SESSION['user']['phone'] = $info->phone;
+
+
+        }else{
 
             //在微信里面
             if(isset($_SESSION['user_info']['openid']) && !empty($_SESSION['user_info']['openid'])){
-                $user=userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
+                $user=Userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
                 if($user){
 
                     // 执行微信登录操作
                     $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
-
-                    $old=userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
+                    $_SESSION['user']['id'] = $info->id;
+                    $_SESSION['user']['open_id'] = $info->open_id;
+                    $_SESSION['user']['nickname'] = $info->nickname;
+                    $_SESSION['user']['phone'] = $info->phone;
+                    $old=Userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
                     if($old){
                         // 先同步订单 购物车 等信息到新用户上面
-
                         //最后删除吊老用户
-                        userinfo::destroy($old->id);
-
+                        Userinfo::destroy($old->id);
                     }
 
-                    return $user->id;
+                   // return $user->id;
                     //  echo  json_encode(array('code'=>200,'msg'=>'succs','data'=>$user->id));exit;
                 }
 

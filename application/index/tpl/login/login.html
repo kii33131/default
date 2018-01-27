@@ -42,7 +42,7 @@
 
 
 </div>
-
+<input type="hidden" value="{if isset($backurl)}{$backurl}{/if}" class="backurl">
 <script>
     $('.rhz_send_login').click(function () {
         var phone = $('.rhz_user_phone').val();
@@ -64,8 +64,15 @@
                     alert(data.msg)
                 }else{
 
-                    alert(data.data)
-                    window.location.href = 'http://www.myinterestis.com/';
+                   // alert(data.data)
+                    if($('.backurl').val()!=''){
+                        window.location.href = $('.backurl').val();
+
+                    }else{
+                        window.location.href = 'http://www.myinterestis.com/';
+                    }
+
+
 
                 }
 
