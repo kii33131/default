@@ -1,0 +1,124 @@
+{include file="common/header" /}
+{css href="_CSS1_/2018/classification.css" /}
+<div class="yx-seach-result">
+    <div class="yx-s-r-top">
+        <div class="yxsrt-leftback"><a href="javascript:history.go(-1);"><i class="icon iconfont icon-xiangzuojiantou"></i></a></div>
+        <a href="javascript:;" >
+            <div class="yxsrt-mid-seach">
+                <form action="" style="float: left" method="get">
+                    <input type="search" class="kewordsc" value="" name="kewords">
+                </form>
+                <a class="yxsrt-mid-sicon">
+                    <i class="icon iconfont icon-search"></i>
+                </a>
+            </div>
+        </a>
+    </div>
+    <div class="yx-seachlist-choice yxui-flex">
+        <div class="cell yx-sc-list"><a href="javascript:;" class="zonghe">综合</a></div>
+        <div class="cell"><a href="javascript:;" class="xiaoliang">时间</a></div>
+        <div class="cell"><a href="javascript:;" class="yx-choicegoodprice jiage">价格 <i class="icon iconfont icon-sanjiaoshang yx-cprice"></i> <i class="icon iconfont icon-sanjiaoxia"></i></a></div>
+
+        <!--
+        <div class="cell yx-r-screen s-active"><a href="javascript:;">筛选</a></div> -->
+    </div>
+
+</div>
+
+<div class="yx-seach-list-result">
+
+    <div class="yx-scroll-guess">
+
+        <div class="yx-scroll-gu-list">
+
+            {if !empty($goodlist)}
+            {foreach $goodlist as $key => $item}
+            <div class="yx-scrollgl-item">
+                <a href="">
+                    <div class="yxscroll-iimg">
+                        <img src="{$item.default_image}" alt="">
+                    </div>
+                    <div class="yxscroll-iname">{$item.goods_name}</div>
+                    <div class="yxscroll-iprice">
+                        {if $item.promiseprice neq 0}
+                        <del>{$item.price}</del>
+                        <span><em>￥</em>{$item.promiseprice}</span>
+                        {else}
+                        <span><em>￥</em>{$item.price}</span>
+                        {/if}
+
+                    </div>
+                </a>
+            </div>
+            {/foreach}
+            {/if}
+
+        </div>
+
+
+    </div>
+</div>
+<input type="hidden" value="2" class="page">
+
+<div class="yx-bottomcheckmore"  style="display: none">
+到底啦 拉不出来啦
+</div>
+
+<script>
+    $('.jiage').click(function(){
+
+        if ($('.jiage>:first').hasClass('yx-cprice')){
+
+            $('.jiage>:first').removeClass('yx-cprice').siblings().addClass('yx-cprice');
+            //alert('ss');
+
+        } else {
+
+            $('.jiage>:first').removeClass('yx-cprice').siblings().removeClass('yx-cprice');
+            $('.jiage>:first').addClass('yx-cprice');
+
+        }
+    });
+
+
+    //活动到底部加载
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $(document).height();
+        var windowHeight = $(this).height();
+        var cate_2 = '{$cate_2}';
+        var cate_1 = '{$cate_1}';
+        if (scrollTop + windowHeight == scrollHeight) {
+
+            var page = $('.page').val()
+            $.ajax({
+                url:'/moregoods',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{cate_1:cate_1,cate_2:cate_2,page:page},
+                //timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.html){
+
+                        $('.yx-scroll-gu-list').append(data.html);
+                        $('.page').val(parseInt($('.page').val())+1);
+
+                    }else{
+                       // alert('没有数据啦');
+                        $('.yx-bottomcheckmore').show()
+                    }
+                }
+            });
+
+
+        }
+    });
+
+</script>
+
+</body>
+</html>

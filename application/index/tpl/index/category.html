@@ -32,14 +32,14 @@
             {if !empty($cate)}
             {foreach $cate as $key => $item}
                 <div class="jj{$item.cate_id}" {if $key eq 0} style="display: block" {else} style="display: none" {/if} >
-                    <div class="yxccr-p-title" cate_id=""><p></p>{$item.cate_name} <div class="checkmore"> <a href=""><img src="_IMG_/checkmore.png" alt=""></a></div></div>
+                    <div class="yxccr-p-title" cate_id=""><p></p>{$item.cate_name} <div class="checkmore"> <a href="/goods/{$item.cate_id}/0.html"><img src="_IMG_/checkmore.png" alt=""></a></div></div>
 
                    {if isset($item.children)}
 
                     <div class="yxccr-p-main">
                         {foreach $item.children as $keyi => $itemi}
                         <div class="ypm-item">
-                            <a href="">
+                            <a href="/goods/{$item.cate_id}/{$itemi.cate_id}.html">
                                 <div class="ypm-itemimg"><img src="" alt=""></div>
                                 <p>{$itemi.cate_name}</p>
                             </a>

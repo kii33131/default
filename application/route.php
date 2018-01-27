@@ -31,6 +31,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('order','index/Order/index');
     Route::get('address','index/Address/index');
     Route::get('addresslist','index/Address/addresslist');
+
+    Route::get('goods/:cate_1/:cate_2','index/Goods/index');
     //
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
@@ -47,6 +49,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
 Route::any('dologin','index/login/dologin');
 Route::any('getcity','index/Address/getcity');
 Route::any('addaddress','index/Address/addaddress');
+Route::get('moregoods','index/Goods/moregoods');
+//moregoods
 /*
 Route::get('public/:name/:s',function($name,$s){
 
