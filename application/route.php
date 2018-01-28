@@ -50,6 +50,13 @@ Route::any('dologin','index/login/dologin');
 Route::any('getcity','index/Address/getcity');
 Route::any('addaddress','index/Address/addaddress');
 Route::get('moregoods','index/Goods/moregoods');
+Route::any('addcart','index/Cart/addcart');
+Route::any('delete','index/Cart/delete');
+//delete
+Route::any('changecart','index/Cart/changecart');
+//changecart
+
+//addcart
 //moregoods
 /*
 Route::get('public/:name/:s',function($name,$s){

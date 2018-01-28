@@ -5,80 +5,51 @@
 
     <div class="shopcartitme shop_store_1" >
 
+        {if isset($cart)}
+
+        {foreach $cart as $key => $item}
         <div class="productcartitem productcartitem1 "  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
-            <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp1" rec_id=""></span></div>
+            <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp{$item.id}" rec_id=""></span></div>
             <div class="pci-right">
-                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
+                <div class="pcir-img">  <a href="/detail/{$item.goods_id}.html"><img src="{$item.default_image}" alt="">  </a></div>
                 <div class="pcir-itemmes-s yx-changetype">
                     <div class="pcir-itemmes">
 
-
                         <div class="pcir-message">
-                            <a >
-                                <div class="pcirm-name" >商品名称</div>
+                            <a  >
+                                <div class="pcirm-name" >{$item.goods_name}</div>
 
-                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice1" goodsnum="1">500</span></div>
-                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum1" >1</span></div>
+                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice{$item.id}" goodsnum="{$item.num}">
+                                    {if $item.promiseprice neq 0}
+                                    {$item.promiseprice}
+                                    {else}
+                                    {$item.price}
+                                    {/if}
+                                </span></div>
+                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum{$item.id}" >{$item.num}</span></div>
                             </a>
                         </div>
-
 
                         <div class="pcir-exidmes">
                             <a >
-                                <div class="pcire-num">
-                                    <span class="jiannums" goodsid="1"><i class="icon iconfont icon-jianhao"></i></span>
-                                    <p class="nums">1</p>
-                                    <span class="jianum" goodsid="1"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
+                                <div class="pcire-num" {if $item.promiseprice neq 0}price = '{$item.promiseprice}'{else} price = '{$item.price}'{/if}>
+                                    <span class="jiannums" goodsid="{$item.id}"><i class="icon iconfont icon-jianhao"></i></span>
+                                    <p class="nums">{$item.num}</p>
+                                    <span class="jianum" goodsid="{$item.id}"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
                                 </div>
 
 
                                 <div class="pcire-num">
-                                    ￥ <span class="dan1">500</span>
-                                </div>
-                            </a>
-                            <div class="pcire-del" onclick="delspec('1')">删除</div>
-                        </div>
-
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="productcartitem  productcartitem2"  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
-            <div class="pci-choice"> <span class="icon iconfont icon-xuanzhong yxradio sp sp2" good_id=""></span></div>
-            <div class="pci-right">
-                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
-                <div class="pcir-itemmes-s yx-changetype">
-                    <div class="pcir-itemmes">
-
-
-                        <div class="pcir-message">
-                            <a >
-                                <div class="pcirm-name" >商品名称1</div>
-
-                                <div class="pcirm-price">￥<span class="yx-goodsprice yx-goodsprice2" goodsnum="1">500</span></div>
-                                <div class="pcirm-num"><span>X</span><span class="outprinum outprinum2" >1</span></div>
-                            </a>
-                        </div>
-
-
-                        <div class="pcir-exidmes">
-                            <a >
-                                <div class="pcire-num">
-                                    <span class="jiannums" goodsid="2"><i class="icon iconfont icon-jianhao"></i></span>
-                                    <p class="nums">1</p>
-                                    <span class="jianum" goodsid="2"><i class="icon iconfont icon-navig-fabiao-copy"></i></span>
-                                </div>
-                                <div class="pcire-num">
-                                    ￥ <span class="dan2">500</span>
+                                    ￥ <span class="dan{$item.id}">
+                                    {if $item.promiseprice neq 0}
+                                      {$item.promiseprice*$item.num }
+                                    {else}
+                                    {$item.price*$item.num}
+                                    {/if}
+                                </span>
                                 </div>
                             </a>
-                            <div class="pcire-del" onclick="delspec('2')">删除</div>
+                            <div class="pcire-del" onclick="delspec('{$item.id}')">删除</div>
                         </div>
 
                     </div>
@@ -86,8 +57,12 @@
                 </div>
             </div>
         </div>
+        {/foreach}
 
 
+        {else}
+         购物车为空
+        {/if}
 
     </div>
 
@@ -174,22 +149,50 @@
     $('.shop_store_1 .jianum').on('click', function () {
         // 先判断有没有库存
         var goodsid = $(this).attr('goodsid')
-
+        var gg = $(this);
         var num = parseInt( $(this).prev().html())
-        $(this).prev().html(num+1)
+        var money = $(this).parents().attr('price')
+        money = parseInt(money)
+        $.ajax({
+            url:'/changecart',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{cart_id:goodsid,num:num+1},
+            // timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.code==200){
 
-        var money = parseInt($(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').html())
-        $('.outprinum'+goodsid).html(num+1)
-        $('.yx-goodsprice'+goodsid).attr('goodsnum',num+1)
+                    gg.prev().html(num+1)
+                    $('.outprinum'+goodsid).html(num+1)
+                    $('.yx-goodsprice'+goodsid).attr('goodsnum',num+1)
 
-        $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())+money)
+                    //alert(goodsid)
+                    //alert($('.dan'+goodsid).html())
 
-        if($('.sp'+goodsid).hasClass('product-select-red')){
+                     //alert(money)
+                    $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())+money)
 
-            $('.zongfu').html(parseInt($('.zongfu').html())+money)
-        }
-        //$(this).parents().parents().parents().prev().find( 'span[class^="outprinum"]').html(num+1)
-        //$(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').attr('goodsnum',num+1)
+                    if($('.sp'+goodsid).hasClass('product-select-red')){
+
+                        $('.zongfu').html(parseInt($('.zongfu').html())+money)
+                    }
+
+
+                }else{
+
+                    alert(data.msg)
+                }
+            }
+        });
+
+
+
+
+
 
     })
 
@@ -197,39 +200,80 @@
     $('.shop_store_1 .jiannums').on('click', function () {
 
         var goodsid = $(this).attr('goodsid')
+        var gg = $(this);
         var num = parseInt( $(this).next().html())
         if(num==1){
             return false;
         }
-        $(this).next().html(num-1)
-        var money = parseInt($(this).parents().parents().parents().prev().find( 'span[class^="yx-goodsprice"]').html())
-        $('.outprinum'+goodsid).html(num-1)
-        $('.yx-goodsprice'+goodsid).attr('goodsnum',num-1)
-        $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())-money)
-        if($('.sp'+goodsid).hasClass('product-select-red')){
-            $('.zongfu').html(parseInt($('.zongfu').html())-money)
+        var money = $(this).parents().attr('price')
+        money = parseInt(money)
+        $.ajax({
+            url:'/changecart',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{cart_id:goodsid,num:num-1},
+            // timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.code==200){
 
-        }
+                    gg.next().html(num-1)
+                    $('.outprinum'+goodsid).html(num-1)
+                    $('.yx-goodsprice'+goodsid).attr('goodsnum',num-1)
+                    $('.dan'+goodsid).html(parseInt($('.dan'+goodsid).html())-money)
+                    if($('.sp'+goodsid).hasClass('product-select-red')){
+                        $('.zongfu').html(parseInt($('.zongfu').html())-money)
+
+                    }
+
+                }else{
+
+                    alert(data.msg)
+                }
+            }
+        });
 
 
     })
     
     function delspec(goodsid) {
-
+        var goodsid = goodsid;
         var msg = "您真的确定要删除吗？\n\n请确认！";
         if (confirm(msg)==true){
             var num =  $('.yx-goodsprice'+goodsid).attr('goodsnum')
             var money = $('.yx-goodsprice'+goodsid).html()
             var tour = money*num;
 
-            if($('.sp'+goodsid).hasClass('product-select-red')){
+            $.ajax({
+                url:'/delete',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{cart_id:goodsid},
 
-                $('.zongfu').html(parseInt($('.zongfu').html())-tour)
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    location.reload();
+                    /*
+                    if(data.code==200){
 
-            }
-            $('.productcartitem'+goodsid).remove();
-        }else{
+                        if($('.sp'+goodsid).hasClass('product-select-red')){
+                            $('.zongfu').html(parseInt($('.zongfu').html())-tour)
+                        }
+                        $('.productcartitem'+goodsid).remove();
 
+                    }else{
+
+                        alert(data.msg)
+                    }*/
+                }
+            });
+            //delete
 
         }
 

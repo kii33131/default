@@ -198,14 +198,44 @@
         <div class="cell"><a href="tel:"><i class="icon iconfont icon-iconfontcolor39"></i><p>电话咨询</p></a></div>
     </div>
     <div class="goodsdetialbottom-right yxui-flex">
-        <div class="cell"><a href="javascript:;" class="add_cart">加入购物车</a></div>
-        <div class="cell"><a href="javascript:;" class="add_cart_order" >立即购买</a></div>
+        <div class="cell"><a href="javascript:;" class="add_cart" goods_id="{$data.id}"  >加入购物车</a></div>
+        <div class="cell"><a href="javascript:;" class="add_cart_order" goods_id="{$data.id}" >立即购买</a></div>
     </div>
 </div>
 
 </div>
 
+<script>
+    $('.add_cart').on('click',function () {
 
+        var goods_id  =  $(this).attr('goods_id');
+        $.ajax({
+            url:'/addcart',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{goods_id:goods_id},
+            // timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.code==200){
+
+                    alert(data.msg)
+
+                }else if(data.code==400){
+                    alert(data.msg)
+                }else if(data.code==402){
+
+                    window.location.href = data.url;
+                    //alert(data.msg)
+                }
+            }
+        });
+    })
+
+</script>
 
 
 </body>
