@@ -39,22 +39,23 @@ class Goods extends Base
         if(isset($_GET['cate_2']) && $_GET['cate_2']){
             $where['cate_2'] = $_GET['cate_2'];
         }
-        $order=  "'".'id'."'".','."'".'desc'."'";
+
         if(isset($_GET['time']) && $_GET['time']){
 
-            $order=  "'".'add_time'."'".','."'".$_GET['add_time']."'";
-        }
+            $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order('add_time',$_GET['time'])->select();
+        }elseif(isset($_GET['price']) && $_GET['price']){
 
-        if(isset($_GET['price']) && $_GET['price']){
-            $order=  "'".'price'."'".','."'".$_GET['price']."'";
+            $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order('price',$_GET['price'])->select();
+        }else{
+            $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order('id','desc')->select();
+
         }
-        $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order($order)->select();
         $html = '';
         if(!empty($goodlist)){
 
 
             foreach ($goodlist as $val){
-                $url = 'aa';
+                $url = '/detail/'.$val['id'].'.html';
                 $html .= '<div class="yx-scrollgl-item"><a href="'.$url.'">';
                 $html .= ' <div class="yxscroll-iimg"><img src="'.$val['default_image'] .'" alt=""></div>';
                 $html .= ' <div class="yxscroll-iname">'.$val['goods_name'].'</div>';
@@ -80,69 +81,12 @@ class Goods extends Base
 
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function save(Request $request)
-    {
-        //
-    }
+    // 商品详情页面
+    public function detail($id){
 
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
 
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
+        return $this->fetch('detail');
     }
 }

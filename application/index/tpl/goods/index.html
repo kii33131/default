@@ -17,7 +17,7 @@
     <div class="yx-seachlist-choice yxui-flex">
         <div class="cell yx-sc-list"><a href="javascript:;" class="zonghe">综合</a></div>
         <div class="cell"><a href="javascript:;" class="xiaoliang">时间</a></div>
-        <div class="cell"><a href="javascript:;" class="yx-choicegoodprice jiage">价格 <i class="icon iconfont icon-sanjiaoshang yx-cprice"></i> <i class="icon iconfont icon-sanjiaoxia"></i></a></div>
+        <div class="cell"><a href="javascript:;" class="yx-choicegoodprice jiage">价格 <i class="icon iconfont icon-sanjiaoshang "></i> <i class="icon iconfont icon-sanjiaoxia"></i></a></div>
 
         <!--
         <div class="cell yx-r-screen s-active"><a href="javascript:;">筛选</a></div> -->
@@ -34,7 +34,7 @@
             {if !empty($goodlist)}
             {foreach $goodlist as $key => $item}
             <div class="yx-scrollgl-item">
-                <a href="">
+                <a href="/detail/{$item.id}.html">
                     <div class="yxscroll-iimg">
                         <img src="{$item.default_image}" alt="">
                     </div>
@@ -60,6 +60,11 @@
 </div>
 <input type="hidden" value="2" class="page">
 
+<input type="hidden" value="{$cate_1}" class="cate_1">
+<input type="hidden" value="{$cate_2}" class="cate_2">
+
+<input type="hidden"  value="abc"  typed="def"  class="get">
+
 <div class="yx-bottomcheckmore"  style="display: none">
 到底啦 拉不出来啦
 </div>
@@ -67,56 +72,228 @@
 <script>
     $('.jiage').click(function(){
 
-        if ($('.jiage>:first').hasClass('yx-cprice')){
 
+        $(this).parents().siblings().removeClass('yx-sc-list')
+        if ($('.jiage>:first').hasClass('yx-cprice')){
             $('.jiage>:first').removeClass('yx-cprice').siblings().addClass('yx-cprice');
-            //alert('ss');
+            // 倒序排
+            $('.get').val('price');
+            $('.get').attr('typed','desc');
+
+            var value = 'desc';
 
         } else {
-
             $('.jiage>:first').removeClass('yx-cprice').siblings().removeClass('yx-cprice');
             $('.jiage>:first').addClass('yx-cprice');
 
+            // 倒序排正序
+            $('.get').val('price');
+            $('.get').attr('typed','asc');
+            var value = 'asc';
+
+
         }
+
+        var cate_2 = $('.cate_2').val();
+        var cate_1 = $('.cate_1').val();
+        $.ajax({
+            url:'/moregoods',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{cate_1:cate_1,cate_2:cate_2,page:1,price:value},
+            //timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.html){
+
+                    $('.yx-scroll-gu-list').html(data.html);
+                    $('.page').val(2);
+                    $('html, body').animate({scrollTop:0}, 'slow');
+                }else{
+                    // alert('没有数据啦');
+                    $('.yx-bottomcheckmore').show()
+                }
+            }
+        });
+
+
     });
 
+
+    $('.xiaoliang').on('click',function () {
+        $(this).parents().siblings().removeClass('yx-sc-list')
+        $(this).parents().addClass('yx-sc-list')
+        $('.icon-sanjiaoshang').removeClass('yx-cprice')
+        $('.icon-sanjiaoxia').removeClass('yx-cprice')
+        $('.get').val('time');
+        $('.get').attr('typed','asc');
+        var cate_2 = $('.cate_2').val();
+        var cate_1 = $('.cate_1').val();
+        var value = 'asc';
+        $.ajax({
+            url:'/moregoods',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{cate_1:cate_1,cate_2:cate_2,page:1,time:value},
+            //timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.html){
+
+                    $('.yx-scroll-gu-list').html(data.html);
+                    $('.page').val(2);
+                    $('html, body').animate({scrollTop:0}, 'slow');
+                }else{
+                    // alert('没有数据啦');
+                    $('.yx-bottomcheckmore').show()
+                }
+            }
+        });
+
+
+    })
 
     //活动到底部加载
     $(window).scroll(function () {
         var scrollTop = $(this).scrollTop();
         var scrollHeight = $(document).height();
         var windowHeight = $(this).height();
-        var cate_2 = '{$cate_2}';
-        var cate_1 = '{$cate_1}';
+        var cate_2 = $('.cate_2').val();
+        var cate_1 = $('.cate_1').val();
+        var keys =    $('.get').val();
+        var value =  $('.get').attr('typed');
+
         if (scrollTop + windowHeight == scrollHeight) {
-
             var page = $('.page').val()
-            $.ajax({
-                url:'/moregoods',//提交访问的URL
-                type: 'GET',//提交的方法
-                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-                data:{cate_1:cate_1,cate_2:cate_2,page:page},
-                //timeout: 2000,//超时时间
-                error: function(){ //如果出错，执行函数
-                    alert('Error');
-                },
-                success: function(data){
-                    //console.log(data.msg)
-                    if(data.html){
+            if(keys=='price'){
+                $.ajax({
+                    url:'/moregoods',//提交访问的URL
+                    type: 'GET',//提交的方法
+                    dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page,price:value},
+                    //timeout: 2000,//超时时间
+                    error: function(){ //如果出错，执行函数
+                        alert('Error');
+                    },
+                    success: function(data){
+                        //console.log(data.msg)
+                        if(data.html){
 
-                        $('.yx-scroll-gu-list').append(data.html);
-                        $('.page').val(parseInt($('.page').val())+1);
+                            $('.yx-scroll-gu-list').append(data.html);
+                            $('.page').val(parseInt($('.page').val())+1);
 
-                    }else{
-                       // alert('没有数据啦');
-                        $('.yx-bottomcheckmore').show()
+                        }else{
+                            // alert('没有数据啦');
+                            $('.yx-bottomcheckmore').show()
+                        }
                     }
-                }
-            });
+                });
+
+            }else if(keys=='time'){
+                $.ajax({
+                    url:'/moregoods',//提交访问的URL
+                    type: 'GET',//提交的方法
+                    dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page,time:value},
+                    //timeout: 2000,//超时时间
+                    error: function(){ //如果出错，执行函数
+                        alert('Error');
+                    },
+                    success: function(data){
+                        //console.log(data.msg)
+                        if(data.html){
+
+                            $('.yx-scroll-gu-list').append(data.html);
+                            $('.page').val(parseInt($('.page').val())+1);
+
+                        }else{
+                            // alert('没有数据啦');
+                            $('.yx-bottomcheckmore').show()
+                        }
+                    }
+                });
+
+            }else{
+
+                $.ajax({
+                    url:'/moregoods',//提交访问的URL
+                    type: 'GET',//提交的方法
+                    dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page},
+                    //timeout: 2000,//超时时间
+                    error: function(){ //如果出错，执行函数
+                        alert('Error');
+                    },
+                    success: function(data){
+                        //console.log(data.msg)
+                        if(data.html){
+
+                            $('.yx-scroll-gu-list').append(data.html);
+                            $('.page').val(parseInt($('.page').val())+1);
+
+                        }else{
+                            // alert('没有数据啦');
+                            $('.yx-bottomcheckmore').show()
+                        }
+                    }
+                });
+            }
+
+
+
+
 
 
         }
     });
+
+
+    // 综合筛选
+
+    $('.zonghe').on('click',function () {
+
+        $('.get').val('');
+        $('.get').attr('typed','');
+        $(this).parents().siblings().removeClass('yx-sc-list')
+        $(this).parents().addClass('yx-sc-list')
+        $('.icon-sanjiaoshang').removeClass('yx-cprice')
+        $('.icon-sanjiaoxia').removeClass('yx-cprice')
+
+
+        var cate_2 = $('.cate_2').val();
+        var cate_1 = $('.cate_1').val();
+
+        $.ajax({
+            url:'/moregoods',//提交访问的URL
+            type: 'GET',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{cate_1:cate_1,cate_2:cate_2,page:1},
+            //timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.html){
+
+                    $('.yx-scroll-gu-list').html(data.html);
+                    $('.page').val(2);
+                    $('html, body').animate({scrollTop:0}, 'slow');
+                }else{
+                    // alert('没有数据啦');
+                    $('.yx-bottomcheckmore').show()
+                }
+            }
+        });
+
+
+    })
 
 </script>
 

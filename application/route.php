@@ -31,9 +31,9 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('order','index/Order/index');
     Route::get('address','index/Address/index');
     Route::get('addresslist','index/Address/addresslist');
-
     Route::get('goods/:cate_1/:cate_2','index/Goods/index');
-    //
+    Route::get('detail/:id','index/Goods/detail');
+    //detail
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
     Route::get('common/header','index/common/header');
