@@ -1,10 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-aaaaffff
+{include file="common/header" /}
+
+{css href="_CSS1_/2018/limitedgoods.css" /}
+{css href="_CSS1_/2018/fellowshop.css" /}
+
+<style>
+    .productListC{position:relative}
+    .productGradient{width:7.5rem; height:4.12rem; position:absolute; top:0rem; left:0rem; background-image:-webkit-linear-gradient(top,rgba(63,48,27,1) 0%, rgba(63,48,27,0) 100%); background-image: linear-gradient(top,rgba(63,48,27,1) 0%, rgba(63,48,27,0) 100%); padding-left:0.38rem; padding-top:0.4rem; box-sizing: border-box;}
+    .cycle{width:0.22rem; height:0.22rem; border:0.03rem solid #e7b22b; border-radius:0.11rem;}
+    .poutcutText{ }
+    .bandTest{font-size:0.26rem; color:#fff; width:6.75rem; line-height:0.45rem; margin-top:0.32rem}
+    .title{width:7.5rem; height:2.07rem; font-size:0.38rem; color:#fff; background:#3f301b; text-align:center; margin-bottom:0.4rem; position:relative;}
+    .titleText{padding-top:0.54rem; padding-bottom:0.44rem;}
+    .titleText2{padding-top:0.8rem; font-size: 0.4rem;}
+    .triangle-down {
+        width: 0;
+        height: 0;
+        border-left: 0.2rem solid transparent;
+        border-right: 0.2rem solid transparent;
+        border-top: 0.15rem solid #3f301b;
+        position:absolute; bottom:-0.12rem;
+        left:50%; margin-left:-0.2rem;
+    }
+    .editImgDiv{width:100%; text-align:center; margin-bottom:0.39rem; padding:0 0.07rem; box-sizing: border-box; position:relative}
+    .bottomBg{width:7.32rem; margin-bottom: auto !important;}
+
+    .productBottom{font-size:0.32rem; text-align:center; color:#fff; height:1rem; line-height:1rem; position:fixed; bottom:0px; width:7.5rem}
+    .productBottom2{width:7.5rem; background:rgba(255,255,255,0.9); border-top:1px solid #e8e8e8; position:fixed; bottom:1rem; height:1.08rem}
+    .productBottom2 img{width:1.87rem; margin:0; padding:0; border:0; float:left}
+    .bottomBtn1,.bottomBtn2{float:left;width:50%;}
+    .bottomBtn1{background:#ff8a00;}
+    .bottomBtn2{background:#ff5100;}
+
+    .overFlow{display:none}
+    .overFlowBg{background: rgba(0,0,0,.7); position: fixed; left: 0px; top: 0px; right: 0px; bottom: 0px;}
+    .overFlowColor{width:7.06rem; height:6.33rem; background:#fff; position:fixed; top:40%; left:50%; margin-left:-3.53rem; margin-top:-3.16rem; box-sizing: border-box; border-radius:0.08rem; padding:0.68rem}
+    .colorSelect{width:0.8rem; height:0.8rem; float:left; margin:0.25rem 0.55rem}
+    .colorBtn{width:5.74rem; height:0.9rem; line-height:0.9rem; background:#ff8a00; font-size:0.34rem; color:#fff; text-align:center; border-radius:0.4rem; margin:0 auto}
+
+    .editTemplate{border:1px red dashed;  box-sizing: border-box; }
+    .eidtTitle{width:7.5rem; height:0.87rem; background:#ff3333; font-size:0.32rem; color:#fff; position:absolute; top:0px; box-sizing: border-box; line-height:0.87rem; padding-left:0.34rem}
+    .eidtTitle div{height:0.87rem; width:0.87rem; box-sizing: border-box; float:right; line-height:0.87rem; border-left:1px solid #ffadad; text-align:center}
+
+    .retraction{height:0.87rem; overflow:hidden}
+
+    @-webkit-keyframes loadingImg{
+        from {-webkit-transform: rotate(0deg);}
+        to {-webkit-transform: rotate(360deg);}
+    }
+
+    .loadingImg{
+        position:fixed; left:0px; top:0px; right:0xp; bottom:0px; background:rgba(0,0,0,0.34); width:100%; justify-content: center; align-items: center; display:none}
+    .loadingImg img{
+        -webkit-transform: rotate(360deg);
+        animation: loadingImg 1.5s linear infinite;
+        -moz-animation: loadingImg 1.5s linear infinite;
+        -webkit-animation: loadingImg 1.5s linear infinite;
+        -o-animation: loadingImg 1.5s linear infinite;
+        opacity: 0.75;
+        width:0.8rem;
+    }
+
+</style>
+
+
+<div class="limited-banner">
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+
+
+            <div class="swiper-slide">
+                <img src="{$data.default_image}" alt=""/>
+            </div>
+
+
+
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+</div>
+<!--购物车-->
+<div class="limited-goods-cart">
+    <a href="/cart.html" class="yxui-flex" ><i class="icon yxui-flex-center iconfont icon-gouwuche"></i></a>
+</div>
+<div class="yx-limited-goodmes">
+    <div class="yx-limited-goodmes-s">
+        <div class="yl-goodsid"><a href="javascript:;">{$data.goods_name}</a></div>
+        <div class="yl-gooddetailprice">
+            <div class="ylgd-price">
+                {if $data.promiseprice}
+                <span>￥</span>{$data.price}<del>￥{$data.promiseprice}</del>
+                {else}
+                <span>￥</span>{$data.price}
+                {/if}
+
+
+            </div>
+
+            <div class="ylgd-tf">
+                <span>库存：{$data.stock}</span>
+            </div>
+
+        </div>
+
+        <div class="yl-collect">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="yx-goods-detial-lists">
+    <div class="yx-goods-detial-list">
+        <div class="yx-gdl-title">商品详情</div>
+        <!--视频-->
+
+        <div>{$data.descrption}</div>
+    </div>
+</div>
+<!--猜你喜欢-->
+{if isset($goodlist)}
+<div class="yx-scroll-guess-s" style="margin-bottom: 0.97rem;">
+    <div class="yx-scroll-guess" style="margin-bottom:0;">
+        <div class="yx-scrollgu-title">
+            <span><i class="icon icon  font icon-heart"></i>猜你喜欢</span>
+        </div>
+        <div class="yx-scroll-gu-list">
+
+
+
+            {if !empty($goodlist)}
+            {foreach $goodlist as $key => $item}
+            <div class="yx-scrollgl-item">
+                <a href="/detail/{$item.id}.html">
+                    <div class="yxscroll-iimg">
+                        <img src="{$item.default_image}" alt="">
+                    </div>
+                    <div class="yxscroll-iname">{$item.goods_name}</div>
+                    <div class="yxscroll-iprice">
+                        {if $item.promiseprice neq 0}
+                        <del>{$item.price}</del>
+                        <span><em>￥</em>{$item.promiseprice}</span>
+                        {else}
+                        <span><em>￥</em>{$item.price}</span>
+                        {/if}
+
+                    </div>
+                </a>
+            </div>
+            {/foreach}
+            {/if}
+
+        </div>
+    </div>
+</div>
+{/if}
+
+<!--上传图片弹层-->
+<div class="critique-alertbg hide"></div>
+<div class="critiquealert-mains hide">
+    <div class="critiquealert-main">
+        <div class="critique-title"></div>
+        <div class="critique-main">
+            <div class="critique-main-top">
+                <dl class="yxui-flex">
+                    <dt>评论：</dt>
+                    <dd class="yxchoice-critique yx-numlevel1"><span></span>好评</dd>
+                    <dd class="yx-numlevel2"><span></span>中评</dd>
+                    <dd class="yx-numlevel3"><span></span>差评</dd>
+                </dl>
+            </div>
+            <input type="hidden" value="1" class="level">
+            <div class="critique-main-textarea">
+                <textarea name="" id="shopcritique" maxlength="200" placeholder="亲爱的，分享一下购物感受吧~"></textarea>
+                <div class="cmt-num"><span>0</span>/200</div>
+            </div>
+            <div class="critique-main-sendup">
+                <div id="yximgclick"></div>
+                <div class="cm-s-img"><i class="icon iconfont icon-xiangji"></i><input type="file" onChange=""  accept="image/*"></div>
+            </div>
+        </div>
+        <div class="critique-main-sendbtn">
+            <a href="javascript:;">提交评论</a>
+        </div>
+        <div class="cms-close"><i class="icon iconfont icon-chahaozhuanhuan"></i></div>
+    </div>
+</div>
+
+<!--详情页底部-->
+<div class="goodsdetialbottom">
+    <div class="goodsdetialbottom-left yxui-flex">
+
+        <div class="cell"><a href="tel:"><i class="icon iconfont icon-iconfontcolor39"></i><p>电话咨询</p></a></div>
+    </div>
+    <div class="goodsdetialbottom-right yxui-flex">
+        <div class="cell"><a href="javascript:;" class="add_cart">加入购物车</a></div>
+        <div class="cell"><a href="javascript:;" class="add_cart_order" >立即购买</a></div>
+    </div>
+</div>
+
+</div>
+
+
+
+
 </body>
 </html>

@@ -1,5 +1,5 @@
 .limited-body{ }
-.limited-banner{ width: 100%; position: relative; margin-top:0.9rem;    }
+.limited-banner{ width: 100%; position: relative;    }
 .limited-banner .swiper-slide img{ position: absolute; top: 100%; left: 50%; transform: translate(-50%,-50%); -webkit-transform: translate(-50%,-50%);}
 .limited-goods-cart{ position: fixed;  right: 0.2rem; top: 1.1rem; z-index: 56; height: 0.65rem;}
 .limited-goods-cart a{ width: .65rem; text-align: center; height: 0.65rem; color: #FFFFFF; background-color: rgba(0,0,0,0.5); float: left; display: inline-block;border-radius: 50%;}

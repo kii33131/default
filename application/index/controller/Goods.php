@@ -33,6 +33,7 @@ class Goods extends Base
 
     public function moregoods(){
         $where = [];
+        $where['is_show']=1;
         if(isset($_GET['cate_1']) && $_GET['cate_1']){
             $where['cate_1'] = $_GET['cate_1'];
         }
@@ -85,7 +86,16 @@ class Goods extends Base
     // 商品详情页面
     public function detail($id){
 
+        $goodsmod = new \app\index\model\Goods();
+        $data= $goodsmod->get($id);
+        if(!empty($data)){
+            $goodlist=\app\index\model\Goods::where(array('cate_1'=>$data->cate_1,'is_show'=>1))->limit(10)->order('id','desc')->select();
+            if(!empty($goodlist)){
+                $this->assign('goodlist',$goodlist);
+            }
 
+            $this->assign('data',$data);
+        }
 
         return $this->fetch('detail');
     }
