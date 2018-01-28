@@ -27,6 +27,10 @@ class Order extends Base
             $this->assign('address',$checkadderss);
         }
 
+
+
+
+
         return $this->fetch('index');
     }
 

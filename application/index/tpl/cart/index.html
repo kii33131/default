@@ -9,7 +9,7 @@
 
         {foreach $cart as $key => $item}
         <div class="productcartitem productcartitem1 "  store_id="" spec_id="" new_spec_id="" rec_id="" good_id="">
-            <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp{$item.id}" rec_id=""></span></div>
+            <div class="pci-choice  kli"> <span class="icon iconfont icon-xuanzhong yxradio sp sp{$item.id} {if $item.checked} product-select-red {/if} " goodsid="{$item.id}"></span></div>
             <div class="pci-right">
                 <div class="pcir-img">  <a href="/detail/{$item.goods_id}.html"><img src="{$item.default_image}" alt="">  </a></div>
                 <div class="pcir-itemmes-s yx-changetype">
@@ -70,7 +70,7 @@
         <div class="sellectallgoods"><span class="icon iconfont icon-xuanzhong yxradio quanxuan"></span>全选</div>
         <div class="sellallgo money-e shopping_cart_bottom_pay_rec_id" ><a href="/order.html">结算</a></div>
         <div class="sellallgo delete-e" style="display: none"><a href="javascript:delspecs();">删除</a></div>
-        <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">0</em></span></div>
+        <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">{$money}</em></span></div>
     </div>
 
 
@@ -93,23 +93,58 @@
 
     $('.quanxuan').on('click', function () {
         var money = 0;
+        var ss = $(this);
         if($(this).hasClass('product-select-red')){
             // 取消全选
-            $('.sp').removeClass('product-select-red');
-            $(this).removeClass('product-select-red')
+
+
+            $.ajax({
+                url:'/checkedall',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{type:0},
+                // timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.code==200){
+                        $('.sp').removeClass('product-select-red');
+                        ss.removeClass('product-select-red')
+                    }
+                }
+            });
+
 
 
         }else{
             //全选
-            $('.shop_store_1  ')
 
-            $('.shop_store_1 .yx-goodsprice').each(function () {
+            $.ajax({
+                url:'/checkedall',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{type:1},
+                // timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.code==200){
+                        $('.shop_store_1 .yx-goodsprice').each(function () {
 
-                money += $(this).html()* $(this).attr('goodsnum');
+                            money += $(this).html()* $(this).attr('goodsnum');
 
-            })
-            $('.sp').addClass('product-select-red');
-            $(this).addClass('product-select-red')
+                        })
+                        $('.sp').addClass('product-select-red');
+                        ss.addClass('product-select-red')
+                    }
+                }
+            });
+
+
 
         }
 
@@ -127,19 +162,64 @@
 
         var mum=   $(this).parents().next().find( 'span[class^="yx-goodsprice"]').attr('goodsnum');
         var zongmoney = money*mum;
-
-       // alert(zongmoney)
+        var cart_id = $(this).attr('goodsid')
+        var dd=$(this);
         if($(this).hasClass('product-select-red')){
             //取消选择
-            $(this).removeClass('product-select-red')
 
-            $('.zongfu').html(parseInt($('.zongfu').html())-parseInt(zongmoney))
+            $.ajax({
+                url:'/checked',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{cart_id:cart_id,type:0},
+                // timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.code==200){
+
+
+                        dd.removeClass('product-select-red')
+                        $('.zongfu').html(parseInt($('.zongfu').html())-parseInt(zongmoney))
+
+                    }else{
+
+                        alert(data.msg)
+                    }
+                }
+            });
+
+
 
         }else{
             // 选中
-            $(this).addClass('product-select-red')
 
-            $('.zongfu').html(parseInt($('.zongfu').html())+parseInt(zongmoney))
+
+
+            $.ajax({
+                url:'/checked',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{cart_id:cart_id,type:1},
+                // timeout: 2000,//超时时间
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+                    //console.log(data.msg)
+                    if(data.code==200){
+
+                        dd.addClass('product-select-red')
+                        $('.zongfu').html(parseInt($('.zongfu').html())+parseInt(zongmoney))
+
+                    }else{
+
+                        alert(data.msg)
+                    }
+                }
+            });
         }
 
     })
@@ -259,21 +339,10 @@
                 success: function(data){
                     //console.log(data.msg)
                     location.reload();
-                    /*
-                    if(data.code==200){
 
-                        if($('.sp'+goodsid).hasClass('product-select-red')){
-                            $('.zongfu').html(parseInt($('.zongfu').html())-tour)
-                        }
-                        $('.productcartitem'+goodsid).remove();
-
-                    }else{
-
-                        alert(data.msg)
-                    }*/
                 }
             });
-            //delete
+
 
         }
 

@@ -25,6 +25,7 @@ class Cart extends Base
         $cart=$cartmod->select();
         if(!empty($cart)){
             $goodsmod = new \app\index\model\Goods();
+            $money  = 0;
             foreach ($cart as $key=>$val){
 
                 $goods = $goodsmod->get($val['goods_id']);
@@ -32,8 +33,19 @@ class Cart extends Base
                 $cart[$key]['promiseprice'] = $goods['promiseprice'];
                 $cart[$key]['price'] = $goods['price'];
                 $cart[$key]['default_image'] = $goods['default_image'];
+                if($val['checked']==1){
+                    if($goods['promiseprice'] ){
+
+                        $money+=$goods['promiseprice']*$val['num'];
+                    }else{
+                        $money+=$goods['price']*$val['num'];
+                    }
+
+                }
+
                 //default_image
             }
+            $this->assign('money',$money);
             $this->assign('cart',$cart);
         }
         return $this->fetch('index');
@@ -128,6 +140,26 @@ class Cart extends Base
         }
         \app\index\model\Cart::destroy($cart_id);
         echo json_encode(array('code'=>200,'msg'=>'删除成功')); exit;
+    }
+
+
+    //选择 or 取消 选择
+    public function checked(){
+
+        $type = $_GET['type'];
+        $cart_id = $_GET['cart_id'];
+        $cartmod = new \app\index\model\Cart();
+        $cart = $cartmod->get($cart_id);
+        $cart->save(array('checked'=>$type),array('id'=>$cart_id));
+        echo json_encode(array('code'=>200,'msg'=>'操作')); exit;
+    }
+
+    public function checkedall(){
+        $type = $_GET['type'];
+        $user_id = $_SESSION['user']['id'];
+        $cartmod = new \app\index\model\Cart();
+        $cartmod->save(array('checked'=>$type),array('user_id'=>$user_id));
+        echo json_encode(array('code'=>200,'msg'=>'操作')); exit;
     }
 
 

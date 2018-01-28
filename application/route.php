@@ -52,6 +52,10 @@ Route::any('addaddress','index/Address/addaddress');
 Route::get('moregoods','index/Goods/moregoods');
 Route::any('addcart','index/Cart/addcart');
 Route::any('delete','index/Cart/delete');
+Route::any('checked','index/Cart/checked');
+Route::any('checkedall','index/Cart/checkedall');
+//checkedall
+//checked
 //delete
 Route::any('changecart','index/Cart/changecart');
 //changecart
