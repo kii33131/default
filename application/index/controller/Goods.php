@@ -15,16 +15,24 @@ class Goods extends Base
     public function index($cate_1,$cate_2)
     {
         //
+        ///echo $_SERVER['REQUEST_URI'];exit;
+        $where = [];
         if(isset($cate_1) && $cate_1){
             $where['cate_1'] = $cate_1;
         }
         if(isset($cate_2) && $cate_2){
             $where['cate_2'] = $cate_2;
         }
+        if(isset($_GET['words']) && $_GET['words']){
+            $where['goods_name']  = array('like', $_GET['words']);
+
+            $this->assign('words',$_GET['words']);
+        }
         $goodlist=\app\index\model\Goods::where($where)->limit(0,10)->order('id', 'desc')->select();
         $this->assign('goodlist',$goodlist);
         $this->assign('cate_1',$cate_1);
         $this->assign('cate_2',$cate_2);
+        $this->assign('url','/goods/'.$cate_1.'/'.$cate_2.'.html');
         return $this->fetch('index');
 
 
@@ -40,7 +48,9 @@ class Goods extends Base
         if(isset($_GET['cate_2']) && $_GET['cate_2']){
             $where['cate_2'] = $_GET['cate_2'];
         }
-
+        if(isset($_GET['words']) && $_GET['words']){
+            $where['goods_name']  = array('like', $_GET['words']);
+        }
         if(isset($_GET['time']) && $_GET['time']){
 
             $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order('add_time',$_GET['time'])->select();

@@ -63,6 +63,8 @@
 <input type="hidden" value="{$cate_1}" class="cate_1">
 <input type="hidden" value="{$cate_2}" class="cate_2">
 
+<input type="hidden" value="{if isset($words)}{$words}{/if}" class="words">
+
 <input type="hidden"  value="abc"  typed="def"  class="get">
 
 <div class="yx-bottomcheckmore"  style="display: none">
@@ -70,6 +72,14 @@
 </div>
 
 <script>
+
+    $('.yxsrt-mid-sicon').on('click',function () {
+        var key = $('.kewordsc').val()
+        window.location.href = '{$url}'+'?words='+key;
+        //url
+       // alert(key)
+    })
+
     $('.jiage').click(function(){
 
 
@@ -96,11 +106,12 @@
 
         var cate_2 = $('.cate_2').val();
         var cate_1 = $('.cate_1').val();
+        var words = $('.words').val();
         $.ajax({
             url:'/moregoods',//提交访问的URL
             type: 'GET',//提交的方法
             dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-            data:{cate_1:cate_1,cate_2:cate_2,page:1,price:value},
+            data:{cate_1:cate_1,cate_2:cate_2,page:1,price:value,words:words},
             //timeout: 2000,//超时时间
             error: function(){ //如果出错，执行函数
                 alert('Error');
@@ -132,12 +143,13 @@
         $('.get').attr('typed','asc');
         var cate_2 = $('.cate_2').val();
         var cate_1 = $('.cate_1').val();
+        var words = $('.words').val();
         var value = 'asc';
         $.ajax({
             url:'/moregoods',//提交访问的URL
             type: 'GET',//提交的方法
             dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-            data:{cate_1:cate_1,cate_2:cate_2,page:1,time:value},
+            data:{cate_1:cate_1,cate_2:cate_2,page:1,time:value,words:words},
             //timeout: 2000,//超时时间
             error: function(){ //如果出错，执行函数
                 alert('Error');
@@ -168,6 +180,7 @@
         var cate_1 = $('.cate_1').val();
         var keys =    $('.get').val();
         var value =  $('.get').attr('typed');
+        var words = $('.words').val();
 
         if (scrollTop + windowHeight == scrollHeight) {
             var page = $('.page').val()
@@ -176,7 +189,7 @@
                     url:'/moregoods',//提交访问的URL
                     type: 'GET',//提交的方法
                     dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-                    data:{cate_1:cate_1,cate_2:cate_2,page:page,price:value},
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page,price:value,words:words},
                     //timeout: 2000,//超时时间
                     error: function(){ //如果出错，执行函数
                         alert('Error');
@@ -200,7 +213,7 @@
                     url:'/moregoods',//提交访问的URL
                     type: 'GET',//提交的方法
                     dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-                    data:{cate_1:cate_1,cate_2:cate_2,page:page,time:value},
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page,time:value,words:words},
                     //timeout: 2000,//超时时间
                     error: function(){ //如果出错，执行函数
                         alert('Error');
@@ -225,7 +238,7 @@
                     url:'/moregoods',//提交访问的URL
                     type: 'GET',//提交的方法
                     dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-                    data:{cate_1:cate_1,cate_2:cate_2,page:page},
+                    data:{cate_1:cate_1,cate_2:cate_2,page:page,words:words},
                     //timeout: 2000,//超时时间
                     error: function(){ //如果出错，执行函数
                         alert('Error');
@@ -268,12 +281,13 @@
 
         var cate_2 = $('.cate_2').val();
         var cate_1 = $('.cate_1').val();
+        var words = $('.words').val();
 
         $.ajax({
             url:'/moregoods',//提交访问的URL
             type: 'GET',//提交的方法
             dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
-            data:{cate_1:cate_1,cate_2:cate_2,page:1},
+            data:{cate_1:cate_1,cate_2:cate_2,page:1,words:words},
             //timeout: 2000,//超时时间
             error: function(){ //如果出错，执行函数
                 alert('Error');

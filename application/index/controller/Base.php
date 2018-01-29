@@ -34,16 +34,30 @@ class Base extends Controller
                 // 商品搜索路由特殊处理
                 $cate_1 = $routearr[1];
                 $cate_2 = $routearr[2];
-                $cate1= Gcategory::get($cate_1);
-                $routes->title = $routes->title.'-'.$cate1->cate_name;
-                $routes->keywords = $routes->keywords.'-'.$cate1->cate_name;
-                $routes->description = $routes->description.'-'.$cate1->cate_name;
-                if($cate_2){
-                    $cate2= Gcategory::get($cate_2);
-                    $routes->title = $routes->title.'-'.$cate2->cate_name;
-                    $routes->keywords = $routes->keywords.'-'.$cate2->cate_name;
-                    $routes->description = $routes->description.'-'.$cate2->cate_name;
+
+
+                if($cate_1){
+
+                    $cate1= Gcategory::get($cate_1);
+                    $routes->title = $routes->title.'-'.$cate1->cate_name;
+                    $routes->keywords = $routes->keywords.'-'.$cate1->cate_name;
+                    $routes->description = $routes->description.'-'.$cate1->cate_name;
                 }
+
+                if($cate_2){
+
+                    $cate_2ss= explode('?',$cate_2);
+                    if($cate_2ss[0]){
+                        $cate2= Gcategory::get($cate_2ss[0]);
+                        $routes->title = $routes->title.'-'.$cate2->cate_name;
+                        $routes->keywords = $routes->keywords.'-'.$cate2->cate_name;
+                        $routes->description = $routes->description.'-'.$cate2->cate_name;
+                    }
+
+
+                }
+
+               // exit('ss');
 
             }
             //detail 商品详情页
