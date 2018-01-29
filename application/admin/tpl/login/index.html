@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <!-- Custom Theme files -->
+    {css href="_CSS1_/lstyle.css" /}
+    {js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
+    <!-- Custom Theme files -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <!--Google Fonts-->
+
+    <!--Google Fonts-->
+</head>
+<body>
+<div class="login">
+
+    <div class="login-top">
+        <h1>登录</h1>
+        <form>
+
+            <input type="text" class="name" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '';}">
+
+            <input type="password" class="password"  value="" >
+
+        </form>
+        <div class="forgot">
+
+            <input type="submit" class="submit" value="登录" >
+        </div>
+    </div>
+    <div class="login-bottom">
+
+    </div>
+</div>
+<div class="copyright">
+
+</div>
+<script>
+
+
+    $('.submit').on('click',function () {
+        var name = $('.name').val();
+        var password = $('.password').val();
+        $.ajax({
+            url:'/admin/dologin',//提交访问的URL
+            type: 'POST',//提交的方法
+            dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+            data:{name:name,password:password},
+            timeout: 2000,//超时时间
+            error: function(){ //如果出错，执行函数
+                alert('Error');
+            },
+            success: function(data){
+                //console.log(data.msg)
+                if(data.code==400){
+
+                    alert(data.msg)
+                }else{
+
+                    window.location.href ='/admin/index.html';
+                }
+
+
+                //alert(data.pidlist);
+
+
+
+
+            }
+        });
+
+
+       // alert('ss');
+    })
+    
+</script>
+
+
+</body>
+</html>

@@ -48,6 +48,17 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
 
 });
 
+Route::group(['method' => 'get', 'ext' => 'html'], function () {
+    Route::get('admin/index','admin/Index/index');
+    Route::get('admin/main','admin/Index/main');
+    Route::get('admin/login','admin/Login/index');
+    Route::get('admin/floor','admin/Index/floor');
+    Route::get('admin/header','admin/Index/header');
+    Route::get('admin/goods','admin/Goods/index');
+
+
+});
+
 Route::any('dologin','index/login/dologin');
 Route::any('getcity','index/Address/getcity');
 Route::any('addaddress','index/Address/addaddress');
@@ -57,6 +68,9 @@ Route::any('delete','index/Cart/delete');
 Route::any('checked','index/Cart/checked');
 Route::any('checkedall','index/Cart/checkedall');
 Route::any('suborder','index/Order/suborder');
+Route::any('admin/dologin','admin/Login/dologin');
+Route::any('admin/logout','admin/Login/logout');
+//logout
 //suborder
 //checkedall
 //checked
