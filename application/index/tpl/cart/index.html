@@ -112,6 +112,7 @@
                     if(data.code==200){
                         $('.sp').removeClass('product-select-red');
                         ss.removeClass('product-select-red')
+                        $('.zongfu').html(0)
                     }
                 }
             });
@@ -138,6 +139,9 @@
                             money += $(this).html()* $(this).attr('goodsnum');
 
                         })
+
+                        //alert(money)
+                        $('.zongfu').html(money)
                         $('.sp').addClass('product-select-red');
                         ss.addClass('product-select-red')
                     }
@@ -149,7 +153,7 @@
         }
 
 
-        $('.zongfu').html(money)
+
 
     })
 
