@@ -33,6 +33,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('addresslist','index/Address/addresslist');
     Route::get('goods/:cate_1/:cate_2','index/Goods/index');
     Route::get('detail/:id','index/Goods/detail');
+
+    Route::get('pay/:id','index/Pay/index');
     //detail
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
@@ -54,6 +56,8 @@ Route::any('addcart','index/Cart/addcart');
 Route::any('delete','index/Cart/delete');
 Route::any('checked','index/Cart/checked');
 Route::any('checkedall','index/Cart/checkedall');
+Route::any('suborder','index/Order/suborder');
+//suborder
 //checkedall
 //checked
 //delete

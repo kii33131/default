@@ -35,48 +35,40 @@
 
     <div class="shopcartitme">
 
-        <div class="productcartitem">
-            <div class="pci-rightss">
-                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
-                <div class="pcir-itemmes-ss">
-                    <div class="pcir-itemmes">
-                        <div class="pcir-messages">
-                            <a href="">
-                                <div class="pcirm-name">好上配</div>
-                                <div class="pcirm-price">￥<span class="yx-goodsprice">100</span></div>
-                                <div class="pcirm-num" style="right: 0.5rem !important; bottom: 0"><span>X</span>1</div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        {if isset($cart)}
+        {foreach $cart as $key => $item}
         <div class="productcartitem">
             <div class="pci-rightss">
-                <div class="pcir-img">  <a href=""><img src="http://imgcdn.yuexing.com/static/data/files/user1/53/937/153937/20150906/09/small_201509062313486417.gif" alt="">  </a></div>
+                <div class="pcir-img">  <a href="/detail/{$item.goods_id}.html"><img src="{$item.default_image}" alt="">  </a></div>
                 <div class="pcir-itemmes-ss">
                     <div class="pcir-itemmes">
                         <div class="pcir-messages">
-                            <a href="">
-                                <div class="pcirm-name">好上配</div>
-                                <div class="pcirm-price">￥<span class="yx-goodsprice">100</span></div>
-                                <div class="pcirm-num" style="right: 0.5rem !important; bottom: 0"><span>X</span>1</div>
+                            <a href="/detail/{$item.goods_id}.html">
+                                <div class="pcirm-name">{$item.goods_name}</div>
+                                <div class="pcirm-price">￥<span class="yx-goodsprice"> {if $item.promiseprice neq 0}
+                                    {$item.promiseprice}
+                                    {else}
+                                    {$item.price}
+                                    {/if}</span></div>
+                                <div class="pcirm-num" style="right: 0.5rem !important; bottom: 0"><span>X</span>{$item.num}</div>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        {/foreach}
+        {/if}
 
         <div class="ypaol-item ypaol-send">配送方式 <i class="icon iconfont icon-xiangyou-page"></i><span  value="express"  freight="0">快递 免邮</span></div>
-        <div class="ypaol-item1">共1件商品 合计：￥<span class="submit_order_store_allprices  " store_id =""  money="">100</span></div>
+
 
     </div>
 
         <div class="productcartbottom" style="border-top: 1px solid #c8c8c8;">
-            <div class="sellallgo"><a href="javascript:;" is_check="no" class="submitorder" onclick="show_order_list_overfolow()">提交订单</a></div>
-            <div class="sellallprice">合计：<span class="productallprice">￥<em class="allamount" money="">100</em></span></div>
+            <div class="sellallgo"><a href="/suborder" is_check="no" class="submitorder" ">提交订单</a></div>
+            <div class="sellallprice">合计：<span class="productallprice">￥<em class="allamount" money="">{$money}</em></span></div>
         </div>
 
 

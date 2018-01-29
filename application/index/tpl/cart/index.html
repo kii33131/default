@@ -70,7 +70,7 @@
         <div class="sellectallgoods"><span class="icon iconfont icon-xuanzhong yxradio quanxuan"></span>全选</div>
         <div class="sellallgo money-e shopping_cart_bottom_pay_rec_id" ><a href="/order.html">结算</a></div>
         <div class="sellallgo delete-e" style="display: none"><a href="javascript:delspecs();">删除</a></div>
-        <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">{$money}</em></span></div>
+        <div class="sellallprice">合计：<span class="productallprice">￥<em class="zongfu">{if isset($money)}{$money}{else}0 {/if}</em></span></div>
     </div>
 
 
