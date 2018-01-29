@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\index\model\Gcategory;
 use app\index\model\Route;
 use think\Config;
 use think\Controller;
@@ -28,16 +29,34 @@ class Base extends Controller
        }
 
        if(!empty($routearr)){
-
+            $routes= Route::get(array('route'=>$routearr[0]));
             if($routearr[0]=='goods'){
                 // 商品搜索路由特殊处理
+                $cate_1 = $routearr[1];
+                $cate_2 = $routearr[2];
+                $cate1= Gcategory::get($cate_1);
+                $routes->title = $routes->title.'-'.$cate1->cate_name;
+                $routes->keywords = $routes->keywords.'-'.$cate1->cate_name;
+                $routes->description = $routes->description.'-'.$cate1->cate_name;
+                if($cate_2){
+                    $cate2= Gcategory::get($cate_2);
+                    $routes->title = $routes->title.'-'.$cate2->cate_name;
+                    $routes->keywords = $routes->keywords.'-'.$cate2->cate_name;
+                    $routes->description = $routes->description.'-'.$cate2->cate_name;
+                }
+
             }
             //detail 商品详情页
            if($routearr[0]=='detail'){
                // 商品详情页
+               $goods_id=$routearr[1];
+               $good=\app\index\model\Goods::get($goods_id);
+               $routes->title = $routes->title.'-'.$good->goods_name;
+               $routes->keywords = $routes->keywords.'-'.$good->goods_name;
+               $routes->description = $routes->description.'-'.$good->goods_name;
            }
 
-           $routes= Route::get(array('route'=>$routearr[0]));
+
            if(isset($routes) && !empty($routes)){
                $this->assign('routes',$routes);
            }
