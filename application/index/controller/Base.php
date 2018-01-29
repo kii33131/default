@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\index\model\Route;
 use think\Config;
 use think\Controller;
 use think\Request;
@@ -13,9 +14,35 @@ class Base extends Controller
    {
        parent::__construct($request);
        $wxconfig=Config::get('wx');
-
+        //REQUEST_URI
        //echo '<pre>';
        //print_r($_SERVER);exit;
+       //首页路由
+       $routearr = [];
+       if($_SERVER['REQUEST_URI']=='/'){
+           $routearr[] ='/';
+       }else{
+           $route  = str_replace('.html','',$_SERVER['REQUEST_URI']);
+           $route = trim($route,'/');
+           $routearr = explode('/',$route);
+       }
+
+       if(!empty($routearr)){
+
+            if($routearr[0]=='goods'){
+                // 商品搜索路由特殊处理
+            }
+            //detail 商品详情页
+           if($routearr[0]=='detail'){
+               // 商品详情页
+           }
+
+           $routes= Route::get(array('route'=>$routearr[0]));
+           if(isset($routes) && !empty($routes)){
+               $this->assign('routes',$routes);
+           }
+       }
+
        $user_agent = $_SERVER['HTTP_USER_AGENT'];
        if (strpos($user_agent, 'MicroMessenger') === false) {
 

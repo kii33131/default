@@ -4,6 +4,13 @@
 <html>
 <head>
 
+    {if isset($routes)}
+    <title>{$routes.title}</title>
+
+    <meta name="Title" content="{$routes.title}">
+    <meta name="Keywords" content="{$routes.keywords}">
+    <meta name="Description" content="{$routes.description}">
+    {/if}
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <meta content="yes" name="apple-mobile-web-app-capable">
@@ -17,19 +24,14 @@
     {css href="_CSS1_/2018/alert.css" /}
     {css href="_CSS1_/2018/classification.css" /}
 
-    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/apple-touch-icon-76x76-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/apple-touch-icon-120x120-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/apple-touch-icon-180x180-precomposed.png">
-    <link rel="icon" sizes="192x192" href="/touch-icon-192x192.png">
+    <link rel="apple-touch-icon-precomposed" href="_IMG_/apple-touch-icon-precomposed.png">
 
     {js href="_JS_/jquery-3.1.1.min.js" /}
     {js href="_JS_/swiper-3.3.1.jquery.min.js" /}
     {js href="_JS_/weixin.js" /}
+
+
+
     <script>
         var deviceWidth = document.documentElement.clientWidth;
         document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
