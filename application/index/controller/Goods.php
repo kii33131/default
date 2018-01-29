@@ -24,11 +24,14 @@ class Goods extends Base
             $where['cate_2'] = $cate_2;
         }
         if(isset($_GET['words']) && $_GET['words']){
-            $where['goods_name']  = array('like', $_GET['words']);
+            $where['goods_name']  = array('like', '%'. $_GET['words'].'%');
 
             $this->assign('words',$_GET['words']);
         }
         $goodlist=\app\index\model\Goods::where($where)->limit(0,10)->order('id', 'desc')->select();
+
+        //$mode  = new \app\index\model\Goods();
+       // echo $mode->getLastSql();exit;
         $this->assign('goodlist',$goodlist);
         $this->assign('cate_1',$cate_1);
         $this->assign('cate_2',$cate_2);
@@ -49,7 +52,7 @@ class Goods extends Base
             $where['cate_2'] = $_GET['cate_2'];
         }
         if(isset($_GET['words']) && $_GET['words']){
-            $where['goods_name']  = array('like', $_GET['words']);
+            $where['goods_name']  = array('like','%'. $_GET['words'].'%');
         }
         if(isset($_GET['time']) && $_GET['time']){
 
@@ -61,6 +64,7 @@ class Goods extends Base
             $goodlist=\app\index\model\Goods::where($where)->limit(10)->page($_GET['page'])->order('id','desc')->select();
 
         }
+
         $html = '';
         if(!empty($goodlist)){
 
