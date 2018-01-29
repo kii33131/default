@@ -1,8 +1,7 @@
-
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title> 动态生成菜单</title>
+    <title> 搜索表单</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     {css href="_CSS1_/assets/css/dpl-min.css" /}
     {css href="_CSS1_/assets/css/bui-min.css" /}
@@ -19,32 +18,52 @@
 </head>
 <body>
 
-
-
-
 <div class="container">
     <div class="row">
-        商品管理
+        <form id="searchForm" class="form-horizontal span24">
+            <div class="row">
+                <div class="control-group span8">
+                    <label class="control-label">商品名称：</label>
+                    <div class="controls">
+                        <input type="text" class="control-text" name="id">
+                    </div>
+                </div>
+
+
+
+                <div class="control-group span8">
+                    <label class="control-label">是否上架：</label>
+                    <div class="controls" >
+                        <select name="" id="" name="sex">
+                            <option value="">全部</option>
+                            <option value="">上架</option>
+                            <option value="">下架</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="control-group span8">
+                    <button  type="button" id="btnSearch" class="button button-primary">搜索</button>
+                </div>
+
+            </div>
+
+        </form>
+    </div>
+    <div class="search-grid-container">
+        <div id="grid"></div>
     </div>
 </div>
-
-
-
-
-
 {js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
-{js href="_JS_/assets/js/bui.js" /}
-{js href="_JS_/assets/js/config.js" /}
+{js href="_JS_/assets/js/bui-min.js" /}
+{js href="_JS_/assets/js/config-min.js" /}
+
+{js href="_JS_/assets/js/prettify.js" /}
+
 <script type="text/javascript">
     BUI.use('common/page');
 </script>
 
-{js href="_JS_/assets/js/prettify.js" /}
-<script type="text/javascript">
-    $(function () {
-        prettyPrint();
-    });
-</script>
 
 <body>
 </html>
