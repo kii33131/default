@@ -69,46 +69,7 @@
                     $('.yx-m-header').removeClass('yx-header-topc');
                 }
             }
-            var lecturescroll=$('.yx-n-Lecture').offset().top-500;
-            if($('.yx-guess-like').offset().top){
-                var yxguesslike=$('.yx-guess-like').offset().top-500;
-            }else {
-                var yxguesslike=0;
-            }
 
-            if (scrollTop>=lecturescroll&&scrollTop<=lecturescroll+500){
-
-                $('#videos').trigger("play");
-                if($('#videos').hasClass('yx-l-video')){
-                    $('#videos').trigger("pause");
-                    $('.videolecture').fadeIn();
-                    $('.yx-nl-video .yx-nlv-paly').fadeIn();
-                }else {
-                    $('.videolecture').fadeOut();
-                    $('.yx-nl-video .yx-nlv-paly').fadeOut();
-                }
-            }else {
-                $('#videos').trigger("pause");
-                $('.videolecture').fadeIn();
-                $('.yx-nl-video .yx-nlv-paly').fadeIn();
-            }
-            if (scrollTop>=yxguesslike&&scrollTop<=yxguesslike+500){
-                if($('.guessl-list li').find('video')){
-                    $('.guessl-list li').find('video').trigger("play");
-                }
-
-                $('.guessl-list li').find('.yx-nlv-paly').fadeOut();
-                $('.guessl-list li').find('.gusimglike').fadeOut();
-
-            }else {
-                if($('.guessl-list li').find('video')){
-                    $('.guessl-list li').find('video').trigger("pause");
-                }
-
-                $('.guessl-list li').find('.yx-nlv-paly').fadeOut();
-                $('.guessl-list li').find('.gusimglike').fadeOut();
-
-            }
         });
         function changetop(){
             var scrollTop=$(document).scrollTop();

@@ -21,8 +21,8 @@
 <div class="container">
     <div class="row">
         <form id="searchForm" class="form-horizontal span24">
-            <div class="row">
-                <div class="control-group span8">
+            <div class="row" >
+                <div class="control-group span7">
                     <label class="control-label">商品名称：</label>
                     <div class="controls">
                         <input type="text" class="control-text" name="id">
@@ -31,7 +31,7 @@
 
 
 
-                <div class="control-group span8">
+                <div class="control-group span7">
                     <label class="control-label">是否上架：</label>
                     <div class="controls" >
                         <select name="" id="" name="sex">
@@ -42,9 +42,12 @@
                     </div>
                 </div>
 
-                <div class="control-group span8">
+                <div class="control-group span4">
+                    <div class="controls" >
                     <button  type="button" id="btnSearch" class="button button-primary">搜索</button>
+                    </div>
                 </div>
+
 
             </div>
 
@@ -54,6 +57,8 @@
         <div id="grid"></div>
     </div>
 </div>
+
+
 {js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
 {js href="_JS_/assets/js/bui-min.js" /}
 {js href="_JS_/assets/js/config-min.js" /}
@@ -64,6 +69,99 @@
     BUI.use('common/page');
 </script>
 
+<script type="text/javascript">
+    BUI.use('common/search',function (Search) {
 
+        var enumObj = {"1":"上架","0":"下架"},
+            editing = new BUI.Grid.Plugins.DialogEditing({
+                contentId : 'content', //设置隐藏的Dialog内容
+                autoSave : true, //添加数据或者修改数据时，自动保存
+                triggerCls : 'btn-edit'
+            }),
+            columns = [
+                {title:'商品id',dataIndex:'id',width:80},
+                {title:'商品名称',dataIndex:'goods_name',width:300},
+                {title:'价格',dataIndex:'price',width:100},//renderer:BUI.Grid.Format.dateRenderer
+                {title:'上下架',dataIndex:'is_show',width:60,renderer:BUI.Grid.Format.enumRenderer(enumObj)},
+                {title:'促销价',dataIndex:'promiseprice',width:100},
+                {title:'库存',dataIndex:'stock',width:300},
+                {title:'添加时间',dataIndex:'add_time',width:200,renderer:BUI.Grid.Format.dateRenderer},//renderer:BUI.Grid.Format.dateRenderer
+                {title:'操作',dataIndex:'',width:200,renderer : function(value,obj){
+                        var editStr =  Search.createLink({ //链接使用 此方式
+                                id : 'edit' + obj.id,
+                                title : '编辑商品信息',
+                                text : '编辑',
+                                href : '/admin/goodsadd.html?id='+obj.id
+                            })
+
+                          //  delStr = '<span class="grid-command btn-del" title="删除学生信息">删除</span>';//页面操作不需要使用Search.createLink
+                        return editStr; //+  editStr1 + delStr;
+                    }}
+            ],
+            store = Search.createStore('/admin/getlist',{
+                proxy : {
+                    save : { //也可以是一个字符串，那么增删改，都会往那么路径提交数据，同时附加参数saveType
+                        //addUrl : '../data/add.json',
+                       // updateUrl : '../data/edit.json',
+                        //removeUrl : '../data/del.php'
+                    }/*,
+          method : 'POST'*/
+                },
+                autoSync : true //保存数据后，自动更新
+            }),
+            gridCfg = Search.createGridCfg(columns,{
+                tbar : {
+                    items : [
+                        {text : '<i class="icon-plus"></i>新建',btnCls : 'button button-small',handler:addFunction},
+
+
+                    ]
+                },
+                plugins : [editing,BUI.Grid.Plugins.CheckSelection,BUI.Grid.Plugins.AutoFit] // 插件形式引入多选表格
+            });
+
+        var  search = new Search({
+                store : store,
+                gridCfg : gridCfg
+            }),
+            grid = search.get('grid');
+
+        function addFunction(){
+           // alert('新增');
+            //admin/goodsadd.html
+            window.location.href ='/admin/goodsadd.html';
+            //var newData = {isNew : true}; //标志是新增加的记录
+            //editing.add(newData,'name'); //添加记录后，直接编辑
+        }
+
+        //删除操作
+        function delFunction(){
+            var selections = grid.getSelection();
+            delItems(selections);
+        }
+
+        function delItems(items){
+            var ids = [];
+            BUI.each(items,function(item){
+                ids.push(item.id);
+            });
+
+            if(ids.length){
+                BUI.Message.Confirm('确认要删除选中的记录么？',function(){
+                    store.save('remove',{ids : ids});
+                },'question');
+            }
+        }
+
+        //监听事件，删除一条记录
+        grid.on('cellclick',function(ev){
+            var sender = $(ev.domTarget); //点击的Dom
+            if(sender.hasClass('btn-del')){
+                var record = ev.record;
+                delItems([record]);
+            }
+        });
+    });
+</script>
 <body>
 </html>

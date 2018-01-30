@@ -55,7 +55,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/floor','admin/Index/floor');
     Route::get('admin/header','admin/Index/header');
     Route::get('admin/goods','admin/Goods/index');
-
+    Route::get('admin/goodsadd','admin/Goods/add');
 
 });
 
@@ -70,6 +70,12 @@ Route::any('checkedall','index/Cart/checkedall');
 Route::any('suborder','index/Order/suborder');
 Route::any('admin/dologin','admin/Login/dologin');
 Route::any('admin/logout','admin/Login/logout');
+
+Route::any('admin/getlist','admin/Goods/getlist');
+Route::any('admin/addgoods','admin/Goods/addgoods');
+//addgoods
+Route::any('admin/getcateson','admin/Goods/getcateson');
+//getcateson
 //logout
 //suborder
 //checkedall

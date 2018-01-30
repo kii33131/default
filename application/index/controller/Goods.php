@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use think\Config;
 use think\Controller;
 use think\Request;
 
@@ -68,11 +69,13 @@ class Goods extends Base
         $html = '';
         if(!empty($goodlist)){
 
+            //_IMG_/goods/{$item.default_image}
 
+            $con=Config::get('view_replace_str');
             foreach ($goodlist as $val){
                 $url = '/detail/'.$val['id'].'.html';
                 $html .= '<div class="yx-scrollgl-item"><a href="'.$url.'">';
-                $html .= ' <div class="yxscroll-iimg"><img src="'.$val['default_image'] .'" alt=""></div>';
+                $html .= ' <div class="yxscroll-iimg"><img src="'.$con['_IMG_'].'/goods/'.$val['default_image'] .'" alt=""></div>';
                 $html .= ' <div class="yxscroll-iname">'.$val['goods_name'].'</div>';
                 $html .= ' <div class="yxscroll-iprice">';
 
