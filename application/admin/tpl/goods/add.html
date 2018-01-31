@@ -94,7 +94,7 @@
 
                 <label class="control-label"><s>*</s>上架：</label>
                 <div class="controls">
-                    <input name="is_show" type="checkbox" class="control-text is_showf" value="1"  {if $goods.stock eq  1 } checked {/if}  >
+                    <input name="is_show" type="checkbox" class="control-text is_showf" value="1"  {if isset($goods.stock) &&  $goods.stock eq  1 } checked {/if}  >
                 </div>
 
                 <label class="control-label"><s>*</s>商品描述：</label>
@@ -109,48 +109,6 @@
 
     </form>
 
-    <div id="J_Temp" class="hide">
-        <form class="form-horizontal" id="J_Education">
-            <div class="row">
-                <div class="control-group span6">
-                    <label class="control-label control-label-small"><s>*</s>学校名称</label>
-                    <div class="controls">
-                        <input type="text" class="control-text" name="school"/>
-                        <input type="hidden" name="id" />
-                    </div>
-                </div>
-                <div class="control-group span6">
-                    <label class="control-label control-label-small"><s>*</s>学校网址</label>
-                    <div class="controls">
-                        <input type="text" class="control-text" name="url"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="control-group span6">
-                    <label class="control-label control-label-small"><s>*</s>入学日期</label>
-                    <div class="controls">
-                        <input type="text" class="calendar" name="enter"/>
-                    </div>
-                </div>
-                <div class="control-group span6">
-                    <label class="control-label control-label-small"><s>*</s>毕业日期</label>
-                    <div class="controls">
-                        <input type="text" class="calendar" name="outter"/>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="control-group span12">
-                    <label class="control-label control-label-small"><s>*</s>备注：</label>
-                    <div class="controls control-row4">
-                        <textarea name="memo" class="span9 span-width"></textarea>
-                    </div>
-                </div>
-            </div>
-            <input type="hidden"  id="J_Records"/>
-        </form>
-    </div>
     {js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
     {js href="_JS_/assets/js/bui-min.js" /}
     {js href="_JS_/assets/js/config-min.js" /}

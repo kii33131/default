@@ -56,6 +56,9 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/header','admin/Index/header');
     Route::get('admin/goods','admin/Goods/index');
     Route::get('admin/goodsadd','admin/Goods/add');
+    Route::get('admin/category','admin/Category/index');
+    Route::get('admin/addcategory','admin/Category/addcategory');
+    //addcategory
 
 });
 
@@ -76,6 +79,11 @@ Route::any('admin/addgoods','admin/Goods/addgoods');
 //addgoods
 Route::any('admin/getcateson','admin/Goods/getcateson');
 //getcateson
+Route::any('admin/cateson','admin/Category/cateson');
+Route::any('admin/doaddcate','admin/Category/doaddcate');
+Route::any('admin/cdelete','admin/Category/delete');
+//delete
+//doaddcate
 //logout
 //suborder
 //checkedall

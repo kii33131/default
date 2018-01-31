@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> 编辑学生信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {css href="_CSS1_/assets/css/dpl-min.css" /}
+    {css href="_CSS1_/assets/css/bui-min.css" /}
+    {css href="_CSS1_/assets/css/page-min.css" /}
+    {css href="_CSS1_/assets/css/prettify.css" /}
+
+
+
+
+    <style type="text/css">
+        code {
+            padding: 0px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form id ="J_Form" class="form-horizontal" enctype="multipart/form-data" action="/admin/doaddcate" method="post" >
+        <h3>添加分类</h3>
+
+
+        <div class="row">
+            <div class="control-group span8">
+
+                {if isset($cate.cate_id)} <input type="hidden" value="{$cate.cate_id}" name="cate_id"> {/if}
+                <label class="control-label"><s>*</s>商品名称：</label>
+
+                <div class="controls">
+                    <input name="cate_name" type="text" value="{if isset($cate.cate_name)}  {$cate.cate_name}  {/if} "  class="control-text" data-rules="{required:true}">
+                </div>
+
+                <label class="control-label"><s>*</s>默认图片：</label>
+
+                <div class="controls">
+
+                    <input type="file" class="control-text" name="img">
+
+                    {if isset($cate.cate_img)}
+                    <img style="width: 50px;height: 50px;" src="_IMG_/category/{$cate.cate_img}">
+                    {/if}
+                </div>
+
+                {if isset($pid)  }
+                <input name="parent_id" type="hidden" value="{$pid}"  class="control-text" >
+                {/if}
+
+                {if isset($cate.parent_id)  }
+                <input name="parent_id" type="hidden" value="{$cate.parent_id}"  class="control-text" >
+                {/if}
+
+
+                <label class="control-label"><s>*</s>是否显示：</label>
+                <div class="controls">
+                    <input name="if_show" type="checkbox" class="control-text is_showf" value="1" {if isset($cate.if_show) and $cate.if_show eq 1 }  checked {/if}   >
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 300px;">
+            <div class="form-actions offset3">
+                <button type="submit" class="button button-primary">保存</button>
+                <button type="reset" class="button">重置</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+{js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
+{js href="_JS_/assets/js/bui-min.js" /}
+{js href="_JS_/assets/js/config-min.js" /}
+
+
+{js href="_BJ_/ueditor.config.js" /}
+{js href="_BJ_/ueditor.all.min.js" /}
+{js href="_BJ_/lang/zh-cn/zh-cn.js" /}
+
+<script type="text/javascript">
+    BUI.use('common/page');
+</script>
+<script type="text/javascript">
+    BUI.use('bui/form',function (Form) {
+        var form = new Form.HForm({
+            srcNode : '#J_Form'
+        }).render();
+    });
+</script>
+<body>
+</html>

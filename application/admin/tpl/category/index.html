@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {css href="_CSS1_/assets/css/dpl-min.css" /}
+    {css href="_CSS1_/assets/css/bui-min.css" /}
+    {css href="_CSS1_/assets/css/main-min.css" /}
+
+
+    <style>
+        .bui-grid-hd{width: 200px;font-size:16px; text-align: center; font: bold;}
+        .distinction{margin-top: 20px;}
+        .bui-grid-hd1{width: 200px;font-size:14px; text-align: center;}
+        .son{margin-top: 30px;}
+    </style>
+
+</head>
+<body>
+<div class="">
+    <div class="row">
+        <table  class="distinction">
+            <thead>
+            <tr class="">
+
+                <td class="bui-grid-hd">分类名称</td>
+                <td class="bui-grid-hd">分类图片</td>
+                <td class="bui-grid-hd" >是否显示</td>
+                <td class="bui-grid-hd">操作</td>
+            </tr>
+            </thead>
+
+            {if !empty($cate)}
+            {foreach $cate as $key => $item}
+            <tr class="son" >
+                <td class="bui-grid-hd1">{$item.cate_name}<span class="sd" style="color: red;cursor:pointer;" rel="1" cate_id="{$item.cate_id}"  >显示</span></td>
+
+
+                <td class="bui-grid-hd1">{if $item.cate_img }有  {else} 没有{/if}</td>
+
+
+                <td class="bui-grid-hd1" > {if $item.if_show }是  {else} 否{/if}</td>
+                <td class="bui-grid-hd1"><a href="/admin/addcategory.html?cate_id={$item.cate_id}">编辑</a>| <a href="/admin/addcategory.html?pid={$item.cate_id}"> 添加子类 </a>|<a href="/admin/addcategory.html"> 添加大类 </a> | <a href="/admin/cdelete?cate_id={$item.cate_id}">删除</a></td>
+            </tr>
+            {/foreach}
+            {/if}
+
+        </table>
+    </div>
+</div>
+</body>
+
+
+{js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
+
+<script>
+
+    $('.distinction .sd').on('click',function () {
+        var dd = $(this);
+        if($(this).attr('rel')==1){
+            var parent_id = $(this).attr('cate_id')
+
+            // 展开
+            $.ajax({
+                url:'/admin/cateson',//提交访问的URL
+                type: 'GET',//提交的方法
+                dataType: 'json',//返回的内容的类型，由于PHP文件是直接echo的，那么这里就是text
+                data:{parent_id:parent_id},
+
+                error: function(){ //如果出错，执行函数
+                    alert('Error');
+                },
+                success: function(data){
+
+                    if(data.code==200){
+
+                        dd.parent().parent().after(data.html);
+                        dd.html('收回')
+                        dd.attr('rel','0')
+                    }
+
+                }
+            });
+
+
+        }else{
+            dd.parent().parent().next().remove()
+            //
+            $(this).html('展开')
+            $(this).attr('rel','1')
+        }
+
+       // alert($(this).attr('cate_id'))
+    })
+
+</script>
+
+</html>
