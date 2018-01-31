@@ -94,7 +94,7 @@
 
                 <label class="control-label"><s>*</s>上架：</label>
                 <div class="controls">
-                    <input name="is_show" type="checkbox" class="control-text" value="1"  {if isset($goods.stock)} checked {/if}  >
+                    <input name="is_show" type="checkbox" class="control-text is_showf" value="1"  {if $goods.stock eq  1 } checked {/if}  >
                 </div>
 
                 <label class="control-label"><s>*</s>商品描述：</label>
@@ -197,7 +197,21 @@
             });
         })
 
+        $('.is_showf').on(function () {
 
+
+
+            if ($('.is_showf').attr('checked')) {
+                // do something
+                $('.is_showf').val(0)
+
+            }else{
+                $('.is_showf').val(1)
+            }
+
+
+
+        })
     </script>
     <script type="text/javascript">
 

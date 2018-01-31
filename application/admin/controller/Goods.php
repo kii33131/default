@@ -97,7 +97,7 @@ class Goods extends Base
 
 
         if(isset($_POST)){
-           // echo '<pre>';
+            //echo '<pre>';
            // print_r($_POST);exit;
 
 
@@ -142,9 +142,12 @@ class Goods extends Base
                 if(isset($_FILES['img']['tmp_name'])){
                     $data['default_image']  = $name;
                 }
+                
+                //echo  '<pre>';
+                //print_r($data);exit;
 
                 $good_mod->save($data,array('id'=>$_POST['id']));
-
+                //echo $good_mod->getLastSql();exit;
                 $this->success('商品编辑成功','/admin/goods.html');exit;
             }else{
                 $good_mod->save();
