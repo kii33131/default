@@ -188,7 +188,7 @@ define('common/search',['bui/common','bui/grid','bui/form','bui/data','bui/overl
     cfg = BUI.merge({
       autoLoad : false,
       url : url,
-      pageSize : 30
+      pageSize : 20
     },cfg);
     return new Data.Store(cfg);
   };

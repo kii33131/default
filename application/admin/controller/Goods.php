@@ -24,27 +24,37 @@ class Goods extends Base
     public function getlist(){
 
         $where = [];
-        $where['is_show']=1;
+       // $where['is_show']=1;
+        if(!isset($_GET['pageIndex'] ) || !$_GET['pageIndex']){
+
+            $_GET['pageIndex'] =1;
+        }
         if(isset($_GET['cate_1']) && $_GET['cate_1']){
             $where['cate_1'] = $_GET['cate_1'];
         }
         if(isset($_GET['cate_2']) && $_GET['cate_2']){
             $where['cate_2'] = $_GET['cate_2'];
         }
-        if(isset($_GET['words']) && $_GET['words']){
-            $where['goods_name']  = array('like','%'. $_GET['words'].'%');
+        if(isset($_GET['goods_name']) && $_GET['goods_name']){
+            $_GET['goods_name'] = trim( $_GET['goods_name'],'+');
+            $where['goods_name']  = array('like','%'. $_GET['goods_name'].'%');
         }
         if(isset($_GET['time']) && $_GET['time']){
 
-            $goodlist=\app\index\model\Goods::where($where)->order('add_time',$_GET['time'])->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('add_time',$_GET['time'])->select();
         }elseif(isset($_GET['price']) && $_GET['price']){
 
-            $goodlist=\app\index\model\Goods::where($where)->order('price',$_GET['price'])->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('price',$_GET['price'])->select();
         }else{
 
-            $goodlist=\app\index\model\Goods::where($where)->order('id','desc')->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('id','desc')->select();
 
         }
+
+
+
+       $mode = new \app\index\model\Goods();
+
 
         if(isset($goodlist)){
             foreach ($goodlist as $key=>$val){
@@ -54,7 +64,10 @@ class Goods extends Base
 
         }
 
-        echo json_encode(array('rows'=>$goodlist,'results'=>count($goodlist)));
+       // echo '<pre>';
+      //  print_r($goodlist);exit;
+
+        echo json_encode(array('rows'=>$goodlist,'results'=>$mode->count()));
     }
 
 

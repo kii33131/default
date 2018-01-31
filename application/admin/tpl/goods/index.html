@@ -25,11 +25,11 @@
                 <div class="control-group span7">
                     <label class="control-label">商品名称：</label>
                     <div class="controls">
-                        <input type="text" class="control-text" name="id">
+                        <input type="text" class="control-text" name="goods_name">
                     </div>
                 </div>
 
-
+               <!--
 
                 <div class="control-group span7">
                     <label class="control-label">是否上架：</label>
@@ -41,7 +41,7 @@
                         </select>
                     </div>
                 </div>
-
+                -->
                 <div class="control-group span4">
                     <div class="controls" >
                     <button  type="button" id="btnSearch" class="button button-primary">搜索</button>
@@ -60,7 +60,7 @@
 
 
 {js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
-{js href="_JS_/assets/js/bui-min.js" /}
+{js href="_JS_/assets/js/bui.js" /}
 {js href="_JS_/assets/js/config-min.js" /}
 
 {js href="_JS_/assets/js/prettify.js" /}
@@ -98,17 +98,20 @@
                         return editStr; //+  editStr1 + delStr;
                     }}
             ],
+
+
             store = Search.createStore('/admin/getlist',{
                 proxy : {
                     save : { //也可以是一个字符串，那么增删改，都会往那么路径提交数据，同时附加参数saveType
                         //addUrl : '../data/add.json',
                        // updateUrl : '../data/edit.json',
                         //removeUrl : '../data/del.php'
-                    }/*,
-          method : 'POST'*/
+                    }
                 },
                 autoSync : true //保存数据后，自动更新
             }),
+
+
             gridCfg = Search.createGridCfg(columns,{
                 tbar : {
                     items : [
