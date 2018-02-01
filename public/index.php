@@ -12,7 +12,7 @@
 // [ 应用入口文件 ]
 include '../LaneWeChat/lanewechat.php';
 /**
- * 自定义菜单
+ * 自定义菜单1
  */
 //设置菜单
 
