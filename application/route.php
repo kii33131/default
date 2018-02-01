@@ -64,6 +64,10 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/placeadd','admin/Place/add');
     Route::get('admin/guanliangoods','admin/Place/guanliangoods');
     Route::get('admin/introduce','admin/Introduce/index');
+    Route::get('admin/route','admin/Route/index');
+    Route::get('admin/routeadd','admin/Route/add');
+
+
     //guanliangoods
 
 
@@ -101,6 +105,9 @@ Route::any('admin/getplace','admin/Place/getplace');
 Route::any('admin/doplace','admin/Place/doplace');
 Route::any('admin/placedelete','admin/Place/placedelete');
 Route::any('admin/doedit','admin/Introduce/doedit');
+Route::any('admin/getroute','admin/Route/getroute');
+Route::any('admin/doadd','admin/Route/doadd');
+//doadd
 //doedit
 
 //Introduce
