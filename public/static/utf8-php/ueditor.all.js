@@ -1301,6 +1301,7 @@ var utils = UE.utils = {
     },
     isCrossDomainUrl:function (url) {
         var a = document.createElement('a');
+        //alert(url)
         a.href = url;
         if (browser.ie) {
             a.href = a.href;
@@ -8017,9 +8018,14 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * ```
          */
         getActionUrl: function(action){
+           // alert(action)
             var actionName = this.getOpt(action) || action,
                 imageUrl = this.getOpt('imageUrl'),
                 serverUrl = this.getOpt('serverUrl');
+                 serverUrl=   '/admin/upload';
+                //http://thinkme.com/admin/upload
+                //console.log(serverUrl)
+                //alert(imageUrl)
 
             if(!serverUrl && imageUrl) {
                 serverUrl = imageUrl.replace(/^(.*[\/]).+([\.].+)$/, '$1controller$2');
@@ -8081,6 +8087,8 @@ UE.Editor.defaultOptions = function(editor){
 
                 var configUrl = me.getActionUrl('config'),
                     isJsonp = utils.isCrossDomainUrl(configUrl);
+
+
 
                 /* 发出ajax请求 */
                 me._serverConfigLoaded = false;

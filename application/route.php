@@ -68,6 +68,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/routeadd','admin/Route/add');
 
 
+
     //guanliangoods
 
 
@@ -76,7 +77,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
 });
 
 
-
+Route::any('admin/upload','admin/Uploadfile/index');
 Route::any('dologin','index/login/dologin');
 Route::any('getcity','index/Address/getcity');
 Route::any('addaddress','index/Address/addaddress');
