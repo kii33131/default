@@ -63,6 +63,11 @@ class Index extends  Base
 
     public function introduce(){
 
+        $data= \app\index\model\Introduce::get(1);
+
+        if(isset($data)){
+            $this->assign('data',$data);
+        }
         $this->assign('SITE_LOCATION','introduce');
         return $this->fetch('introduce');
     }

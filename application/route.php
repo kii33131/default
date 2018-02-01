@@ -63,7 +63,10 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/place','admin/Place/index');
     Route::get('admin/placeadd','admin/Place/add');
     Route::get('admin/guanliangoods','admin/Place/guanliangoods');
+    Route::get('admin/introduce','admin/Introduce/index');
     //guanliangoods
+
+
 
 
 });
@@ -97,6 +100,10 @@ Route::any('banner/bannerdelete','admin/Banner/bannerdelete');
 Route::any('admin/getplace','admin/Place/getplace');
 Route::any('admin/doplace','admin/Place/doplace');
 Route::any('admin/placedelete','admin/Place/placedelete');
+Route::any('admin/doedit','admin/Introduce/doedit');
+//doedit
+
+//Introduce
 //placedelete
 //doplace
 ///admin/banner.html
