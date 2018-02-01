@@ -35,21 +35,21 @@ class Uploadfile extends Controller
             case 'uploadvideo':
                 /* 上传文件 */
             case 'uploadfile':
-                $result = include("action_upload.php");
+                $result = include(__DIR__."/php/action_upload.php");
                 break;
 
             /* 列出图片 */
             case 'listimage':
-                $result = include("action_list.php");
+                $result = include(__DIR__."/php/action_list.php");
                 break;
             /* 列出文件 */
             case 'listfile':
-                $result = include("action_list.php");
+                $result = include(__DIR__."/php/action_list.php");
                 break;
 
             /* 抓取远程文件 */
             case 'catchimage':
-                $result = include("action_crawler.php");
+                $result = include(__DIR__."/php/action_crawler.php");
                 break;
 
             default:
