@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> 编辑学生信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {css href="_CSS1_/assets/css/dpl-min.css" /}
+    {css href="_CSS1_/assets/css/bui-min.css" /}
+    {css href="_CSS1_/assets/css/page-min.css" /}
+    {css href="_CSS1_/assets/css/prettify.css" /}
+
+
+
+
+    <style type="text/css">
+        code {
+            padding: 0px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <form id ="J_Form" class="form-horizontal" enctype="multipart/form-data" action="/admin/doplace" method="post" >
+        <h3>添加分类</h3>
+
+
+        <div class="row">
+            <div class="control-group span8">
+
+                {if isset($place.id)} <input type="hidden" value="{$place.id}" name="id"> {/if}
+                <label class="control-label"><s>*</s>模块标题：</label>
+
+                <div class="controls">
+                    <input name="title" type="text" value="{if isset($place.title)}  {$place.title}  {/if} "  class="control-text" data-rules="{required:true}">
+                </div>
+                <label class="control-label"><s>*</s>模块副标题：</label>
+
+                <div class="controls">
+                    <input name="ftitle" type="text" value="{if isset($place.ftitle)}  {$place.ftitle}  {/if} "  class="control-text" data-rules="{required:true}">
+                </div>
+
+
+                <label class="control-label"><s>*</s>跳转链接：</label>
+
+                <div class="controls">
+                    <input name="url" type="text" value="{if isset($place.url)}{$place.url}{/if}"  class="control-text" >
+                </div>
+
+
+
+                <label class="control-label"><s>*</s>排序：</label>
+
+                <div class="controls">
+                    <input name="short" type="text" value="{if isset($place.short)}  {$place.short} {else}255  {/if}  "  class="control-text" data-rules="{required:true}">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-left: 300px;">
+            <div class="form-actions offset3">
+                <button type="submit" class="button button-primary">保存</button>
+                <button type="reset" class="button">重置</button>
+            </div>
+        </div>
+    </form>
+
+
+</div>
+{js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
+{js href="_JS_/assets/js/bui-min.js" /}
+{js href="_JS_/assets/js/config-min.js" /}
+
+
+{js href="_BJ_/ueditor.config.js" /}
+{js href="_BJ_/ueditor.all.min.js" /}
+{js href="_BJ_/lang/zh-cn/zh-cn.js" /}
+
+<script type="text/javascript">
+    BUI.use('common/page');
+</script>
+<script type="text/javascript">
+    BUI.use('bui/form',function (Form) {
+        var form = new Form.HForm({
+            srcNode : '#J_Form'
+        }).render();
+    });
+</script>
+<body>
+</html>

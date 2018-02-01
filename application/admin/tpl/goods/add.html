@@ -66,6 +66,7 @@
                     </select>
                 </div>
 
+
                 <label class="control-label"><s>*</s>默认图片：</label>
 
                     <div class="controls">
@@ -94,7 +95,20 @@
 
                 <label class="control-label"><s>*</s>上架：</label>
                 <div class="controls">
-                    <input name="is_show" type="checkbox" class="control-text is_showf" value="1"  {if isset($goods.stock) &&  $goods.stock eq  1 } checked {/if}  >
+                    <input name="is_show" type="checkbox" class="control-text is_showf" value="1"  {if isset($goods.is_show) and  $goods.is_show eq  1 } checked {/if}  >
+                </div>
+
+                <label class="control-label"><s>*</s>关联模块：</label>
+                <div class="controls">
+                    <select name="place_id" class="control-text place_id" style="width: 70px;">
+                        <option value=""> 请选择</option>
+                        {if isset($place)}
+                        {foreach $place as $key => $item}
+                        <option value="{$item.id}"  {if isset($goods.place_id)}  {if $goods.place_id eq $item.id}  selected {/if}  {/if}  >{$item.title}</option>
+                        {/foreach}
+                        {/if}
+                    </select>
+
                 </div>
 
                 <label class="control-label"><s>*</s>商品描述：</label>

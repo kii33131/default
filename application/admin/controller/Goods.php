@@ -39,6 +39,10 @@ class Goods extends Base
             $_GET['goods_name'] = trim( $_GET['goods_name'],'+');
             $where['goods_name']  = array('like','%'. $_GET['goods_name'].'%');
         }
+        if(isset($_GET['place_id'])){
+            $where['place_id'] = $_GET['place_id'];
+        }
+
         if(isset($_GET['time']) && $_GET['time']){
 
             $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('add_time',$_GET['time'])->select();
@@ -51,11 +55,7 @@ class Goods extends Base
 
         }
 
-
-
        $mode = new \app\index\model\Goods();
-
-
         if(isset($goodlist)){
             foreach ($goodlist as $key=>$val){
 
@@ -63,9 +63,6 @@ class Goods extends Base
             }
 
         }
-
-       // echo '<pre>';
-      //  print_r($goodlist);exit;
 
         echo json_encode(array('rows'=>$goodlist,'results'=>$mode->count()));
     }
@@ -77,6 +74,12 @@ class Goods extends Base
         $pcate = Gcategory::where(array('parent_id'=>0))->select();
         if(isset($pcate)){
             $this->assign('pcate',$pcate);
+        }
+
+        $place = \app\admin\model\Place::select();
+        if(isset($place)){
+
+            $this->assign('place',$place);
         }
 
         if(isset($_GET['id'])){
@@ -109,6 +112,7 @@ class Goods extends Base
             $good_mod->cate_1 = $_POST['cate_1'];
             $good_mod->cate_2 = $_POST['cate_2'];
             $good_mod->stock = $_POST['stock'];
+            $good_mod->place_id =  isset( $_POST['place_id'])? $_POST['place_id']:0;
             $good_mod->add_time =time();
             $good_mod->descrption =isset( $_POST['editorValue'])? $_POST['editorValue']:'';
 
@@ -137,6 +141,8 @@ class Goods extends Base
                 //$data['id'] = $_POST['id'];
                 $data['cate_2']  = $_POST['cate_2'];
                 $data['stock']  = $_POST['stock'];
+
+                $data['place_id']  = isset( $_POST['place_id'])? $_POST['place_id']:0;
                 $data['add_time']=time();
                 $data['descrption'] =isset( $_POST['editorValue'])? $_POST['editorValue']:'';
                 if(isset($_FILES['img']['tmp_name'])){

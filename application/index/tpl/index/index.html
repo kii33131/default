@@ -24,55 +24,33 @@
     </div>
 </div>
 
+{if isset($place)}
 
+{foreach $place as $keyi => $item}
 <div class="yx-goodschoice">
     <div class="ym-c-title">
-        <p></p>新品<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
+        <p></p>{$item.title}<span>{$item.ftitle}</span><div class="checkmore" ><a href="{if isset($item.url)}{$item.url} {/if}"><img src="_IMG_/checkmore.png" alt=""></a></div>
     </div>
     <div class="yg-c-list">
         <ul>
 
+            {if isset($item.goods)}
+
+            {foreach $item.goods as $keyd => $itemc}
             <li>
-                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
-                <p><a href="">dsdss}</a></p>
-                <span>￥100</span>
+                <div class="yg-cimg"><a href="/detail/{$itemc.id}.html" ><img src="_IMG_/goods/{$itemc.default_image}" alt=""></a></div>
+                <p><a href="">{$itemc.goods_name}</a></p>
+                <span>￥{$itemc.price}</span>
             </li>
+
+            {/foreach}
+            {/if}
+
         </ul>
     </div>
 </div>
-
-<div class="yx-goodschoice">
-    <div class="ym-c-title">
-        <p></p>热卖<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
-    </div>
-    <div class="yg-c-list">
-        <ul>
-
-            <li>
-                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
-                <p><a href="">dsdss}</a></p>
-                <span>￥100</span>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="yx-goodschoice">
-    <div class="ym-c-title">
-        <p></p>折扣<span>闭眼也能买对</span><div class="checkmore" ><a href=""><img src="_IMG_/checkmore.png" alt=""></a></div>
-    </div>
-    <div class="yg-c-list">
-        <ul>
-
-            <li>
-                <div class="yg-cimg"><a ><img src="" alt=""></a></div>
-                <p><a href="">dsdss}</a></p>
-                <span>￥100</span>
-            </li>
-        </ul>
-    </div>
-</div>
-
+{/foreach}
+{/if}
 <script>
     $(function () {
         var swiperBanner = new Swiper('.yx-hm-banner .swiper-container', {

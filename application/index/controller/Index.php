@@ -15,16 +15,21 @@ class Index extends  Base
 
     public function index()
     {
-        if(isset($_SESSION['user_info'])){
-
-            $re=Userinfo::get(array('open_id'=>$_SESSION['user_info']['openid']));
-            $this->assign('name',$re->nickname);
-            $this->assign('img_url',$re->img_url);
-
-        }
 
         $banner= Banner::where(array('if_show'=>1))->select();
         $this->assign('banner',$banner);
+
+       // $mod = new \app\admin\model\Place();
+        $cate= \app\admin\model\Place::where(array())->order('short', 'asc')->select();
+        $goods = new \app\index\model\Goods();
+        if(isset($cate)){
+            foreach ($cate as $key=>$val){
+
+                $cate[$key]['goods'] =$goods->where(array('is_show'=>1,'place_id'=>$val['id']))->select();
+
+            }
+        }
+        $this->assign('place',$cate);
         $this->assign('SITE_LOCATION','default_index');
         return $this->fetch('index');
 

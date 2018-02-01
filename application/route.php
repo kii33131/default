@@ -60,10 +60,15 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/addcategory','admin/Category/addcategory');
     Route::get('admin/banner','admin/Banner/index');
     Route::get('admin/banneradd','admin/Banner/add');
+    Route::get('admin/place','admin/Place/index');
+    Route::get('admin/placeadd','admin/Place/add');
+    Route::get('admin/guanliangoods','admin/Place/guanliangoods');
+    //guanliangoods
 
-    //addcategory
 
 });
+
+
 
 Route::any('dologin','index/login/dologin');
 Route::any('getcity','index/Address/getcity');
@@ -89,6 +94,11 @@ Route::any('admin/dobanneradd','admin/Banner/dobanneradd');
 Route::any('admin/getbanner','admin/Banner/getbanner');
 
 Route::any('banner/bannerdelete','admin/Banner/bannerdelete');
+Route::any('admin/getplace','admin/Place/getplace');
+Route::any('admin/doplace','admin/Place/doplace');
+Route::any('admin/placedelete','admin/Place/placedelete');
+//placedelete
+//doplace
 ///admin/banner.html
 //getbanner
 //dobanneradd
