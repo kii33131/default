@@ -16,8 +16,8 @@ class Base extends Controller
        parent::__construct($request);
        $wxconfig=Config::get('wx');
         //REQUEST_URI
-       echo '<pre>';
-       print_r('http://'.$_SERVER['SERVER_NAME'].'/');exit;
+      // echo '<pre>';
+       //print_r('http://'.$_SERVER['SERVER_NAME'].'/');exit;
 
        $this->assign('servesddd','http://'.$_SERVER['SERVER_NAME'].'/');
        //首页路由
