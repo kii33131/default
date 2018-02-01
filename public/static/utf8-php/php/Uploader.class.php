@@ -331,7 +331,7 @@ class Uploader
         if (substr($fullname, 0, 1) != '/') {
             $fullname = '/' . $fullname;
         }
-
+        file_put_contents('ww.txt',$rootPath . $fullname);
         return $rootPath . $fullname;
     }
 

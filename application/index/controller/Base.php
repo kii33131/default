@@ -18,7 +18,7 @@ class Base extends Controller
         //REQUEST_URI
       // echo '<pre>';
        //print_r('http://'.$_SERVER['SERVER_NAME'].'/');exit;
-
+        //echo $_SERVER['DOCUMENT_ROOT'];exit;
        $this->assign('servesddd','http://'.$_SERVER['SERVER_NAME'].'/');
        //首页路由
        $routearr = [];
