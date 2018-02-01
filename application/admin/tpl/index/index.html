@@ -62,19 +62,7 @@
                     {id:'code',text:'首页代码',href:'main/code.html',closeable : false},
                     {id:'main-menu',text:'商品列表',href:'/admin/goods.html'},
                     {id:'second-menu',text:'商品分类',href:'/admin/category.html'},
-                    {id:'dyna-menu',text:'动态菜单',href:'main/dyna-menu.html'}
-                ]
-            },{
-                text:'页面操作',
-                items:[
-                    {id:'operation',text:'页面常见操作',href:'main/operation.html'},
-                    {id:'quick',text:'页面操作快捷方式',href:'main/quick.html'}
-                ]
-            },{
-                text:'文件结构',
-                items:[
-                    {id:'resource',text:'资源文件结构',href:'main/resource.html'},
-                    {id:'loader',text:'引入JS方式',href:'main/loader.html'}
+                    {id:'dyna-menu',text:'首页广告',href:'/admin/banner.html'}
                 ]
             }]
         }
@@ -130,17 +118,7 @@
                 }]
             }
             */
-            ,{
-                id:'detail',
-                menu:[{
-                    text:'详情页面',
-                    items:[
-                        {id:'code',text:'详情页面代码',href:'detail/code.html'},
-                        {id:'example',text:'详情页面示例',href:'detail/example.html'},
-                        {id:'introduce',text:'详情页面简介',href:'detail/introduce.html'}
-                    ]
-                }]
-            }];
+            ];
         new PageUtil.MainPage({
             modulesConfig : config
         });

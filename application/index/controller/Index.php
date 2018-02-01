@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+use app\admin\model\Banner;
 use app\index\model\Gcategory;
 use app\index\model\Userinfo;
 
@@ -22,6 +23,8 @@ class Index extends  Base
 
         }
 
+        $banner= Banner::where(array('if_show'=>1))->select();
+        $this->assign('banner',$banner);
         $this->assign('SITE_LOCATION','default_index');
         return $this->fetch('index');
 

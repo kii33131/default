@@ -162,7 +162,7 @@ class Category extends Base
                 $this->success('不能删除 ,先去删除子分类吧','/admin/category.html');
                 exit();
             }
-           Gcategory::destroy($cate_id);
+            Gcategory::destroy($cate_id);
 
             $this->success('删除成功','/admin/category.html');
         }
