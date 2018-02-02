@@ -131,10 +131,10 @@ class Login extends Base
 
                     // 执行微信登录操作
                     $user->save($cc,array('open_id'=>$_SESSION['user_info']['openid']));
-                    $_SESSION['user']['id'] = $info->id;
-                    $_SESSION['user']['open_id'] = $info->open_id;
-                    $_SESSION['user']['nickname'] = $info->nickname;
-                    $_SESSION['user']['phone'] = $info->phone;
+                    $_SESSION['user']['id'] = $user->id;
+                    $_SESSION['user']['open_id'] = $user->open_id;
+                    $_SESSION['user']['nickname'] = $user->nickname;
+                    $_SESSION['user']['phone'] = $user->phone;
                     $old=Userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
                     if($old){
                         // 先同步订单 购物车 等信息到新用户上面
