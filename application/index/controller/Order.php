@@ -164,7 +164,7 @@ class Order extends Base
         }
 
         $where = array();
-        $list=\app\index\model\Order::where($where)->limit(10)->page($_GET['page'])->order('id','DESC')->select();
+        $list=\app\index\model\Order::where($where)->limit(50)->page($_GET['page'])->order('id','DESC')->select();
         $in_mod = new Inventory();
         $g_mod = new \app\index\model\Goods();
         if(isset($list)){
