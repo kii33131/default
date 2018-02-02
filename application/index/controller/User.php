@@ -20,6 +20,11 @@ class User extends Base
             $this->assign('haslogin','1');
         }
 
+        if(isset($_SESSION['user_info']) && !empty($_SESSION['user_info'])){
+
+            $this->assign('headerimg',$_SESSION['user_info']['img_url']);
+        }
+
         $this->assign('SITE_LOCATION','user');
         return $this->fetch('index');
 
