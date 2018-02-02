@@ -45,6 +45,9 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('common/search_front','index/common/search_front');
     Route::get('login','index/login/index');
     Route::get('yzm','index/login/yzm');
+    Route::get('user','index/User/index');
+    Route::get('orderlist','index/Order/orderlist');
+
 
     //promptly
 

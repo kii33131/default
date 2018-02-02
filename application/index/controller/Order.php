@@ -156,6 +156,11 @@ class Order extends Base
     }
 
 
+    //订单列表
+    public function orderlist(){
+
+        return $this->fetch('orderlist');
+    }
 
 
 

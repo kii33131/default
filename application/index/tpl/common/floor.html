@@ -31,7 +31,15 @@
 
     <div class="cell"><a href="cart.html"><p ><i class="icon iconfont icon-gouwuche"></i></p><span>购物车</span></a></div>
 
-    <div class="cell"><a href="/my/index.php?mod=default&act=presonal"><p ><i class="icon iconfont icon-wode"></i></p><span>我的</span></a></div>
+    {if $SITE_LOCATION eq 'user'}
+    <div class="cell"><a href="user.html"><p ><i class="icon iconfont icon-wode_dianji yx-choice"></i></p><span>我的</span></a></div>
+
+
+    {else}
+
+    <div class="cell"><a href="user.html"><p ><i class="icon iconfont icon-wode"></i></p><span>我的</span></a></div>
+    {/if}
+
 </div>
 
 
