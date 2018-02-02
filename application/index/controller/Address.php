@@ -101,8 +101,17 @@ class Address extends Base
     //地址列表
 
     public function addresslist(){
+
+        if(!isset($_SESSION['user']['id']) || empty($_SESSION['user']['id'])){
+
+            $backurl = 'http://'.$_SERVER['SERVER_NAME'].'/addresslist.html';
+            $url  ='http://'.$_SERVER['SERVER_NAME'].'/login.html?backurl='.urlencode($backurl);
+            header('Location:'.$url);exit;
+        }
+
+
         $address_mod  =  new  \app\index\model\Address();
-        $list= $address_mod
+        $list= $address_mod->where(array('user_id'=>$_SESSION['user']['id']))
             ->order('id', 'desc')
             ->select();
 

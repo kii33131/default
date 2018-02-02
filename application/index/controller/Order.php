@@ -158,12 +158,22 @@ class Order extends Base
 
     //订单列表
     public function orderlist(){
+
+        if(!isset($_SESSION['user']['id']) || empty($_SESSION['user']['id'])){
+
+            $backurl = 'http://'.$_SERVER['SERVER_NAME'].'/orderlist.html';
+            $url  ='http://'.$_SERVER['SERVER_NAME'].'/login.html?backurl='.urlencode($backurl);
+            header('Location:'.$url);exit;
+        }
+
+
         if(!isset($_GET['page'])){
 
             $_GET['page'] =1;
         }
 
         $where = array();
+        $where['user_id'] =  $_SESSION['user']['id'];
         $list=\app\index\model\Order::where($where)->limit(50)->page($_GET['page'])->order('id','DESC')->select();
         $in_mod = new Inventory();
         $g_mod = new \app\index\model\Goods();
