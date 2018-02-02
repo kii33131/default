@@ -15,6 +15,11 @@ class User extends Base
     public function index()
     {
         //
+        if(isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id'])){
+
+            $this->assign('haslogin','1');
+        }
+
         $this->assign('SITE_LOCATION','user');
         return $this->fetch('index');
 

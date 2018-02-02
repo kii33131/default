@@ -114,6 +114,8 @@ Route::any('admin/doedit','admin/Introduce/doedit');
 Route::any('admin/getroute','admin/Route/getroute');
 Route::any('admin/doadd','admin/Route/doadd');
 Route::any('promptly','index/Cart/promptly');
+Route::any('logout','index/Login/logout');
+//logout
 //doadd
 //doedit
 

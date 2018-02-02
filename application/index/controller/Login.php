@@ -161,4 +161,11 @@ class Login extends Base
         return true;
     }
 
+
+    public function logout(){
+
+        unset($_SESSION['user']);
+        $this->success('退出登录成功','/');
+    }
+
 }
