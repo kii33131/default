@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-支付页面
+{include file="common/header" /}
+{include file="common/othertop" /}
+{css href="_CSS1_/2018/mystyle.css" /}
+<div class="yx-confirmordermian">
+
+    <div class="yxpayorder-mains" style="display: block">
+        <div class="yxpayorder-main">
+            <div class="ypoitem1">选择支付方式：</div>
+            <div class="ypoitem2">
+                <!--<p class="pay_qianbao"><i class="icon iconfont icon-qianbao"></i> 钱包支付 <em><span class="icon iconfont icon-xuanzhong"></span></em></p>-->
+                {if isset($isweixin)}
+                <p class="wechat_pay_p" name="微信支付"><i class="icon iconfont icon-weixinzhifu"></i> 微信支付 <em><span class="icon iconfont icon-xuanzhong product-select-red"></span></em></p>
+
+                {else}
+                <p class="zhifubao" name="支付宝支付"><i class="icon iconfont icon-umidd17"></i> 支付宝支付 <em><span class="icon iconfont icon-xuanzhong product-select-red"></span></em></p>
+
+                {/if}
+
+            </div>
+            <div class="ypoitembtn">
+                <a class="paysubmit"  href="javascript:pay_order({$order.id})"><span class="payname">支付</span>：￥<span class="paymoney">{$order.money}</span></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    function pay_order(order_id) {
+
+        alert(order_id)
+    }
+    
+</script>
+
 </body>
 </html>

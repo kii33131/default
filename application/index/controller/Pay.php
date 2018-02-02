@@ -5,17 +5,21 @@ namespace app\index\controller;
 use think\Controller;
 use think\Request;
 
-class Pay extends Controller
+class Pay extends Base
 {
     /**
      * 显示资源列表
      *
      * @return \think\Response
      */
-    public function index()
+    public function index($id)
     {
         //
-
+        //$id
+        $order=\app\index\model\Order::get($id);
+        if(isset($order)){
+            $this->assign('order',$order);
+        }
         return $this->fetch('index');
     }
 
