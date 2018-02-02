@@ -158,7 +158,35 @@ class Order extends Base
 
     //订单列表
     public function orderlist(){
+        if(!isset($_GET['page'])){
 
+            $_GET['page'] =1;
+        }
+
+        $where = array();
+        $list=\app\index\model\Order::where($where)->limit(10)->page($_GET['page'])->order('id','DESC')->select();
+        $in_mod = new Inventory();
+        $g_mod = new \app\index\model\Goods();
+        if(isset($list)){
+            foreach ($list as $key=>$val){
+
+                $goods=$in_mod->where(array('order_id'=>$val['id']))->select();
+                if(isset($goods)){
+
+                    foreach ($goods as $l=>$van){
+                        $g=$g_mod->get($van['goods_id']);
+                        $goods[$l]['img'] = $g['default_image'];
+                    }
+                }
+
+                $list[$key]['goods'] =  $goods;
+
+                // $list[$key]['goods'] =
+
+            }
+
+            $this->assign('list',$list);
+        }
         return $this->fetch('orderlist');
     }
 
