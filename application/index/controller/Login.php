@@ -2,6 +2,7 @@
 
 namespace app\index\controller;
 
+use app\index\model\Inventory;
 use app\index\model\Userinfo;
 use think\Controller;
 use think\Request;
@@ -137,6 +138,13 @@ class Login extends Base
                     $old=Userinfo::get(array('phone'=> $cc['phone'],'open_id'=>'','nickname'=>''));
                     if($old){
                         // 先同步订单 购物车 等信息到新用户上面
+
+                        // order cart address  inventory
+
+                        \app\index\model\Order::update(array('user_id'=>$user->id),array('user_id'=>$old->id));
+                        \app\index\model\Cart::update(array('user_id'=>$user->id),array('user_id'=>$old->id));
+                        \app\index\model\Address::update(array('user_id'=>$user->id),array('user_id'=>$old->id));
+                        Inventory::update(array('user_id'=>$user->id),array('user_id'=>$old->id));
                         //最后删除吊老用户
                         Userinfo::destroy($old->id);
                     }
