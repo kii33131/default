@@ -22,7 +22,7 @@ class User extends Base
 
         if(isset($_SESSION['user_info']) && !empty($_SESSION['user_info'])){
 
-            $this->assign('headerimg',$_SESSION['user_info']['img_url']);
+            $this->assign('headerimg',$_SESSION['user_info']['headimgurl']);
         }
 
         $this->assign('SITE_LOCATION','user');
