@@ -47,6 +47,8 @@ class Cart extends Base
             }
             $this->assign('money',$money);
             $this->assign('cart',$cart);
+        }else{
+            $this->success('请先加入购物车','/');
         }
         return $this->fetch('index');
 
@@ -93,6 +95,57 @@ class Cart extends Base
 
         }else{
             echo json_encode(array('code'=>400,'msg'=>'缺少商品id')); exit;
+
+        }
+
+
+    }
+
+
+    public function promptly(){
+
+        if(!isset($_SESSION['user']['id']) && empty($_SESSION['user']['id'])){
+            $backurl = 'http://'.$_SERVER['SERVER_NAME'].'/detail/'.$_GET['goods_id'].'.html';
+            $url  ='http://'.$_SERVER['SERVER_NAME'].'/login.html?backurl='.urlencode($backurl);
+            header('Location:'.$url);exit;
+        }
+
+        if(isset($_GET['goods_id'])){
+            $goodsmod = new \app\index\model\Goods();
+            $cartmod = New \app\index\model\Cart();
+            $goods=$goodsmod->get($_GET['goods_id']);
+            if($goods){
+                if($goods->stock==0){
+                    $this->success('没有库存啦','/');exit;
+                }
+
+                $carts=$cartmod->get(array('user_id'=>$_SESSION['user']['id'],'goods_id'=>$_GET['goods_id']));
+                if(!empty($carts)){
+
+                   // echo json_encode(array('code'=>400,'msg'=>'您已经添加过啦,去购物车结算吧')); exit;
+
+                    header('Location:'.'/cart.html');exit;
+                }
+
+                $cartmod->user_id = $_SESSION['user']['id'];
+                $cartmod->goods_id = $_GET['goods_id'];
+                $cartmod->num = 1;
+                $cartmod->add_time = time();
+                $cartmod->save();
+                if($cartmod->id){
+
+                    header('Location:'.'/cart.html');exit;
+
+                }else{
+
+                    $this->success('添加失败','/');exit;
+                }
+
+            }else{
+
+                $this->success('没有这个商品','/');exit;
+            }
+            //echo '<pr>';
 
         }
 

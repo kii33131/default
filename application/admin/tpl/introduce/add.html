@@ -36,7 +36,11 @@
         <div class="row">
             <div class="control-group span8">
 
+                   <label class="control-label"><s>*</s>联系电话：</label>
+                    <div class="controls">
+                        <input   name="title" type="number" value="{if isset($data.title)} {$data.title} {/if}" class="control-text" data-rules="{required:true}">
 
+                    </div>
 
                     <label class="control-label"><s>*</s>介绍：</label>
 

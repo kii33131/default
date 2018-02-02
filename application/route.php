@@ -46,6 +46,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('login','index/login/index');
     Route::get('yzm','index/login/yzm');
 
+    //promptly
+
 });
 
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
@@ -108,6 +110,7 @@ Route::any('admin/placedelete','admin/Place/placedelete');
 Route::any('admin/doedit','admin/Introduce/doedit');
 Route::any('admin/getroute','admin/Route/getroute');
 Route::any('admin/doadd','admin/Route/doadd');
+Route::any('promptly','index/Cart/promptly');
 //doadd
 //doedit
 

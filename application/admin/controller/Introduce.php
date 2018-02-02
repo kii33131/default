@@ -34,6 +34,7 @@ class Introduce extends Controller
         $mode = new \app\index\model\Introduce();
 
         $data['content'] = $_POST['editorValue'];
+        $data['title'] = $_POST['title'];
 
         $mode->save($data,array('id'=>1));
 

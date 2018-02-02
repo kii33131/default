@@ -195,11 +195,11 @@
 <div class="goodsdetialbottom">
     <div class="goodsdetialbottom-left yxui-flex">
 
-        <div class="cell"><a href="tel:"><i class="icon iconfont icon-iconfontcolor39"></i><p>电话咨询</p></a></div>
+        <div class="cell"><a href="tel:{if isset($introduce.title)} {$introduce.title} {/if}"><i class="icon iconfont icon-iconfontcolor39"></i><p>电话咨询</p></a></div>
     </div>
     <div class="goodsdetialbottom-right yxui-flex">
         <div class="cell"><a href="javascript:;" class="add_cart" goods_id="{$data.id}"  >加入购物车</a></div>
-        <div class="cell"><a href="javascript:;" class="add_cart_order" goods_id="{$data.id}" >立即购买</a></div>
+        <div class="cell"><a href="/promptly?goods_id={$data.id}" class="add_cart_order" goods_id="{$data.id}" >立即购买</a></div>
     </div>
 </div>
 

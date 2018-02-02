@@ -114,6 +114,12 @@ class Goods extends Base
             $this->assign('data',$data);
         }
 
+        $introduce= \app\index\model\Introduce::get(1);
+
+        if(isset($introduce)){
+            $this->assign('introduce',$introduce);
+        }
+
         return $this->fetch('detail');
     }
 }
