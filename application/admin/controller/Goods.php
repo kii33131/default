@@ -28,6 +28,9 @@ class Goods extends Base
         if(!isset($_GET['pageIndex'] ) || !$_GET['pageIndex']){
 
             $_GET['pageIndex'] =1;
+        }else{
+
+            $_GET['pageIndex'] =  $_GET['pageIndex']+1;
         }
         if(isset($_GET['cate_1']) && $_GET['cate_1']){
             $where['cate_1'] = $_GET['cate_1'];
@@ -45,13 +48,13 @@ class Goods extends Base
 
         if(isset($_GET['time']) && $_GET['time']){
 
-            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('add_time',$_GET['time'])->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(20)->page( $_GET['pageIndex'])->order('add_time',$_GET['time'])->select();
         }elseif(isset($_GET['price']) && $_GET['price']){
 
-            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('price',$_GET['price'])->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(20)->page( $_GET['pageIndex'])->order('price',$_GET['price'])->select();
         }else{
 
-            $goodlist=\app\index\model\Goods::where($where)->limit(100)->page( $_GET['pageIndex'])->order('id','desc')->select();
+            $goodlist=\app\index\model\Goods::where($where)->limit(20)->page( $_GET['pageIndex'])->order('id','desc')->select();
 
         }
 
