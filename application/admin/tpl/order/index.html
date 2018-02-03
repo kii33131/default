@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title> 搜索表单</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {css href="_CSS1_/assets/css/dpl-min.css" /}
+    {css href="_CSS1_/assets/css/bui-min.css" /}
+    {css href="_CSS1_/assets/css/page-min.css" /}
+    {css href="_CSS1_/assets/css/prettify.css" /}
+    <style type="text/css">
+        code {
+            padding: 0px 4px;
+            color: #d14;
+            background-color: #f7f7f9;
+            border: 1px solid #e1e1e8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <!--
+        <form id="searchForm" class="form-horizontal span24">
+
+            <div class="row" >
+                <div class="control-group span7">
+                    <label class="control-label">商品名称：</label>
+                    <div class="controls">
+                        <input type="text" class="control-text" name="goods_name">
+                    </div>
+                </div>
+
+
+                <div class="control-group span4">
+                    <div class="controls" >
+                    <button  type="submit" id="btnSearch" class="button button-primary">搜索</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </form> -->
+
+        <form id="searchForm" class="form-horizontal" tabindex="0" style="outline: none;">
+            <div class="row">
+                <div class="control-group span8">
+                    <label class="control-label">订单号：</label>
+                    <div class="controls">
+                        <input type="text" class="control-text" name="order_number">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <!--
+                <div class="control-group span10">
+                    <label class="control-label">起始日期：</label>
+                    <div class="controls bui-form-group" data-rules="{dateRange : true}">
+                        <input name="start" data-tip="{text : '起始日期'}" data-rules="{required:true}" data-messages="{required:'起始日期不能为空'}" class="input-small calendar" type="text"><label>&nbsp;-&nbsp;</label>
+                        <input name="end" data-rules="{required:true}" data-messages="{required:'结束日期不能为空'}" class="input-small calendar" type="text">
+                    </div>
+                </div>  -->
+                <div class="control-group span5">
+                    *
+                </div>
+                <div class="form-actions span5">
+                    <button id="btnSearch" type="submit" class="button button-primary">搜索</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+    <div class="search-grid-container">
+        <div id="grid"></div>
+    </div>
+</div>
+
+
+{js href="_JS_/assets/js/jquery-1.8.1.min.js" /}
+{js href="_JS_/assets/js/bui.js" /}
+{js href="_JS_/assets/js/config.js" /}
+
+
+<script type="text/javascript">
+    var  enumObj = {"1":"已支付","0":"未支付"},
+        editing = new BUI.Grid.Plugins.DialogEditing({
+            contentId : 'content', //设置隐藏的Dialog内容
+            autoSave : true, //添加数据或者修改数据时，自动保存
+            triggerCls : 'btn-edit'
+        })
+
+    var Grid = BUI.Grid,
+        Store = BUI.Data.Store,
+
+        columns = [
+            { title: '订单id',width: 100,  sortable: false, dataIndex: 'id'},
+            { title: '订单金额', width: 100,sortable: true,  dataIndex: 'money'},
+            { title: '订单编号', width: 100,sortable: true,  dataIndex: 'order_number'},
+            { title: '用户电话', width: 300, sortable: true, dataIndex: 'phone'},
+            { title: '昵称', width: 150, sortable: false, dataIndex: 'nickname'},
+            { title: 'open_id', width: 150, sortable: false, dataIndex: 'open_id'},
+            { title: '支付状态',width: 100, sortable: true,  dataIndex: 'ispay',  renderer:BUI.Grid.Format.enumRenderer(enumObj) },
+
+            { title: '操作', width: 300, dataIndex: '',renderer:function(value,obj){
+
+                    editStr = '<span class="grid-command btn-del"   id="'+ obj.id+'" >查看</span>';//页面操作不需要使用Search.createLink
+                    return editStr;
+                }}
+        ];
+    var store = new Store({
+            url : '/admin/orderlist',
+            autoLoad:true,
+            pageSize:20
+        }),
+        grid = new Grid.Grid({
+            render:'#grid',
+            loadMask: true,
+            forceFit:true,
+            columns : columns,
+            store: store,
+            // plugins : [Grid.Plugins.CheckSelection,Grid.Plugins.AutoFit], //勾选插件、自适应宽度插件
+            // 底部工具栏
+
+            // 顶部工具栏
+            bbar : {
+                //items 也可以在此配置
+                // pagingBar:表明包含分页栏
+                pagingBar:true
+            }
+        });
+
+    grid.render();
+    //创建表单，表单中的日历，不需要单独初始化
+    var form = new BUI.Form.HForm({
+        srcNode : '#searchForm'
+    }).render();
+
+    form.on('beforesubmit',function(ev) {
+        //序列化成对象
+        var obj = form.serializeToObject();
+        obj.start = 0; //返回第一页
+        store.load(obj);
+        return false;
+    });
+
+    $("body").delegate('.btn-del',"click",function(){
+        //var msg = "您真的确定要删除吗？\n\n请确认！";
+        // if (confirm(msg)==true){
+        //bannerdelete
+      //  window.location.href="/admin/goodsadd.html?id="+$(this).attr('id');
+        // }
+
+    });
+</script>
+
+<body>
+</html>
