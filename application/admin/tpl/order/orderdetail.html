@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>简单表单页</title>
+    <!-- 此文件为了显示Demo样式，项目中不需要引入 -->
+    {css href="_CSS1_/assets/css/dpl-min.css" /}
+    {css href="_CSS1_/assets/css/bui-min.css" /}
+    {css href="_CSS1_/assets/css/page-min.css" /}
+    {css href="_CSS1_/assets/css/prettify.css" /}
+
+</head>
+<body>
+<div class="demo-content">
+
+    <!-- 简单详情页 ================================================== -->
+    <div class="doc-content">
+        <ul class="breadcrumb">
+
+        </ul>
+        <div class="form-links">
+            <ul class="nav-tabs">
+                <li class="active"><a href="#">订单详情</a></li>
+
+            </ul>
+        </div>
+        <div class="detail-section">
+            <p>订单详情</p>
+            <hr>
+            <div class="detail-row">
+                <table cellspacing="0" class="table table-head-bordered">
+                    <thead>
+                    <tr>
+                        <th>订单编号</th>
+                        <th>订单状态</th>
+                        <th>支付状态</th>
+                        <th>订单金额</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td>{$order.order_number}</td>
+                        <td>{if  $order.status} 已取消{else} 正常 {/if}</td>
+                        <td>{if  $order.ispay} 已支付{else} 未支付 {/if}</td>
+                        <td>{$order.money}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <p>商品清单</p>
+            <hr>
+            <div class="detail-row">
+                <table cellspacing="0" class="table table-head-bordered">
+                    <thead>
+                    <tr>
+                        <th>商品id</th>
+                        <th>商品名称</th>
+                        <th>商品价格</th>
+                        <th>商品数量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {if $order.inventory}
+                    {foreach $order.inventory as $key => $item}
+                    <tr>
+                        <td>{$item.id}</td>
+                        <td>{$item.goods_name}</td>
+                        <td>{$item.price}</td>
+                        <td>{$item.num}</td>
+                    </tr>
+                    {/foreach}
+                    {/if}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <p>送货地址</p>
+            <hr>
+            <div class="detail-row">
+                <table cellspacing="0" class="table table-head-bordered">
+                    <thead>
+                    <tr>
+                        <th>{$order.address.name}</th>
+                        <th>{$order.address.phone}</th>
+                        <th>{$order.address.address}</th>
+
+                    </tr>
+                    </thead>
+
+                </table>
+            </div>
+        </div>
+
+            <div class="actions-bar">
+                <div class="row form-actions ">
+                    <div class="span13 offset3 ">
+                        <button type="submit" class="button button-primary">确定</button>
+                        <button type="reset" class="button">取消</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- script end -->
+</div>
+</body>
+</html>

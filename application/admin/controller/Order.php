@@ -2,6 +2,8 @@
 
 namespace app\admin\controller;
 
+use app\index\model\Address;
+use app\index\model\Inventory;
 use app\index\model\Userinfo;
 use think\Controller;
 use think\Request;
@@ -57,6 +59,29 @@ class Order extends Controller
     public function index(){
 
         return $this->fetch('index');
+    }
+
+
+    public function orderdetail(){
+
+        //echo '<pre>';
+       // print_r($_GET);exit;
+        if(isset($_GET['order_id'])){
+            $mode = new \app\index\model\Order();
+            $order=$mode->get($_GET['order_id']);
+            if(isset($order)){
+                // 商品清单
+                $inventory_mod = new Inventory();
+                $order['inventory']=$inventory_mod->where(array('order_id'=>$order->id))->select();
+                // 地址
+                $address_mod = new Address();
+                $order['address'] = $address_mod->get($order->address_id);
+            }
+        }
+
+        $this->assign('order',$order);
+        return $this->fetch('orderdetail');
+        //orderdetail
     }
 
 

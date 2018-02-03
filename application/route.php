@@ -49,6 +49,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('orderlist','index/Order/orderlist');
 
 
+
+
     //promptly
 
 });
@@ -72,7 +74,8 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/route','admin/Route/index');
     Route::get('admin/routeadd','admin/Route/add');
     Route::get('admin/order','admin/Order/index');
-    //index
+    Route::get('admin/orderdetail','admin/Order/orderdetail');
+    //orderdetail
 
 
     //guanliangoods
@@ -116,7 +119,6 @@ Route::any('admin/getroute','admin/Route/getroute');
 Route::any('admin/doadd','admin/Route/doadd');
 Route::any('promptly','index/Cart/promptly');
 Route::any('logout','index/Login/logout');
-
 Route::any('admin/orderlist','admin/Order/orderlist');
 //logout
 //doadd
