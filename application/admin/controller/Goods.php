@@ -118,7 +118,7 @@ class Goods extends Base
             $good_mod->place_id =  isset( $_POST['place_id'])? $_POST['place_id']:0;
             $good_mod->add_time =time();
             $good_mod->descrption =isset( $_POST['editorValue'])? $_POST['editorValue']:'';
-
+            $good_mod->sku =date('Ymd') . str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
             if(isset($_FILES['img']['tmp_name'])){
 
                 if($_FILES['img']['size']>2*1024*1024){
