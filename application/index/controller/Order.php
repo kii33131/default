@@ -140,9 +140,7 @@ class Order extends Base
                }
 
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-                $result = $this->wxpayconfig($order);
-
-
+                //$result = $this->wxpayconfig($order);
                //判断是否微信
                 if (strpos($user_agent, 'MicroMessenger') === false) {}else{
 
