@@ -10,6 +10,7 @@ require_once "WxPay.Data.php";
  * @author widyhu
  *
  */
+
 class WxPayApi
 {
 	/**

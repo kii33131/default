@@ -49,12 +49,14 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('user','index/User/index');
     Route::get('orderlist','index/Order/orderlist');
 
-
+//test
 
 
     //promptly
 
 });
+
+Route::any('test','index/Order/test');
 
 Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('admin/index','admin/Index/index');

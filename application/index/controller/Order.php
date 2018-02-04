@@ -140,7 +140,7 @@ class Order extends Base
                }
 
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-                //$result = $this->wxpayconfig($order);
+                $result = $this->wxpayconfig($order);
                //判断是否微信
                 if (strpos($user_agent, 'MicroMessenger') === false) {}else{
 
@@ -172,6 +172,44 @@ class Order extends Base
 
 
 
+    public function test(){
+        $tools = new JsApiPay();
+
+
+       // $input = new \WxPayUnifiedOrder();
+
+       // var_dump($input);
+       // echo '<pre>';
+        //print_r($tools);exit;
+
+        $input = new \WxPayUnifiedOrder();
+        $input->SetBody("订单威信支付");
+        $input->SetAttach("订单威信支付");
+        $input->SetOut_trade_no(321321);//\WxPayConfig::MCHID.date("YmdHis")
+        $input->SetTotal_fee(1);
+        $input->SetTime_start(date("YmdHis"));
+        $input->SetTime_expire(date("YmdHis", time() + 600));
+        $input->SetGoods_tag("测试商品");
+        $input->SetNotify_url('http://'.$_SERVER['SERVER_NAME'].'/'."/notify/");
+        $input->SetTrade_type("JSAPI");
+        $input->SetOpenid(2332);
+        $order = \WxPayApi::unifiedOrder();
+        $jsApiParameters = $tools->GetJsApiParameters($order);
+        var_dump($jsApiParameters);exit;
+        $_SESSION['user_info']['openid']=1;
+        if(!isset($_SESSION['user_info']['openid']) || empty($_SESSION['user_info']['openid'])){
+
+            $openId= $tools->GetOpenid();
+
+        }else{
+
+            $openId = $_SESSION['user_info']['openid'];
+        }
+
+
+
+    }
+
 
 
     public function wxpayconfig($data)
@@ -181,14 +219,12 @@ class Order extends Base
          $path = str_replace('/index/controller','/extra/WxpayAPI/',__DIR__);
 
         ///if(isset($_POST))
-        require_once $path."lib/WxPay.Api.php";
-        require_once $path."example/WxPay.JsApiPay.php";
-        require_once $path."/WxPay.Data.php";
+
        // require_once "WxPay.JsApiPay.php";
 
         ini_set('date.timezone','Asia/Shanghai');
 
-        $tools = new \JsApiPay();
+        $tools = new  JsApiPay();
 
        // echo '<pre>';
        // print_r($tools);exit;
@@ -216,7 +252,7 @@ class Order extends Base
         $input->SetNotify_url('http://'.$_SERVER['SERVER_NAME'].'/'."/notify/".$data->id);
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
-        $order = \WxPayApi::unifiedOrder($input);
+        $order = \WxPayApi::unifiedOrder();
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $back= '/' ;
         $js = <<<PPP
