@@ -35,6 +35,7 @@ Route::group(['method' => 'get', 'ext' => 'html'], function () {
     Route::get('detail/:id','index/Goods/detail');
 
     Route::get('pay/:id','index/Pay/index');
+    Route::get('wxpay','index/Pay/wxpay');
     //detail
     Route::get('detail','index/Index/detail');
     Route::get('editl/:id','index/Index/editl');
@@ -120,6 +121,8 @@ Route::any('admin/doadd','admin/Route/doadd');
 Route::any('promptly','index/Cart/promptly');
 Route::any('logout','index/Login/logout');
 Route::any('admin/orderlist','admin/Order/orderlist');
+Route::any('notify/:id','index/Order/notify');
+
 //logout
 //doadd
 //doedit

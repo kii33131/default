@@ -12,23 +12,31 @@
                 <p class="wechat_pay_p" name="微信支付"><i class="icon iconfont icon-weixinzhifu"></i> 微信支付 <em><span class="icon iconfont icon-xuanzhong product-select-red"></span></em></p>
 
                 {else}
+
                 <p class="zhifubao" name="支付宝支付"><i class="icon iconfont icon-umidd17"></i> 支付宝支付 <em><span class="icon iconfont icon-xuanzhong product-select-red"></span></em></p>
 
                 {/if}
 
             </div>
-            <div class="ypoitembtn">
-                <a class="paysubmit"  href="javascript:pay_order({$order.id})"><span class="payname">支付</span>：￥<span class="paymoney">{$order.money}</span></a>
-            </div>
+            {if isset($isweixin)}
+
+                <div class="ypoitembtn">
+                    <a class="paysubmit"  href="/wxpay.html"><span class="payname">支付</span>：￥<span class="paymoney">{$order.money}</span></a>
+                </div>
+
+            {else}
+
+                <div class="ypoitembtn">
+                    <a class="paysubmit"  href="javascript:pay_order({$order.id})"><span class="payname">支付</span>：￥<span class="paymoney">{$order.money}</span></a>
+                </div>
+            {/if}
         </div>
     </div>
 
 </div>
 <script>
-    function pay_order(order_id) {
 
-        alert(order_id)
-    }
+
     
 </script>
 

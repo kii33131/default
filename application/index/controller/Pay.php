@@ -23,16 +23,15 @@ class Pay extends Base
         return $this->fetch('index');
     }
 
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function wxpay(){
+        if(isset($_SESSION['coupon_wechatpay'])){
+            $this->assign("weixin_js",base64_decode($_SESSION['coupon_wechatpay']));
+            unset($_SESSION['coupon_wechatpay']);
+        }
 
+        return $this->fetch('wxpay');
+        //   $this->assign()
+    }
     /**
      * 保存新建的资源
      *

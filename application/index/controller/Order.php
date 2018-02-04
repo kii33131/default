@@ -139,6 +139,15 @@ class Order extends Base
 
                }
 
+                $user_agent = $_SERVER['HTTP_USER_AGENT'];
+               //判断是否微信
+                if (strpos($user_agent, 'MicroMessenger') === false) {}else{
+                    $result = $this->wxpayconfig($order);
+                    $_SESSION['coupon_wechatpay'] = base64_encode($result);
+
+                }
+
+
                 return $this->success('订单提交成功,跳转支付页面','/pay/'.$order->id.'.html');
             }else{
 
@@ -151,6 +160,88 @@ class Order extends Base
 
             return $this->success('您没有选择商品,请选择要购买的商品','/cart.html');
         }
+
+
+    }
+
+
+
+
+
+    public function wxpayconfig($data)
+    {
+        ///if(isset($_POST))
+
+
+        ini_set('date.timezone','Asia/Shanghai');
+        $tools = new \JsApiPay();
+        // 获取用户open_id
+        if(!isset($_SESSION['user_info']['openid']) || empty($_SESSION['user_info']['openid'])){
+
+            $openId= $tools->GetOpenid();
+        }else{
+
+            $openId = $_SESSION['user_info']['openid'];
+        }
+        $input = new \WxPayUnifiedOrder();
+        $input->SetBody("订单威信支付");
+        $input->SetAttach("订单威信支付");
+        $input->SetOut_trade_no( $data->order_number);//\WxPayConfig::MCHID.date("YmdHis")
+        $input->SetTotal_fee($data->money);
+        $input->SetTime_start(date("YmdHis"));
+        $input->SetTime_expire(date("YmdHis", time() + 600));
+        $input->SetGoods_tag("测试商品");
+        $input->SetNotify_url('http://'.$_SERVER['SERVER_NAME'].'/'."/notify/".$data->id);
+        $input->SetTrade_type("JSAPI");
+        $input->SetOpenid($openId);
+        $order = \WxPayApi::unifiedOrder($input);
+        $jsApiParameters = $tools->GetJsApiParameters($order);
+        $back= '/' ;
+        $js = <<<PPP
+            <script type="text/javascript">
+            function jsApiCall()
+            {
+                WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest',
+                    {$jsApiParameters},
+                    function(res){
+                        WeixinJSBridge.log(res.err_msg);
+                        if(res.err_msg == 'get_brand_wcpay_request:ok'){
+                            window.location = '{$back}';
+                            return;
+                        }
+                        if(res.err_msg == 'get_brand_wcpay_request:cancel'){
+                            alert("付款已取消")
+                            window.location = '{$back}';
+                            return;
+                        }
+                    }
+                );
+            }
+            function callpay()
+            {
+                if (typeof WeixinJSBridge == "undefined"){
+                    if( document.addEventListener ){
+                        document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                    }else if (document.attachEvent){
+                        document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                        document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                    }
+                }else{
+                    jsApiCall();
+                }
+            }
+            callpay();
+            </script>
+PPP;
+        return $js;
+
+
+
+    }
+
+    // wx支付回调
+    public function notify($id){
 
 
     }
