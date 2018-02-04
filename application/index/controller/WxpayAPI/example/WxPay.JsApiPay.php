@@ -1,9 +1,5 @@
 <?php
-//echo __DIR__;exit;
-///var/www/html/default/application/extra/WxpayAPI/example
-$path=str_replace('example','lib',__DIR__);
-
-require_once $path."/WxPay.Api.php";
+require_once "../lib/WxPay.Api.php";
 /**
  * 
  * JSAPI支付实现类
