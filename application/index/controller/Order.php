@@ -183,6 +183,7 @@ class Order extends Base
         ///if(isset($_POST))
         require_once $path."lib/WxPay.Api.php";
         require_once $path."example/WxPay.JsApiPay.php";
+        require_once $path."example/WxPay.Data.php";
        // require_once "WxPay.JsApiPay.php";
 
         ini_set('date.timezone','Asia/Shanghai');
@@ -201,6 +202,8 @@ class Order extends Base
 
             $openId = $_SESSION['user_info']['openid'];
         }
+
+
         $input = new \WxPayUnifiedOrder();
         $input->SetBody("订单威信支付");
         $input->SetAttach("订单威信支付");
