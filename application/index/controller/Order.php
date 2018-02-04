@@ -140,12 +140,20 @@ class Order extends Base
                }
 
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
-               //判断是否微信
-                //if (strpos($user_agent, 'MicroMessenger') === false) {}else{
-                   // $result = $this->wxpayconfig($order);
-                  //  $_SESSION['coupon_wechatpay'] = base64_encode($result);
+                $result = $this->wxpayconfig($order);
 
-               // }
+
+               //判断是否微信
+                if (strpos($user_agent, 'MicroMessenger') === false) {}else{
+
+                    $result = $this->wxpayconfig($order);
+                    //echo '<pre>';
+                    //print_r($result);exit;
+
+                    $_SESSION['coupon_wechatpay'] = base64_encode($result);
+
+
+                }
 
 
                 return $this->success('订单提交成功,跳转支付页面','/pay/'.$order->id.'.html');
@@ -170,15 +178,27 @@ class Order extends Base
 
     public function wxpayconfig($data)
     {
-        ///if(isset($_POST))
+        ///var/www/html/default/application/index/controller
+        ///
+         $path = str_replace('/index/controller','/extra/WxpayAPI/',__DIR__);
 
+        ///if(isset($_POST))
+        require_once $path."lib/WxPay.Api.php";
+        require_once $path."example/WxPay.JsApiPay.php";
+       // require_once "WxPay.JsApiPay.php";
 
         ini_set('date.timezone','Asia/Shanghai');
+
         $tools = new \JsApiPay();
+
+       // echo '<pre>';
+       // print_r($tools);exit;
         // 获取用户open_id
         if(!isset($_SESSION['user_info']['openid']) || empty($_SESSION['user_info']['openid'])){
 
             $openId= $tools->GetOpenid();
+
+
         }else{
 
             $openId = $_SESSION['user_info']['openid'];

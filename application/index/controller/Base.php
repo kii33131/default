@@ -15,6 +15,8 @@ class Base extends Controller
    {
        parent::__construct($request);
        $wxconfig=Config::get('wx');
+
+      // echo __DIR__;exit;
         //REQUEST_URI
       // echo '<pre>';
        //print_r('http://'.$_SERVER['SERVER_NAME'].'/');exit;
