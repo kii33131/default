@@ -141,11 +141,11 @@ class Order extends Base
 
                 $user_agent = $_SERVER['HTTP_USER_AGENT'];
                //判断是否微信
-                if (strpos($user_agent, 'MicroMessenger') === false) {}else{
-                    $result = $this->wxpayconfig($order);
-                    $_SESSION['coupon_wechatpay'] = base64_encode($result);
+                //if (strpos($user_agent, 'MicroMessenger') === false) {}else{
+                   // $result = $this->wxpayconfig($order);
+                  //  $_SESSION['coupon_wechatpay'] = base64_encode($result);
 
-                }
+               // }
 
 
                 return $this->success('订单提交成功,跳转支付页面','/pay/'.$order->id.'.html');
