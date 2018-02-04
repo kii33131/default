@@ -183,7 +183,7 @@ class Order extends Base
         ///if(isset($_POST))
         require_once $path."lib/WxPay.Api.php";
         require_once $path."example/WxPay.JsApiPay.php";
-        require_once $path."example/WxPay.Data.php";
+        require_once $path."/WxPay.Data.php";
        // require_once "WxPay.JsApiPay.php";
 
         ini_set('date.timezone','Asia/Shanghai');
@@ -193,6 +193,7 @@ class Order extends Base
        // echo '<pre>';
        // print_r($tools);exit;
         // 获取用户open_id
+       // $_SESSION['user_info']['openid']=1;
         if(!isset($_SESSION['user_info']['openid']) || empty($_SESSION['user_info']['openid'])){
 
             $openId= $tools->GetOpenid();
