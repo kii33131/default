@@ -260,7 +260,7 @@ class Order extends Base
         $input->SetNotify_url('http://'.$_SERVER['SERVER_NAME'].'/'."/notify/".$data->id);
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid($openId);
-        $order = \WxPayApi::unifiedOrder();
+        $order = \WxPayApi::unifiedOrder($input);
         $jsApiParameters = $tools->GetJsApiParameters($order);
         $back= '/' ;
         $js = <<<PPP
