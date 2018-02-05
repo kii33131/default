@@ -175,6 +175,8 @@ class Order extends Base
     public function test(){
         $tools = new JsApiPay();
 
+        require_once __DIR__."/WxpayAPI/lib/WxPay.Api.php";
+       // include_once 'lib/WxPay.Notify.php';
 
        // $input = new \WxPayUnifiedOrder();
 
@@ -182,7 +184,9 @@ class Order extends Base
        // echo '<pre>';
         //print_r($tools);exit;
 
-        $input = new \WxPayUnifiedOrder();
+        $input = new WxPayUnifiedOrder();
+         //echo '<pre>';
+       // print_r($input);exit;
         $input->SetBody("订单威信支付");
         $input->SetAttach("订单威信支付");
         $input->SetOut_trade_no(321321);//\WxPayConfig::MCHID.date("YmdHis")
@@ -193,7 +197,11 @@ class Order extends Base
         $input->SetNotify_url('http://'.$_SERVER['SERVER_NAME'].'/'."/notify/");
         $input->SetTrade_type("JSAPI");
         $input->SetOpenid(2332);
-        $order = \WxPayApi::unifiedOrder();
+        //echo '<pre>';
+       // print_r($input);exit;
+        $order = \WxPayApi::unifiedOrder($input);
+      ///  var_dump($order);exit;
+
         $jsApiParameters = $tools->GetJsApiParameters($order);
         var_dump($jsApiParameters);exit;
         $_SESSION['user_info']['openid']=1;

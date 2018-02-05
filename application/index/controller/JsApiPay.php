@@ -61,17 +61,18 @@ class JsApiPay extends Controller
      */
     public function GetJsApiParameters($UnifiedOrderResult)
     {
+
         if(!array_key_exists("appid", $UnifiedOrderResult)
             || !array_key_exists("prepay_id", $UnifiedOrderResult)
             || $UnifiedOrderResult['prepay_id'] == "")
         {
-            throw new WxPayException("参数错误");
+            throw new \WxPayException("参数错误");
         }
-        $jsapi = new WxPayJsApiPay();
+        $jsapi = new \WxPayJsApiPay();
         $jsapi->SetAppid($UnifiedOrderResult["appid"]);
         $timeStamp = time();
         $jsapi->SetTimeStamp("$timeStamp");
-        $jsapi->SetNonceStr(WxPayApi::getNonceStr());
+        $jsapi->SetNonceStr(\WxPayApi::getNonceStr());
         $jsapi->SetPackage("prepay_id=" . $UnifiedOrderResult['prepay_id']);
         $jsapi->SetSignType("MD5");
         $jsapi->SetPaySign($jsapi->MakeSign());
